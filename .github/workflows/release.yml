@@ -26,11 +26,12 @@ jobs:
     steps:
       - uses: actions/checkout@v7
 
-      # The iOS 26.4 workload requires Xcode 26.4 (on the image a link to 26.4.x)
+      # The iOS 26.4 workload requires Xcode 26.4. On the image Xcode_26.4.app is a link to 26.4.x, and xcode-select needs
+      # the real path: through the link xcodebuild cannot locate the macOS SDK and actool fails (actions/runner-images#13743)
       - name: Select Xcode 26.4
         run: |
           ls -d /Applications/Xcode*
-          sudo xcode-select -s /Applications/Xcode_26.4.app
+          sudo xcode-select -s "$(readlink -f /Applications/Xcode_26.4.app)"
           xcodebuild -version
 
       - uses: actions/setup-dotnet@v6
