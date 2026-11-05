@@ -1,0 +1,63 @@
+{
+  "source": "Car App Library 1.7 (Android for Cars, categories and templates) per the CarKit.Maui specification (2026-10-29). Shared by Android Auto and Android Automotive. defaultLimits correspond to the minimum ConstraintManager values; at runtime the host overrides them. variants: template variant requirements (CarTemplateVariants), e.g. QRCodeSignInMethod from Car App API 4. NowPlaying = MediaPlaybackTemplate (Car App API 8, Media module, Stage 5). items: list row kinds with a version requirement (Conversation = ConversationItem, Car App API 7; below that the renderer uses the Row fallback), and the category items — where a row is allowed (Stage 6). PointOfInterest = PlaceListMapTemplate (host map, Car App API 1; POI categories) or ListTemplate with places (other categories); MapWithContentTemplate with the app's map (API 7) in Stage 8 (Stage 7). Stage 9: features — VoiceControlActionButtons = MessageTemplate fallback actions; Car App 1.8+ features (e.g. SearchHeader, BannerSection with minApiLevel 9) will come with the binding.",
+  "templates": {
+    "List": { "minApiLevel": 1 },
+    "Grid": { "minApiLevel": 1 },
+    "Tab": { "minApiLevel": 6 },
+    "Information": { "minApiLevel": 1, "maxActions": 2 },
+    "Search": { "minApiLevel": 1 },
+    "PointOfInterest": { "minApiLevel": 1 },
+    "Alert": { "minApiLevel": 5, "maxActions": 2 },
+    "Message": { "minApiLevel": 1, "maxActions": 2 },
+    "NowPlaying": { "minApiLevel": 8 },
+    "Map": { "minApiLevel": 1 },
+    "LongMessage": { "minApiLevel": 2, "maxActions": 2 },
+    "AndroidAutoSignIn": { "minApiLevel": 2, "maxActions": 2, "variants": { "QrCode": { "minApiLevel": 4 } } }
+  },
+  "categories": {
+    "Audio": {
+      "maxDepth": 5,
+      "templates": { "NowPlaying": {}, "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {} }
+    },
+    "Communication": {
+      "maxDepth": 5,
+      "items": [ "Conversation" ],
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {} }
+    },
+    "Navigation": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {}, "Map": {}, "PointOfInterest": {} }
+    },
+    "Parking": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {}, "PointOfInterest": {} }
+    },
+    "EvCharging": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {}, "PointOfInterest": {} }
+    },
+    "Fueling": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {}, "PointOfInterest": {} }
+    },
+    "Iot": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Search": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {} }
+    },
+    "Weather": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "Message": {}, "LongMessage": {}, "AndroidAutoSignIn": {}, "Alert": {}, "PointOfInterest": {} }
+    }
+  },
+  "items": { "Conversation": { "minApiLevel": 7 } },
+  "features": { "VoiceControlActionButtons": { "minApiLevel": 1 } },
+  "tabChildren": [ "List", "Grid", "Information", "Message", "Search" ],
+  "defaultLimits": {
+    "ListItems": 6,
+    "GridItems": 6,
+    "PointsOfInterest": 6,
+    "InformationItems": 4,
+    "Tabs": 4,
+    "MapButtons": 4
+  }
+}

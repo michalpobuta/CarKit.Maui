@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.Maui.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <!-- Hosting/ and Renderers/ from CarKit.Maui do not know the platform types, so they compile on net10.0 with reference
+       MAUI. Platform code (Platforms/) is tested by tests/CarKit.Maui.DeviceTests (simulator, emulator) and the sample builds. -->
+  <ItemGroup>
+    <Compile Include="..\..\src\CarKit.Maui\Hosting\**\*.cs" LinkBase="Hosting.Linked" />
+    <Compile Include="..\..\src\CarKit.Maui\Renderers\**\*.cs" LinkBase="Renderers.Linked" />
+    <!-- Stage 5: platform-neutral logic of the Media module (state, commands, interruptions, auto-browse,
+         Media3/MPNowPlayingInfo mapping) -->
+    <Compile Include="..\..\src\CarKit.Maui.Media\Media\**\*.cs" LinkBase="Media.Linked" />
+    <!-- Stage 6: platform-neutral logic of the Communication module (options, notification content, reply router,
+         conversation state) -->
+    <Compile Include="..\..\src\CarKit.Maui.Communication\Communication\**\*.cs" LinkBase="Communication.Linked" />
+    <!-- Stage 8: platform-neutral logic of the Navigation module (surfaces, gestures, voice queue, frame statistics,
+         template decisions) -->
+    <Compile Include="..\..\src\CarKit.Maui.Navigation\Navigation\**\*.cs" LinkBase="Navigation.Linked" />
+  </ItemGroup>
+
+  <!-- Sample screens walked on FakeCarHost (CarPlay and Android Auto): nobody sees the car screen here, so the test
+       checks that every screen passes Strict validation in the sample category -->
+  <ItemGroup>
+    <Compile Include="..\..\samples\CarKit.Sample\Car\*.cs" LinkBase="Sample.Linked" />
+    <Compile Include="..\..\samples\CarKit.Sample\SampleDiagnostics.cs" LinkBase="Sample.Linked" />
+    <!-- Stage 5: sample Media library and player (audio output is faked in tests) -->
+    <Compile Include="..\..\samples\CarKit.Sample.Media\Media\*.cs" LinkBase="SampleMedia.Linked" />
+    <!-- Stage 6: sample Communication screens and conversations plus the Intents Extension logic (without Intents types) -->
+    <Compile Include="..\..\samples\CarKit.Sample.Communication\Car\*.cs" LinkBase="SampleCommunication.Linked" />
+    <Compile Include="..\..\samples\CarKit.Sample.Communication\Messaging\*.cs" LinkBase="SampleCommunication.Linked" />
+    <Compile Include="..\..\samples\CarKit.Sample.Communication.Intents\SampleIntentLogic.cs" LinkBase="SampleCommunication.Linked" />
+    <!-- Stage 8: sample Navigation car screens, routes, drive simulation and map -->
+    <Compile Include="..\..\samples\CarKit.Sample.Navigation\Car\*.cs" LinkBase="SampleNavigation.Linked" />
+    <Compile Include="..\..\samples\CarKit.Sample.Navigation\Navigation\*.cs" LinkBase="SampleNavigation.Linked" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.Core\CarKit.Maui.Core.csproj" />
+    <ProjectReference Include="..\..\src\CarKit.Maui.Testing\CarKit.Maui.Testing.csproj" />
+  </ItemGroup>
+</Project>

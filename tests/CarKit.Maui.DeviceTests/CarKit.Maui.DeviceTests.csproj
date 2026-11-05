@@ -1,0 +1,68 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Renderer tests on the iOS simulator and the Android emulator (spec: "Testing"): a MAUI app with its own runner,
+       because XHarness is not available. Run by eng/run-device-tests.sh ios|android. -->
+  <PropertyGroup>
+    <!-- Stage 9: CarKitDeviceTestsIosVersion=26.0 builds the app on the net10.0-ios asset (ref package 26.0) of the CarKit
+         libraries; by default the app (TPV 26.4) gets the net10.0-ios26.4 asset -->
+    <TargetFrameworks>net10.0-ios$(CarKitDeviceTestsIosVersion);net10.0-android</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.Maui.DeviceTests</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ApplicationTitle>CarKit Device Tests</ApplicationTitle>
+    <ApplicationId>com.carkit.devicetests</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" />
+    <MauiImage Include="Resources\Images\*" />
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui\CarKit.Maui.csproj" />
+    <ProjectReference Include="..\..\src\CarKit.Maui.Media\CarKit.Maui.Media.csproj" />
+    <ProjectReference Include="..\..\src\CarKit.Maui.Communication\CarKit.Maui.Communication.csproj" />
+    <ProjectReference Include="..\..\src\CarKit.Maui.Navigation\CarKit.Maui.Navigation.csproj" />
+  </ItemGroup>
+
+  <!-- Stage 6: the sample's Intents Extension handler (iOS), called in the test process on a store in a temp
+       directory -->
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    <Compile Include="..\..\samples\CarKit.Sample.Communication.Intents\IntentHandler.cs" Link="Platforms\iOS\Linked\IntentHandler.cs" />
+    <Compile Include="..\..\samples\CarKit.Sample.Communication.Intents\SampleIntentLogic.cs" Link="Platforms\iOS\Linked\SampleIntentLogic.cs" />
+  </ItemGroup>
+
+  <!--
+    Stage 5: the test app is an Audio app as from the package: the same targets, Media module props and generator, so
+    the Media3 test connects a MediaBrowser to the generated CarKitGeneratedMediaLibraryService (service, intent
+    filters, foreground permissions). No scene manifest: the CarPlay renderers are tested without a CarPlay connection.
+  -->
+  <!-- Stage 6: mixed categories Audio;Communication: Communication module props and the generated notification
+       action receiver -->
+  <!-- Stage 8: Navigation with the module: map, navigation session, voice; CarAppService with NAVIGATION and
+       FEATURE_CLUSTER -->
+  <PropertyGroup>
+    <CarKitCategories>Audio;Communication;Navigation</CarKitCategories>
+    <CarKitAndroidCluster>true</CarKitAndroidCluster>
+    <CarKitIosGenerateSceneManifest>false</CarKitIosGenerateSceneManifest>
+    <!-- Stage 10: no CarPlay keys, because the tests check CP* objects without a connection to the car. The carplay-audio
+         key changes the platform limits (among others CPAlertTemplate.maximumActionCount = 1), and the app combines the
+         Audio, Communication and Navigation categories only to cover the modules; the alert limit is checked by
+         Alert_keeps_the_first_actions_within_the_platform_limit -->
+    <CarKitIosEntitlements>false</CarKitIosEntitlements>
+  </PropertyGroup>
+  <Import Project="..\..\src\CarKit.Maui.Media\buildTransitive\CarKit.Maui.Media.props" />
+  <Import Project="..\..\src\CarKit.Maui.Communication\buildTransitive\CarKit.Maui.Communication.props" />
+  <Import Project="..\..\src\CarKit.Maui.Navigation\buildTransitive\CarKit.Maui.Navigation.props" />
+  <Import Project="..\..\src\CarKit.Maui\buildTransitive\CarKit.Maui.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.SourceGenerators\CarKit.Maui.SourceGenerators.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>

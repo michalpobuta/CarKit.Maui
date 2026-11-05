@@ -1,0 +1,107 @@
+name: Release
+
+# Stage 10 (spec: "Documentation and release decisions (Stage 10)", Release workflow): a v* tag (e.g. git tag v0.1.0-beta.1) builds,
+# tests, packs in release mode (CarKitRelease from GITHUB_REF_TYPE/GITHUB_REF_NAME: eng/CarKit.Release.props), checks the packages
+# with the release gate and publishes to NuGet.org when the NUGET_API_KEY secret exists. The license, repo and version = tag stop
+# the pack (CARKITREL00x).
+on:
+  push:
+    tags:
+      - 'v*'
+
+permissions:
+  contents: read
+
+jobs:
+  release:
+    runs-on: macos-26
+    timeout-minutes: 120
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+      # The owner adds the secret (docs/release-checklist.md); without it the workflow ends at the artifacts. The key itself
+      # only in the push step: restore, targets from packages and test apps must not see it
+      HAS_NUGET_API_KEY: ${{ secrets.NUGET_API_KEY != '' }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      # The iOS 26.4 workload requires Xcode 26.4 (on the image a link to 26.4.x)
+      - name: Select Xcode 26.4
+        run: |
+          ls -d /Applications/Xcode*
+          sudo xcode-select -s /Applications/Xcode_26.4.app
+          xcodebuild -version
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Install MAUI workloads
+        run: dotnet workload install maui-ios maui-android --version 10.0.204.1
+
+      - name: Restore
+        run: dotnet restore CarKit.Maui.slnx
+
+      - name: Build
+        run: dotnet build CarKit.Maui.slnx -c Release --no-restore -warnaserror
+
+      - name: Test
+        run: |
+          dotnet test tests/CarKit.Maui.Core.Tests -c Release --no-build
+          dotnet test tests/CarKit.Maui.Tests -c Release --no-build
+          dotnet test tests/CarKit.Maui.Build.Tests -c Release --no-build
+
+      # iOS renderer tests as in ci.yml: Debug and Release; Android local only (the macOS runner has no emulator acceleration)
+      - name: Device tests (iOS simulator)
+        run: eng/run-device-tests.sh ios
+
+      - name: Device tests (iOS simulator, Release)
+        run: CONFIGURATION=Release DEVICE_TESTS_LOG=artifacts/device-tests-ios-release.log eng/run-device-tests.sh ios
+
+      - name: Pack release packages
+        run: dotnet pack CarKit.Maui.slnx -c Release --no-build -o artifacts/packages
+
+      # Checks of the finished packages: 6 .nupkg + 6 .snupkg, version = tag, license, repository url + commit, README, PDB,
+      # Source Link, PublicAPI
+      - name: Release gate
+        run: dotnet run --project eng/ReleaseGate -c Release --no-build -- --packages artifacts/packages --tag "$GITHUB_REF_NAME" --repo .
+
+      - name: NuGet consumer smoke test
+        run: eng/nuget-smoke/smoke.sh
+
+      - name: Quickstart guide
+        run: eng/quickstart/run.sh
+
+      - name: Documentation
+        run: |
+          dotnet tool restore
+          eng/docs/build.sh --no-build
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: packages
+          path: |
+            artifacts/packages/*.nupkg
+            artifacts/packages/*.snupkg
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: docs
+          path: artifacts/docs/_site
+
+      # dotnet nuget push also sends the .snupkg files from the same directory (the NuGet.org symbol server)
+      - name: Push to NuGet.org
+        if: env.HAS_NUGET_API_KEY == 'true'
+        env:
+          NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        run: dotnet nuget push "artifacts/packages/*.nupkg" --api-key "$NUGET_API_KEY" --source https://api.nuget.org/v3/index.json --skip-duplicate
+
+      - name: Report skipped push
+        if: env.HAS_NUGET_API_KEY != 'true'
+        run: echo "::notice::NUGET_API_KEY is not set; the packages are in the workflow artifacts and were not published."

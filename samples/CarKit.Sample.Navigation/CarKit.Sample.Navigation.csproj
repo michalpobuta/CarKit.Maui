@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-ios;net10.0-android</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.Sample.Navigation</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+
+    <ApplicationTitle>CarKit Navigation</ApplicationTitle>
+    <ApplicationId>com.carkit.sample.navigation</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+  </PropertyGroup>
+
+  <!--
+    Stage 8: navigation app (spec: "Navigation module decisions (Stage 8)", Sample). The Navigation category generates
+    CarPlay scenes with a map window, Dashboard and cluster (iOS), and a CarAppService with NAVIGATION and
+    FEATURE_CLUSTER (Android).
+  -->
+  <PropertyGroup>
+    <CarKitCategories>Navigation</CarKitCategories>
+    <CarKitIosDashboard>true</CarKitIosDashboard>
+    <CarKitIosInstrumentCluster>true</CarKitIosInstrumentCluster>
+    <CarKitAndroidCluster>true</CarKitAndroidCluster>
+  </PropertyGroup>
+
+  <!-- Emulates the CarKit.Maui.Navigation package (ProjectReference does not import buildTransitive/): module marker
+       for the targets -->
+  <Import Project="..\..\src\CarKit.Maui.Navigation\buildTransitive\CarKit.Maui.Navigation.props" />
+
+  <ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#1F7A4D" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#1F7A4D" BaseSize="128,128" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.Navigation\CarKit.Maui.Navigation.csproj" />
+  </ItemGroup>
+</Project>

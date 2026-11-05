@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <!-- Core coverage (spec: ≥ 90%); measurement is enabled by -p:CollectCoverage=true -->
+  <PropertyGroup>
+    <Include>[CarKit.Maui.Core]*</Include>
+    <ExcludeByAttribute>GeneratedCodeAttribute,CompilerGeneratedAttribute,ExcludeFromCodeCoverageAttribute</ExcludeByAttribute>
+    <SkipAutoProps>true</SkipAutoProps>
+    <Threshold>90</Threshold>
+    <ThresholdType>line</ThresholdType>
+    <CoverletOutputFormat>cobertura</CoverletOutputFormat>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="coverlet.msbuild" PrivateAssets="all" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.Core\CarKit.Maui.Core.csproj" />
+    <ProjectReference Include="..\..\src\CarKit.Maui.Testing\CarKit.Maui.Testing.csproj" />
+  </ItemGroup>
+</Project>

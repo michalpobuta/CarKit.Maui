@@ -1,0 +1,44 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-ios;net10.0-android</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.Sample.Media</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+
+    <ApplicationTitle>CarKit Media</ApplicationTitle>
+    <ApplicationId>com.carkit.sample.media</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+  </PropertyGroup>
+
+  <!--
+    Stage 5: app with the media library only (spec: "Media module decisions (Stage 5)", Sample). The Audio category
+    generates the Android media service (without a CarAppService), uses media in automotive_app_desc.xml, and the
+    audio background mode on iOS.
+  -->
+  <PropertyGroup>
+    <CarKitCategories>Audio</CarKitCategories>
+  </PropertyGroup>
+
+  <!-- Emulates the CarKit.Maui.Media package (ProjectReference does not import buildTransitive/): module marker for the
+       targets -->
+  <Import Project="..\..\src\CarKit.Maui.Media\buildTransitive\CarKit.Maui.Media.props" />
+
+  <ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#2B6CD4" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#2B6CD4" BaseSize="128,128" />
+    <MauiImage Include="Resources\Images\*" />
+    <!-- WAV tones generated for the sample (no media downloads); stored uncompressed in the APK (.wav) -->
+    <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.Media\CarKit.Maui.Media.csproj" />
+  </ItemGroup>
+</Project>

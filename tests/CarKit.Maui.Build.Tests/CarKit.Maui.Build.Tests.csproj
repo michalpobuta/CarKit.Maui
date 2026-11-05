@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.Maui.Build.Tests</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" />
+    <PackageReference Include="xunit.v3" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.SourceGenerators\CarKit.Maui.SourceGenerators.csproj" />
+    <!-- Stage 10: release gate tested on fixture packages -->
+    <ProjectReference Include="..\..\eng\ReleaseGate\ReleaseGate.csproj" />
+  </ItemGroup>
+
+  <!-- Target tests import them from the repo (no package), the path is passed through an assembly attribute -->
+  <ItemGroup>
+    <AssemblyAttribute Include="System.Reflection.AssemblyMetadataAttribute">
+      <_Parameter1>CarKitTargets</_Parameter1>
+      <_Parameter2>$([MSBuild]::NormalizePath('$(MSBuildThisFileDirectory)../../src/CarKit.Maui/buildTransitive/CarKit.Maui.targets'))</_Parameter2>
+    </AssemblyAttribute>
+  </ItemGroup>
+</Project>

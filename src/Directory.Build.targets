@@ -1,0 +1,46 @@
+<Project>
+  <!-- Stage 10: PackageProjectUrl from the repository, message/error without a repo and commit, license and version = tag
+       in release mode -->
+  <Import Project="$(MSBuildThisFileDirectory)../eng/CarKit.Release.targets" />
+
+  <!-- The public API differs between TFMs, so the PublicAPI files are per platform: PublicAPI/<net|ios|android>/ -->
+  <PropertyGroup>
+    <_CarKitApiPlatform>$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))</_CarKitApiPlatform>
+    <_CarKitApiPlatform Condition="'$(_CarKitApiPlatform)' == ''">net</_CarKitApiPlatform>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(CarKitPublicApi)' != 'false'">
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" PrivateAssets="all" />
+    <AdditionalFiles Include="PublicAPI/$(_CarKitApiPlatform)/PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI/$(_CarKitApiPlatform)/PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+
+  <!-- Stage 9: the net10.0-ios26.4 asset = iOS API (PublicAPI/ios/) + the 26.4 increment (PublicAPI/ios26.4/);
+       the analyzer merges the files -->
+  <ItemGroup Condition="'$(CarKitPublicApi)' != 'false' and '$(_CarKitApiPlatform)' == 'ios' and $([MSBuild]::VersionGreaterThanOrEquals('$(TargetPlatformVersion)', '26.4'))">
+    <AdditionalFiles Include="PublicAPI/ios26.4/PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="PublicAPI/ios26.4/PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+
+  <!-- Guard: a library marked IsTrimmable must have trimming analysis active -->
+  <Target Name="_CarKitVerifyTrimAnalyzer" BeforeTargets="CoreCompile" Condition="'$(IsTrimmable)' == 'true'">
+    <Error Condition="'$(EnableTrimAnalyzer)' != 'true'"
+           Text="CarKit: $(MSBuildProjectName) ($(TargetFramework)) has IsTrimmable=true, but EnableTrimAnalyzer=$(EnableTrimAnalyzer)." />
+  </Target>
+
+  <!-- The Android SDK appends CS1573;CS1591 to NoWarn after our files, so we restore them right before compilation -->
+  <Target Name="_CarKitRestoreDocWarnings" BeforeTargets="CoreCompile" Condition="'$(GenerateDocumentationFile)' == 'true'">
+    <PropertyGroup>
+      <NoWarn>$([System.String]::Copy(';$(NoWarn);').Replace(';CS1591;', ';').Replace(';CS1573;', ';').Trim(';'))</NoWarn>
+    </PropertyGroup>
+  </Target>
+
+  <!-- CarKit packages use the internals of neighboring packages (IVT), so the dependency between them has an exact version -->
+  <Target Name="_CarKitPinProjectReferenceVersions" AfterTargets="_GetProjectReferenceVersions">
+    <ItemGroup>
+      <_ProjectReferencesWithVersions Condition="!$([System.String]::Copy('%(_ProjectReferencesWithVersions.ProjectVersion)').StartsWith('['))">
+        <ProjectVersion>[%(_ProjectReferencesWithVersions.ProjectVersion)]</ProjectVersion>
+      </_ProjectReferencesWithVersions>
+    </ItemGroup>
+  </Target>
+</Project>

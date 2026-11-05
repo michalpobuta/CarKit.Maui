@@ -1,0 +1,481 @@
+<Project>
+  <!--
+    CarKit.Maui: platform files from one section of the app's .csproj (spec: "iOS hosting", "Android hosting",
+    "Hosting and build decisions (Stage 2)"). Works only in app projects (OutputType=Exe / AndroidApplication).
+
+    App properties:
+      CarKitCategories                list of categories (CarAppCategory), e.g. Parking;Audio — required
+      CarKitIosPhoneSceneDelegate     phone scene delegate; empty = CarKitPhoneSceneDelegate
+      CarKitIosGenerateSceneManifest  false = the app adds UIApplicationSceneManifest itself
+      CarKitIosEntitlements           CarPlay entitlements; empty = every build (the CarPlay window in the Simulator shows
+                                      the app only with a category key; Stage 10), Siri and App Group on device only;
+                                      false turns them off
+      CarKitIosDashboard / CarKitIosInstrumentCluster   Navigation with the module: CarPlay Dashboard and cluster scenes (Stage 8, CARKIT009)
+      CarKitAndroidCluster            Navigation with the module: Android Auto/AAOS cluster, FEATURE_CLUSTER category (Stage 8, CARKIT009)
+      CarKitAndroidMinCarApiLevel     androidx.car.app.minCarApiLevel, 1–_CarKitMaxCarApiLevel (8), default 1
+      CarKitEnableAutomotive          waits for the Car.App.Automotive binding (CARKIT004)
+      CarKitValidation                Strict | Warn | Off; default Warn in Release
+      CarKitIosBackgroundAudio        Audio and Navigation with the module: UIBackgroundModes = audio (default true; Stage 5, Stage 8)
+      CarKitAndroidTemplatedMedia     Audio: Android Auto media templates (CarAppService with the MEDIA category; Stage 5)
+      CarKitIosAppGroup               Communication: App Group shared with the Intents Extension (entitlement on device; Stage 6)
+      CarKitIosSiriUsageDescription   Communication: NSSiriUsageDescription when Info.plist lacks it (Stage 6)
+      CarKitAndroidCalling            Communication: Android Auto calls, waiting for the Core-Telecom binding (CARKIT004)
+      CarKitIosMicrophoneUsageDescription  VoiceConversational: NSMicrophoneUsageDescription when Info.plist lacks it (Stage 7)
+
+    Modules: CarKitMediaModule=true sets buildTransitive/CarKit.Maui.Media.props of the CarKit.Maui.Media package,
+    CarKitCommunicationModule=true — buildTransitive/CarKit.Maui.Communication.props of the CarKit.Maui.Communication package,
+    CarKitNavigationModule=true — buildTransitive/CarKit.Maui.Navigation.props of the CarKit.Maui.Navigation package (Stage 8).
+  -->
+
+  <PropertyGroup>
+    <_CarKitPlatform>$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)'))</_CarKitPlatform>
+    <CarKitAndroidMinCarApiLevel Condition="'$(CarKitAndroidMinCarApiLevel)' == ''">1</CarKitAndroidMinCarApiLevel>
+    <!-- Stage 9: the highest Car App API level of the binding (Xamarin.AndroidX.Car.App.App 1.7.0.1 → 8); binding 1.9 →
+         9 -->
+    <_CarKitMaxCarApiLevel Condition="'$(_CarKitMaxCarApiLevel)' == ''">8</_CarKitMaxCarApiLevel>
+    <CarKitIosGenerateSceneManifest Condition="'$(CarKitIosGenerateSceneManifest)' == ''">true</CarKitIosGenerateSceneManifest>
+    <CarKitValidation Condition="'$(CarKitValidation)' == '' and '$(Configuration)' == 'Release'">Warn</CarKitValidation>
+    <!-- A list without spaces, separator ; — the runtime (CarKitBuildConfiguration.Parse) is case-insensitive -->
+    <!-- The property function result has ; encoded as %3B — Unescape restores the list -->
+    <_CarKitCategoryList>$([MSBuild]::Unescape($([System.Text.RegularExpressions.Regex]::Replace('$(CarKitCategories)', '\s', '').Replace(',', ';').Trim(';'))))</_CarKitCategoryList>
+  </PropertyGroup>
+
+  <!-- Values for the runtime (AppContext): the source of truth for categories and the default validation mode -->
+  <ItemGroup Condition="'$(OutputType)' == 'Exe' or '$(AndroidApplication)' == 'true'">
+    <RuntimeHostConfigurationOption Include="CarKit.Maui.Categories" Value="$(_CarKitCategoryList)" Condition="'$(_CarKitCategoryList)' != ''" />
+    <RuntimeHostConfigurationOption Include="CarKit.Maui.Validation" Value="$(CarKitValidation)" Condition="'$(CarKitValidation)' != ''" />
+    <!-- media.UseTemplatedMediaOnAndroid accepts this value; any other explicit value makes UseMedia throw -->
+    <RuntimeHostConfigurationOption Include="CarKit.Maui.Media.TemplatedMedia" Value="true" Condition="'$(CarKitAndroidTemplatedMedia)' == 'true'" />
+    <!-- Stage 6: the App Group of the Siri store (Intents Extension); the Communication module reads it at runtime -->
+    <RuntimeHostConfigurationOption Include="CarKit.Maui.Communication.AppGroup" Value="$(CarKitIosAppGroup.Trim())" Condition="'$(CarKitIosAppGroup.Trim())' != ''" />
+  </ItemGroup>
+
+  <!-- Android: the package's R8 rules (Stage 6: the ConversationCallback interface, looked up by name by the
+       conversation proxy) -->
+  <ItemGroup Condition="'$(_CarKitPlatform)' == 'android' and ('$(OutputType)' == 'Exe' or '$(AndroidApplication)' == 'true')">
+    <ProguardConfiguration Include="$(MSBuildThisFileDirectory)CarKit.Maui.proguard.cfg" />
+  </ItemGroup>
+
+  <!-- Input of CarKit.Maui.SourceGenerators (the CarAppService and the Android manifest entries) -->
+  <ItemGroup>
+    <CompilerVisibleProperty Include="CarKitAndroidGenerateService" />
+    <CompilerVisibleProperty Include="CarKitAndroidIntentCategories" />
+    <CompilerVisibleProperty Include="CarKitAndroidPermissions" />
+    <CompilerVisibleProperty Include="CarKitAndroidMinCarApiLevel" />
+    <CompilerVisibleProperty Include="CarKitAndroidAutomotiveDescriptor" />
+    <CompilerVisibleProperty Include="CarKitAndroidMediaService" />
+    <CompilerVisibleProperty Include="CarKitAndroidMediaPermissions" />
+    <CompilerVisibleProperty Include="CarKitAndroidMessageReceiver" />
+    <CompilerVisibleProperty Include="CarKitAndroidMessagePermissions" />
+  </ItemGroup>
+
+  <!--
+    The only category mapping table (spec: "Category mapping"). An empty CarPlayEntitlement = no counterpart
+    on CarPlay (CARKIT001), CarPlayUnverified = a key to check in the CarPlay Developer Guide (CARKIT003; Stage 7: no
+    category — the keys are verified in Apple Developer Documentation 2026-10-30).
+    Missing AndroidAutoCategory and AutomotiveUses = no counterpart in Android Auto (CARKIT001).
+  -->
+  <ItemGroup>
+    <_CarKitCategoryMap Include="Audio" CarPlayEntitlement="com.apple.developer.carplay-audio" AutomotiveUses="media" />
+    <!-- Communication: CALLING only with the Jetpack Core-Telecom binding (Stage 6, CarKitAndroidCalling → CARKIT004) -->
+    <_CarKitCategoryMap Include="Communication" CarPlayEntitlement="com.apple.developer.carplay-communication" AndroidAutoCategory="androidx.car.app.category.MESSAGING" AutomotiveUses="template" />
+    <_CarKitCategoryMap Include="Navigation" CarPlayEntitlement="com.apple.developer.carplay-maps" AndroidAutoCategory="androidx.car.app.category.NAVIGATION" AndroidAutoPermission="androidx.car.app.NAVIGATION_TEMPLATES;androidx.car.app.ACCESS_SURFACE" AutomotiveUses="template" />
+    <_CarKitCategoryMap Include="Parking" CarPlayEntitlement="com.apple.developer.carplay-parking" AndroidAutoCategory="androidx.car.app.category.POI" AndroidAutoPermission="androidx.car.app.MAP_TEMPLATES" AutomotiveUses="template" />
+    <_CarKitCategoryMap Include="EvCharging" CarPlayEntitlement="com.apple.developer.carplay-charging" AndroidAutoCategory="androidx.car.app.category.POI" AndroidAutoPermission="androidx.car.app.MAP_TEMPLATES" AutomotiveUses="template" />
+    <_CarKitCategoryMap Include="Fueling" CarPlayEntitlement="com.apple.developer.carplay-fueling" AndroidAutoCategory="androidx.car.app.category.POI" AndroidAutoPermission="androidx.car.app.MAP_TEMPLATES" AutomotiveUses="template" />
+    <_CarKitCategoryMap Include="QuickFoodOrdering" CarPlayEntitlement="com.apple.developer.carplay-quick-ordering" />
+    <_CarKitCategoryMap Include="DrivingTask" CarPlayEntitlement="com.apple.developer.carplay-driving-task" />
+    <_CarKitCategoryMap Include="VoiceConversational" CarPlayEntitlement="com.apple.developer.carplay-voice-based-conversation" />
+    <_CarKitCategoryMap Include="Video" CarPlayEntitlement="com.apple.developer.carplay-video" />
+    <_CarKitCategoryMap Include="PublicSafety" CarPlayEntitlement="com.apple.developer.carplay-public-safety" />
+    <_CarKitCategoryMap Include="Iot" AndroidAutoCategory="androidx.car.app.category.IOT" AutomotiveUses="template" />
+    <_CarKitCategoryMap Include="Weather" AndroidAutoCategory="androidx.car.app.category.WEATHER" AutomotiveUses="template" />
+  </ItemGroup>
+
+  <!-- Before the generator's editorconfig; the platform targets below depend on it explicitly -->
+  <Target Name="CarKitComputeConfiguration"
+          BeforeTargets="GenerateMSBuildEditorConfigFileShouldRun"
+          Condition="'$(OutputType)' == 'Exe' or '$(AndroidApplication)' == 'true'">
+    <PropertyGroup>
+      <_CarKitKnownCategories>@(_CarKitCategoryMap)</_CarKitKnownCategories>
+      <_CarKitKnownLower>;$(_CarKitKnownCategories.ToLowerInvariant());</_CarKitKnownLower>
+      <_CarKitDeclaredLower>;$(_CarKitCategoryList.ToLowerInvariant());</_CarKitDeclaredLower>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <_CarKitDeclaredCategory Include="$(_CarKitCategoryList)" />
+      <_CarKitUnknownCategory Include="@(_CarKitDeclaredCategory)"
+                              Condition="!$(_CarKitKnownLower.Contains(';$([System.String]::Copy('%(Identity)').ToLowerInvariant());'))" />
+      <_CarKitCategory Include="@(_CarKitCategoryMap)"
+                       Condition="$(_CarKitDeclaredLower.Contains(';$([System.String]::Copy('%(Identity)').ToLowerInvariant());'))" />
+    </ItemGroup>
+
+    <Error Code="CARKIT002" Condition="'@(_CarKitDeclaredCategory)' == ''"
+           Text="CarKit: set &lt;CarKitCategories&gt; in the app project file, for example &lt;CarKitCategories&gt;Parking&lt;/CarKitCategories&gt;. Known categories: $(_CarKitKnownCategories)." />
+    <Error Code="CARKIT002" Condition="'@(_CarKitUnknownCategory)' != ''"
+           Text="CarKit: unknown categories in CarKitCategories: @(_CarKitUnknownCategory). Known categories: $(_CarKitKnownCategories)." />
+
+    <ItemGroup>
+      <CarKitCarPlayEntitlement Include="%(_CarKitCategory.CarPlayEntitlement)" Condition="'%(_CarKitCategory.CarPlayEntitlement)' != ''" />
+      <CarKitAndroidIntentCategory Include="%(_CarKitCategory.AndroidAutoCategory)" Condition="'%(_CarKitCategory.AndroidAutoCategory)' != ''" />
+      <CarKitAndroidPermission Include="%(_CarKitCategory.AndroidAutoPermission)" Condition="'%(_CarKitCategory.AndroidAutoPermission)' != ''" />
+      <CarKitAutomotiveUses Include="%(_CarKitCategory.AutomotiveUses)" Condition="'%(_CarKitCategory.AutomotiveUses)' != ''" />
+      <_CarKitWithoutCarPlay Include="@(_CarKitCategory)" Condition="'%(_CarKitCategory.CarPlayEntitlement)' == '' and '%(_CarKitCategory.CarPlayUnverified)' != 'true'" />
+      <_CarKitUnverifiedCarPlay Include="@(_CarKitCategory)" Condition="'%(_CarKitCategory.CarPlayUnverified)' == 'true'" />
+      <_CarKitWithoutAndroidAuto Include="@(_CarKitCategory)" Condition="'%(_CarKitCategory.AndroidAutoCategory)' == '' and '%(_CarKitCategory.AutomotiveUses)' == ''" />
+      <_CarKitAudio Include="@(_CarKitCategory)" Condition="'%(Identity)' == 'Audio'" />
+      <_CarKitCommunication Include="@(_CarKitCategory)" Condition="'%(Identity)' == 'Communication'" />
+      <_CarKitVoiceConversational Include="@(_CarKitCategory)" Condition="'%(Identity)' == 'VoiceConversational'" />
+      <_CarKitNavigation Include="@(_CarKitCategory)" Condition="'%(Identity)' == 'Navigation'" />
+      <_CarKitMapCategory Include="@(_CarKitCategory)" Condition="'%(Identity)' == 'Parking' or '%(Identity)' == 'EvCharging' or '%(Identity)' == 'Fueling' or '%(Identity)' == 'Weather'" />
+      <_CarKitWeather Include="@(_CarKitCategory)" Condition="'%(Identity)' == 'Weather'" />
+    </ItemGroup>
+
+    <!-- Stage 8: POI and Weather with the Navigation module draw the app map (MapWithContentTemplate) on the surface —
+         ACCESS_SURFACE, Weather also MAP_TEMPLATES (POI has them from the table); with NAVIGATION_TEMPLATES, MAP_TEMPLATES
+         is removed below -->
+    <ItemGroup Condition="'@(_CarKitMapCategory)' != '' and '$(CarKitNavigationModule)' == 'true'">
+      <CarKitAndroidPermission Include="androidx.car.app.ACCESS_SURFACE" />
+      <CarKitAndroidPermission Include="androidx.car.app.MAP_TEMPLATES" Condition="'@(_CarKitWeather)' != ''" />
+    </ItemGroup>
+
+    <!-- Stage 8: Android Auto/AAOS cluster (Car App API 6) — a cluster session with SessionInfo.DISPLAY_TYPE_CLUSTER -->
+    <PropertyGroup>
+      <_CarKitSecondScreensReady Condition="'@(_CarKitNavigation)' != '' and '$(CarKitNavigationModule)' == 'true'">true</_CarKitSecondScreensReady>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(_CarKitPlatform)' == 'android' and '$(CarKitAndroidCluster)' == 'true' and '$(_CarKitSecondScreensReady)' == 'true'">
+      <CarKitAndroidIntentCategory Include="androidx.car.app.category.FEATURE_CLUSTER" />
+    </ItemGroup>
+
+    <!-- Communication with the module (Stage 6): messages from notifications in Android Auto next to the templates -->
+    <ItemGroup Condition="'@(_CarKitCommunication)' != '' and '$(CarKitCommunicationModule)' == 'true'">
+      <CarKitAutomotiveUses Include="notification" Exclude="@(CarKitAutomotiveUses)" />
+    </ItemGroup>
+
+    <!-- Audio (Stage 5): Android Auto media templates behind CarKitAndroidTemplatedMedia — a CarAppService with the
+         MEDIA category -->
+    <ItemGroup Condition="'@(_CarKitAudio)' != '' and '$(CarKitAndroidTemplatedMedia)' == 'true'">
+      <CarKitAndroidIntentCategory Include="androidx.car.app.category.MEDIA" />
+      <CarKitAndroidPermission Include="androidx.car.app.MEDIA_TEMPLATES" />
+      <CarKitAutomotiveUses Include="template" Exclude="@(CarKitAutomotiveUses)" />
+    </ItemGroup>
+
+    <RemoveDuplicates Inputs="@(CarKitAndroidIntentCategory)">
+      <Output TaskParameter="Filtered" ItemName="_CarKitAndroidIntentCategoryUnique" />
+    </RemoveDuplicates>
+    <RemoveDuplicates Inputs="@(CarKitAndroidPermission)">
+      <Output TaskParameter="Filtered" ItemName="_CarKitAndroidPermissionUnique" />
+    </RemoveDuplicates>
+    <ItemGroup>
+      <CarKitAndroidIntentCategory Remove="@(CarKitAndroidIntentCategory)" />
+      <CarKitAndroidIntentCategory Include="@(_CarKitAndroidIntentCategoryUnique)" />
+      <CarKitAndroidPermission Remove="@(CarKitAndroidPermission)" />
+      <CarKitAndroidPermission Include="@(_CarKitAndroidPermissionUnique)" />
+    </ItemGroup>
+    <!-- Stage 7: Google rejects an app with MAP_TEMPLATES and NAVIGATION_TEMPLATES at once; navigation takes precedence -->
+    <ItemGroup Condition="'@(CarKitAndroidPermission->AnyHaveMetadataValue('Identity', 'androidx.car.app.NAVIGATION_TEMPLATES'))' == 'true'">
+      <CarKitAndroidPermission Remove="androidx.car.app.MAP_TEMPLATES" />
+    </ItemGroup>
+
+    <PropertyGroup>
+      <CarKitNormalizedCategories>@(_CarKitCategory)</CarKitNormalizedCategories>
+    </PropertyGroup>
+
+    <Warning Code="CARKIT001" Condition="'$(_CarKitPlatform)' == 'ios' and '@(_CarKitWithoutCarPlay)' != ''"
+             Text="CarKit: categories @(_CarKitWithoutCarPlay) have no CarPlay counterpart and are ignored on iOS." />
+    <Warning Code="CARKIT003" Condition="'$(_CarKitPlatform)' == 'ios' and '@(_CarKitUnverifiedCarPlay)' != ''"
+             Text="CarKit: the CarPlay entitlement key for @(_CarKitUnverifiedCarPlay) is not verified, so CarKit does not add it. Add it yourself with &lt;CustomEntitlements Include=&quot;...&quot; Type=&quot;Boolean&quot; Value=&quot;true&quot; /&gt; after checking the CarPlay Developer Guide." />
+    <Warning Code="CARKIT005" Condition="'@(_CarKitAudio)' != '' and '$(CarKitMediaModule)' != 'true'"
+             Text="CarKit: the Audio category needs the CarKit.Maui.Media package (media library service on Android, Now Playing on CarPlay); add a PackageReference to CarKit.Maui.Media." />
+    <Warning Code="CARKIT007" Condition="'@(_CarKitCommunication)' != '' and '$(CarKitCommunicationModule)' != 'true'"
+             Text="CarKit: the Communication category needs the CarKit.Maui.Communication package (message notifications for Android Auto, Siri and CallKit for CarPlay); add a PackageReference to CarKit.Maui.Communication." />
+    <Warning Code="CARKIT008" Condition="'@(_CarKitNavigation)' != '' and '$(CarKitNavigationModule)' != 'true'"
+             Text="CarKit: the Navigation category needs the CarKit.Maui.Navigation package (map surface, navigation session and voice prompts for CarPlay and Android Auto); add a PackageReference to CarKit.Maui.Navigation." />
+    <Warning Code="CARKIT001" Condition="'$(_CarKitPlatform)' == 'android' and '@(_CarKitWithoutAndroidAuto)' != ''"
+             Text="CarKit: categories @(_CarKitWithoutAndroidAuto) have no Android Auto counterpart and are ignored on Android." />
+
+    <Error Code="CARKIT002" Condition="'$(_CarKitPlatform)' == 'android' and (!$([System.Text.RegularExpressions.Regex]::IsMatch('$(CarKitAndroidMinCarApiLevel)', '^[1-9][0-9]?$')) or $([MSBuild]::ValueOrDefault('$(CarKitAndroidMinCarApiLevel)', '0')) &gt; $(_CarKitMaxCarApiLevel))"
+           Text="CarKit: CarKitAndroidMinCarApiLevel must be a Car App API level from 1 to $(_CarKitMaxCarApiLevel), not '$(CarKitAndroidMinCarApiLevel)'." />
+    <Error Code="CARKIT009" Condition="'$(_CarKitPlatform)' == 'ios' and '$(CarKitIosDashboard)' == 'true' and '$(_CarKitSecondScreensReady)' != 'true'"
+           Text="CarKit: CarKitIosDashboard needs the Navigation category and the CarKit.Maui.Navigation package, which draws the map on the CarPlay Dashboard." />
+    <Error Code="CARKIT009" Condition="'$(_CarKitPlatform)' == 'ios' and '$(CarKitIosInstrumentCluster)' == 'true' and '$(_CarKitSecondScreensReady)' != 'true'"
+           Text="CarKit: CarKitIosInstrumentCluster needs the Navigation category and the CarKit.Maui.Navigation package, which draws the map on the CarPlay instrument cluster." />
+    <Error Code="CARKIT009" Condition="'$(_CarKitPlatform)' == 'android' and '$(CarKitAndroidCluster)' == 'true' and '$(_CarKitSecondScreensReady)' != 'true'"
+           Text="CarKit: CarKitAndroidCluster needs the Navigation category and the CarKit.Maui.Navigation package, which draws the map on the cluster display." />
+    <Error Code="CARKIT004" Condition="'$(_CarKitPlatform)' == 'android' and '$(CarKitEnableAutomotive)' == 'true'"
+           Text="CarKit: CarKitEnableAutomotive needs a .NET binding of androidx.car.app:app-automotive, which does not exist yet." />
+    <Error Code="CARKIT004" Condition="'$(_CarKitPlatform)' == 'android' and '$(CarKitAndroidCalling)' == 'true'"
+           Text="CarKit: CarKitAndroidCalling needs a .NET binding of Jetpack Core-Telecom (androidx.core:core-telecom), which Android Auto requires for calls and which does not exist yet; remove CarKitAndroidCalling. Messaging works without it." />
+
+    <!-- Generator input (Android only). Lists are separated by a comma: Roslyn reads CompilerVisibleProperty from
+         .editorconfig, where ';' and '#' start a comment, so "a;b" would reach the generator as "a" (Stage 5) -->
+    <PropertyGroup Condition="'$(_CarKitPlatform)' == 'android'">
+      <CarKitAndroidGenerateService>true</CarKitAndroidGenerateService>
+      <CarKitAndroidIntentCategories>@(CarKitAndroidIntentCategory, ',')</CarKitAndroidIntentCategories>
+      <CarKitAndroidPermissions>@(CarKitAndroidPermission, ',')</CarKitAndroidPermissions>
+      <CarKitAndroidAutomotiveDescriptor Condition="'@(CarKitAutomotiveUses)' != ''">true</CarKitAndroidAutomotiveDescriptor>
+      <!-- The media service (CarKitMediaLibraryService) only with the module; foregroundServiceType mediaPlayback
+           requires permissions from Android 14 -->
+      <CarKitAndroidMediaService Condition="'@(_CarKitAudio)' != '' and '$(CarKitMediaModule)' == 'true'">true</CarKitAndroidMediaService>
+      <CarKitAndroidMediaPermissions Condition="'$(CarKitAndroidMediaService)' == 'true'">android.permission.FOREGROUND_SERVICE,android.permission.FOREGROUND_SERVICE_MEDIA_PLAYBACK</CarKitAndroidMediaPermissions>
+      <!-- The notification action receiver (CarKitMessageActionReceiver) only with the module; POST_NOTIFICATIONS from
+           Android 13 -->
+      <CarKitAndroidMessageReceiver Condition="'@(_CarKitCommunication)' != '' and '$(CarKitCommunicationModule)' == 'true'">true</CarKitAndroidMessageReceiver>
+      <CarKitAndroidMessagePermissions Condition="'$(CarKitAndroidMessageReceiver)' == 'true'">android.permission.POST_NOTIFICATIONS</CarKitAndroidMessagePermissions>
+    </PropertyGroup>
+  </Target>
+
+  <!-- iOS: the scene manifest (PartialAppManifest) and CarPlay entitlements; a public SDK hook before
+       _CompileAppManifest -->
+  <PropertyGroup>
+    <CollectAppManifestsDependsOn>$(CollectAppManifestsDependsOn);CarKitConfigureIos</CollectAppManifestsDependsOn>
+  </PropertyGroup>
+
+  <Target Name="CarKitConfigureIos"
+          DependsOnTargets="CarKitComputeConfiguration"
+          Condition="'$(_CarKitPlatform)' == 'ios' and '$(OutputType)' == 'Exe'">
+    <PropertyGroup>
+      <_CarKitScenesPlist>$(IntermediateOutputPath)carkit/CarKitScenes.plist</_CarKitScenesPlist>
+      <_CarKitPhoneSceneDelegate>$(CarKitIosPhoneSceneDelegate)</_CarKitPhoneSceneDelegate>
+      <_CarKitPhoneSceneDelegate Condition="'$(_CarKitPhoneSceneDelegate)' == ''">CarKitPhoneSceneDelegate</_CarKitPhoneSceneDelegate>
+      <!-- RuntimeIdentifier is known only after full evaluation (the iOS SDK sets it after importing the NuGet targets) -->
+      <_CarKitIosSimulator Condition="$(RuntimeIdentifier.StartsWith('iossimulator'))">true</_CarKitIosSimulator>
+      <_CarKitIosEntitlements>$(CarKitIosEntitlements)</_CarKitIosEntitlements>
+      <_CarKitIosEntitlements Condition="'$(_CarKitIosEntitlements)' == '' and '$(_CarKitIosSimulator)' == 'true'">false</_CarKitIosEntitlements>
+      <_CarKitIosEntitlements Condition="'$(_CarKitIosEntitlements)' == ''">true</_CarKitIosEntitlements>
+      <!--
+        Stage 10: the category key also in the simulator build, because the Simulator's CarPlay screen shows only apps with
+        the entitlement ("Simulator can't display your CarPlay-enabled app unless it has the necessary entitlements"). The
+        Simulator reads simulated entitlements (the __entitlements section), so Apple does not have to grant them; there is no
+        provisioning profile (the SDK looks for it with CustomEntitlements), and CarPlayTemplateUIHost rejects the connection
+        when application-identifier has no team prefix made of [0-9A-Z], hence FAKETEAMID as in Xcode "Sign to Run Locally"
+        builds. Siri and App Group stay on the device.
+      -->
+      <_CarKitIosCarPlayEntitlements>$(CarKitIosEntitlements)</_CarKitIosCarPlayEntitlements>
+      <_CarKitIosCarPlayEntitlements Condition="'$(_CarKitIosCarPlayEntitlements)' == ''">true</_CarKitIosCarPlayEntitlements>
+      <CodesignRequireProvisioningProfile Condition="'$(CodesignRequireProvisioningProfile)' == '' and '$(_CarKitIosSimulator)' == 'true' and '$(_CarKitIosCarPlayEntitlements)' == 'true'">false</CodesignRequireProvisioningProfile>
+      <!-- Stage 8: CarPlay Dashboard and cluster scenes (Navigation module) with CPSupports…NavigationScene keys -->
+      <_CarKitDashboardKey Condition="'$(CarKitIosDashboard)' == 'true'"><![CDATA[
+    <key>CPSupportsDashboardNavigationScene</key>
+    <true/>]]></_CarKitDashboardKey>
+      <_CarKitClusterKey Condition="'$(CarKitIosInstrumentCluster)' == 'true'"><![CDATA[
+    <key>CPSupportsInstrumentClusterNavigationScene</key>
+    <true/>]]></_CarKitClusterKey>
+      <_CarKitDashboardScene Condition="'$(CarKitIosDashboard)' == 'true'"><![CDATA[
+      <key>CPTemplateApplicationDashboardSceneSessionRoleApplication</key>
+      <array>
+        <dict>
+          <key>UISceneClassName</key>
+          <string>CPTemplateApplicationDashboardScene</string>
+          <key>UISceneConfigurationName</key>
+          <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+          <key>UISceneDelegateClassName</key>
+          <string>CarKitDashboardSceneDelegate</string>
+        </dict>
+      </array>]]></_CarKitDashboardScene>
+      <_CarKitClusterScene Condition="'$(CarKitIosInstrumentCluster)' == 'true'"><![CDATA[
+      <key>CPTemplateApplicationInstrumentClusterSceneSessionRoleApplication</key>
+      <array>
+        <dict>
+          <key>UISceneClassName</key>
+          <string>CPTemplateApplicationInstrumentClusterScene</string>
+          <key>UISceneConfigurationName</key>
+          <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+          <key>UISceneDelegateClassName</key>
+          <string>CarKitInstrumentClusterSceneDelegate</string>
+        </dict>
+      </array>]]></_CarKitClusterScene>
+      <!-- MauiUIApplicationDelegate.GetConfiguration returns this name for every role, so all configurations carry it -->
+      <_CarKitScenesContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Generated by CarKit.Maui (buildTransitive/CarKit.Maui.targets). Do not edit. -->
+<plist version="1.0">
+<dict>
+  <key>UIApplicationSceneManifest</key>
+  <dict>
+    <key>UIApplicationSupportsMultipleScenes</key>
+    <true/>]]>$(_CarKitDashboardKey)$(_CarKitClusterKey)<![CDATA[
+    <key>UISceneConfigurations</key>
+    <dict>
+      <key>UIWindowSceneSessionRoleApplication</key>
+      <array>
+        <dict>
+          <key>UISceneConfigurationName</key>
+          <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+          <key>UISceneDelegateClassName</key>
+          <string>$(_CarKitPhoneSceneDelegate)</string>
+        </dict>
+      </array>
+      <key>CPTemplateApplicationSceneSessionRoleApplication</key>
+      <array>
+        <dict>
+          <key>UISceneClassName</key>
+          <string>CPTemplateApplicationScene</string>
+          <key>UISceneConfigurationName</key>
+          <string>__MAUI_DEFAULT_SCENE_CONFIGURATION__</string>
+          <key>UISceneDelegateClassName</key>
+          <string>CarKitSceneDelegate</string>
+        </dict>
+      </array>]]>$(_CarKitDashboardScene)$(_CarKitClusterScene)<![CDATA[
+    </dict>
+  </dict>
+</dict>
+</plist>]]></_CarKitScenesContent>
+    </PropertyGroup>
+
+    <ItemGroup Condition="'$(_CarKitIosCarPlayEntitlements)' == 'true'">
+      <CustomEntitlements Include="@(CarKitCarPlayEntitlement)" Exclude="@(CustomEntitlements)" Type="Boolean" Value="true" />
+      <CustomEntitlements Include="application-identifier" Exclude="@(CustomEntitlements)" Type="String" Value="FAKETEAMID.$(ApplicationId)"
+                          Condition="'$(_CarKitIosSimulator)' == 'true' and '$(ApplicationId)' != ''" />
+    </ItemGroup>
+
+    <!-- Communication with the module (Stage 6): Siri reads and sends messages from CarPlay (Intents Extension), the
+         App Group shares the conversation store with the extension; device builds only, like the CarPlay entitlements -->
+    <PropertyGroup>
+      <_CarKitIosCommunication Condition="'@(_CarKitCommunication)' != '' and '$(CarKitCommunicationModule)' == 'true'">true</_CarKitIosCommunication>
+      <_CarKitIosAppGroup>$(CarKitIosAppGroup.Trim())</_CarKitIosAppGroup>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(_CarKitIosEntitlements)' == 'true' and '$(_CarKitIosCommunication)' == 'true'">
+      <CustomEntitlements Include="com.apple.developer.siri" Exclude="@(CustomEntitlements)" Type="Boolean" Value="true" />
+      <CustomEntitlements Include="com.apple.security.application-groups" Exclude="@(CustomEntitlements)" Type="StringArray" Value="$(_CarKitIosAppGroup)"
+                          Condition="'$(_CarKitIosAppGroup)' != ''" />
+    </ItemGroup>
+
+    <!--
+      Audio (Stage 5): playback in the background and with the phone locked (CarPlay); a separate plist, independent of the
+      scene manifest. The iOS SDK overwrites arrays from PartialAppManifest, so when the app's Info.plist already has
+      UIBackgroundModes, CarKit does not touch it (otherwise e.g. fetch/location would disappear), and when it lacks
+      "audio", CARKIT006 warns. Info.plist: AppBundleManifest or a None item named Info.plist (the SDK's
+      _DetectAppManifest runs only after CollectAppManifests).
+      Stage 8: Navigation with the module too (voice prompts and maneuvers with the phone locked); location is the
+      app's decision.
+    -->
+    <PropertyGroup>
+      <_CarKitBackgroundAudioPlist>$(IntermediateOutputPath)carkit/CarKitBackgroundAudio.plist</_CarKitBackgroundAudioPlist>
+      <_CarKitBackgroundAudio Condition="('@(_CarKitAudio)' != '' or ('@(_CarKitNavigation)' != '' and '$(CarKitNavigationModule)' == 'true')) and '$(CarKitIosBackgroundAudio)' != 'false'">true</_CarKitBackgroundAudio>
+    </PropertyGroup>
+    <PropertyGroup>
+      <_CarKitIosVoice Condition="'@(_CarKitVoiceConversational)' != ''">true</_CarKitIosVoice>
+    </PropertyGroup>
+    <ItemGroup Condition="'$(_CarKitBackgroundAudio)' == 'true' or '$(_CarKitIosCommunication)' == 'true' or '$(_CarKitIosVoice)' == 'true'">
+      <_CarKitAppManifestFile Include="$(AppBundleManifest)" Condition="'$(AppBundleManifest)' != ''" />
+      <_CarKitAppManifestFile Include="@(None)" Condition="'$(AppBundleManifest)' == '' and '%(Filename)%(Extension)' == 'Info.plist'" />
+    </ItemGroup>
+    <ReadLinesFromFile File="%(_CarKitAppManifestFile.FullPath)" Condition="'@(_CarKitAppManifestFile)' != '' and Exists('%(_CarKitAppManifestFile.FullPath)')">
+      <Output TaskParameter="Lines" ItemName="_CarKitAppManifestLine" />
+    </ReadLinesFromFile>
+    <ItemGroup>
+      <!-- A <key> element, not arbitrary text (the comment "UIBackgroundModes = audio" in Info.plist is not an array) -->
+      <_CarKitAppBackgroundModes Include="@(_CarKitAppManifestLine)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Identity)', '&lt;key&gt;\s*UIBackgroundModes\s*&lt;/key&gt;'))" />
+      <_CarKitAppAudioMode Include="@(_CarKitAppManifestLine)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Identity)', '&lt;string&gt;\s*audio\s*&lt;/string&gt;'))" />
+      <_CarKitAppSiriUsage Include="@(_CarKitAppManifestLine)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Identity)', '&lt;key&gt;\s*NSSiriUsageDescription\s*&lt;/key&gt;'))" />
+      <_CarKitAppMicrophoneUsage Include="@(_CarKitAppManifestLine)" Condition="$([System.Text.RegularExpressions.Regex]::IsMatch('%(Identity)', '&lt;key&gt;\s*NSMicrophoneUsageDescription\s*&lt;/key&gt;'))" />
+    </ItemGroup>
+    <Warning Code="CARKIT006" Condition="'$(_CarKitBackgroundAudio)' == 'true' and '@(_CarKitAppBackgroundModes)' != '' and '@(_CarKitAppAudioMode)' == ''"
+             Text="CarKit: Info.plist already declares UIBackgroundModes without audio, and CarKit cannot merge an array into it. Add &lt;string&gt;audio&lt;/string&gt; to UIBackgroundModes so CarPlay audio and navigation voice prompts keep playing in the background." />
+    <PropertyGroup>
+      <_CarKitBackgroundAudio Condition="'@(_CarKitAppBackgroundModes)' != ''">false</_CarKitBackgroundAudio>
+      <_CarKitBackgroundAudioContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Generated by CarKit.Maui (buildTransitive/CarKit.Maui.targets). Do not edit. -->
+<plist version="1.0">
+<dict>
+  <key>UIBackgroundModes</key>
+  <array>
+    <string>audio</string>
+  </array>
+</dict>
+</plist>]]></_CarKitBackgroundAudioContent>
+    </PropertyGroup>
+    <MakeDir Directories="$(IntermediateOutputPath)carkit" Condition="'$(_CarKitBackgroundAudio)' == 'true'" />
+    <WriteLinesToFile File="$(_CarKitBackgroundAudioPlist)" Lines="$(_CarKitBackgroundAudioContent)" Overwrite="true" WriteOnlyWhenDifferent="true"
+                      Condition="'$(_CarKitBackgroundAudio)' == 'true'" />
+    <ItemGroup Condition="'$(_CarKitBackgroundAudio)' == 'true'">
+      <PartialAppManifest Include="$(_CarKitBackgroundAudioPlist)" />
+      <FileWrites Include="$(_CarKitBackgroundAudioPlist)" />
+    </ItemGroup>
+
+    <!-- Communication (Stage 6): Siri requires NSSiriUsageDescription; the app's text from Info.plist wins (the SDK would
+         overwrite it with the value from PartialAppManifest), otherwise the default or CarKitIosSiriUsageDescription
+         (XML characters replaced with entities) -->
+    <PropertyGroup Condition="'$(_CarKitIosCommunication)' == 'true' and '@(_CarKitAppSiriUsage)' == ''">
+      <_CarKitSiriPlist>$(IntermediateOutputPath)carkit/CarKitSiri.plist</_CarKitSiriPlist>
+      <_CarKitSiriUsage>$(CarKitIosSiriUsageDescription)</_CarKitSiriUsage>
+      <_CarKitSiriUsage Condition="'$(_CarKitSiriUsage.Trim())' == ''">Siri reads your messages aloud and sends your replies while you drive.</_CarKitSiriUsage>
+      <_CarKitSiriUsage>$(_CarKitSiriUsage.Replace('&amp;', '&amp;amp;').Replace('&lt;', '&amp;lt;').Replace('&gt;', '&amp;gt;'))</_CarKitSiriUsage>
+      <_CarKitSiriContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Generated by CarKit.Maui (buildTransitive/CarKit.Maui.targets). Do not edit. -->
+<plist version="1.0">
+<dict>
+  <key>NSSiriUsageDescription</key>
+  <string>$(_CarKitSiriUsage)</string>
+</dict>
+</plist>]]></_CarKitSiriContent>
+    </PropertyGroup>
+    <MakeDir Directories="$(IntermediateOutputPath)carkit" Condition="'$(_CarKitSiriPlist)' != ''" />
+    <WriteLinesToFile File="$(_CarKitSiriPlist)" Lines="$(_CarKitSiriContent)" Overwrite="true" WriteOnlyWhenDifferent="true" Condition="'$(_CarKitSiriPlist)' != ''" />
+    <ItemGroup Condition="'$(_CarKitSiriPlist)' != ''">
+      <PartialAppManifest Include="$(_CarKitSiriPlist)" />
+      <FileWrites Include="$(_CarKitSiriPlist)" />
+    </ItemGroup>
+
+    <!-- VoiceConversational (Stage 7): the app records from the microphone (AVAudioSession PlayAndRecord), and without
+         NSMicrophoneUsageDescription iOS terminates the process on the first recording; the app's text from
+         Info.plist wins -->
+    <PropertyGroup Condition="'$(_CarKitIosVoice)' == 'true' and '@(_CarKitAppMicrophoneUsage)' == ''">
+      <_CarKitMicrophonePlist>$(IntermediateOutputPath)carkit/CarKitMicrophone.plist</_CarKitMicrophonePlist>
+      <_CarKitMicrophoneUsage>$(CarKitIosMicrophoneUsageDescription)</_CarKitMicrophoneUsage>
+      <_CarKitMicrophoneUsage Condition="'$(_CarKitMicrophoneUsage.Trim())' == ''">The voice assistant listens to your questions while you drive.</_CarKitMicrophoneUsage>
+      <_CarKitMicrophoneUsage>$(_CarKitMicrophoneUsage.Replace('&amp;', '&amp;amp;').Replace('&lt;', '&amp;lt;').Replace('&gt;', '&amp;gt;'))</_CarKitMicrophoneUsage>
+      <_CarKitMicrophoneContent><![CDATA[<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<!-- Generated by CarKit.Maui (buildTransitive/CarKit.Maui.targets). Do not edit. -->
+<plist version="1.0">
+<dict>
+  <key>NSMicrophoneUsageDescription</key>
+  <string>$(_CarKitMicrophoneUsage)</string>
+</dict>
+</plist>]]></_CarKitMicrophoneContent>
+    </PropertyGroup>
+    <MakeDir Directories="$(IntermediateOutputPath)carkit" Condition="'$(_CarKitMicrophonePlist)' != ''" />
+    <WriteLinesToFile File="$(_CarKitMicrophonePlist)" Lines="$(_CarKitMicrophoneContent)" Overwrite="true" WriteOnlyWhenDifferent="true" Condition="'$(_CarKitMicrophonePlist)' != ''" />
+    <ItemGroup Condition="'$(_CarKitMicrophonePlist)' != ''">
+      <PartialAppManifest Include="$(_CarKitMicrophonePlist)" />
+      <FileWrites Include="$(_CarKitMicrophonePlist)" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(IntermediateOutputPath)carkit" Condition="'$(CarKitIosGenerateSceneManifest)' == 'true'" />
+    <WriteLinesToFile File="$(_CarKitScenesPlist)" Lines="$(_CarKitScenesContent)" Overwrite="true" WriteOnlyWhenDifferent="true"
+                      Condition="'$(CarKitIosGenerateSceneManifest)' == 'true'" />
+    <ItemGroup Condition="'$(CarKitIosGenerateSceneManifest)' == 'true'">
+      <PartialAppManifest Include="$(_CarKitScenesPlist)" />
+      <FileWrites Include="$(_CarKitScenesPlist)" />
+    </ItemGroup>
+  </Target>
+
+  <!-- Android: automotive_app_desc.xml as an AndroidResource (the generator adds the meta-data and the service) -->
+  <Target Name="CarKitConfigureAndroid"
+          BeforeTargets="_ComputeAndroidResourcePaths"
+          DependsOnTargets="CarKitComputeConfiguration"
+          Condition="'$(_CarKitPlatform)' == 'android' and ('$(OutputType)' == 'Exe' or '$(AndroidApplication)' == 'true')">
+    <PropertyGroup>
+      <_CarKitDescriptorFile>$(IntermediateOutputPath)carkit/res/xml/automotive_app_desc.xml</_CarKitDescriptorFile>
+    </PropertyGroup>
+    <ItemGroup>
+      <_CarKitDescriptorLine Include="&lt;%3Fxml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;%3F&gt;" />
+      <_CarKitDescriptorLine Include="&lt;!-- Generated by CarKit.Maui from CarKitCategories. Do not edit. --&gt;" />
+      <_CarKitDescriptorLine Include="&lt;automotiveApp&gt;" />
+      <_CarKitDescriptorLine Include="@(CarKitAutomotiveUses->'  &lt;uses name=&quot;%(Identity)&quot; /&gt;')" />
+      <_CarKitDescriptorLine Include="&lt;/automotiveApp&gt;" />
+    </ItemGroup>
+
+    <MakeDir Directories="$(IntermediateOutputPath)carkit/res/xml" Condition="'@(CarKitAutomotiveUses)' != ''" />
+    <WriteLinesToFile File="$(_CarKitDescriptorFile)" Lines="@(_CarKitDescriptorLine)" Overwrite="true" WriteOnlyWhenDifferent="true"
+                      Condition="'@(CarKitAutomotiveUses)' != ''" />
+    <ItemGroup Condition="'@(CarKitAutomotiveUses)' != ''">
+      <AndroidResource Include="$(_CarKitDescriptorFile)" LogicalName="xml/automotive_app_desc.xml" />
+      <FileWrites Include="$(_CarKitDescriptorFile)" />
+    </ItemGroup>
+  </Target>
+</Project>

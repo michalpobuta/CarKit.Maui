@@ -1,0 +1,12 @@
+# Text files are stored with LF in the repository
+* text=auto
+
+# Shell scripts must keep LF on every platform
+*.sh text eol=lf
+
+# Binary assets
+*.png binary
+*.jpg binary
+*.ttf binary
+*.wav binary
+*.ico binary

@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>$(CarKitIosTargetFrameworks);net10.0-android</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <Description>Apple CarPlay and Android Auto for .NET MAUI: template renderers, hosting (CarPlay scene, Android Auto CarAppService), UseCarKit() and MSBuild targets that generate Info.plist, entitlements and AndroidManifest.xml entries.</Description>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+  </ItemGroup>
+
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <PackageReference Include="Xamarin.AndroidX.Car.App.App" />
+  </ItemGroup>
+
+  <!-- Renderer tests on the simulator and emulator call the internal renderers and contexts -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="CarKit.Maui.DeviceTests" />
+    <!-- Modules register the handler and template renderers through the internal hosting API (Stage 5) -->
+    <InternalsVisibleTo Include="CarKit.Maui.Media" />
+    <InternalsVisibleTo Include="CarKit.Maui.Communication" />
+    <InternalsVisibleTo Include="CarKit.Maui.Navigation" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarKit.Maui.Core\CarKit.Maui.Core.csproj" />
+    <!-- Build order and generator packaging; not a reference or a package dependency -->
+    <ProjectReference Include="..\CarKit.Maui.SourceGenerators\CarKit.Maui.SourceGenerators.csproj" ReferenceOutputAssembly="false" PrivateAssets="all" />
+  </ItemGroup>
+
+  <!-- The package carries the MSBuild targets (buildTransitive, also for apps that reference only a module) and the
+       Android service generator -->
+  <ItemGroup>
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+    <None Include="..\CarKit.Maui.SourceGenerators\bin\$(Configuration)\netstandard2.0\CarKit.Maui.SourceGenerators.dll" Pack="true" PackagePath="analyzers/dotnet/cs" Visible="false" />
+  </ItemGroup>
+</Project>

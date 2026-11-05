@@ -1,0 +1,10 @@
+<Project>
+  <!--
+    CarKit.Maui.Media: module marker for the CarKit.Maui targets (buildTransitive/CarKit.Maui.targets). With the Audio
+    category the targets generate the Android media service and the iOS audio background mode; Audio without this marker
+    → warning CARKIT005.
+  -->
+  <PropertyGroup>
+    <CarKitMediaModule>true</CarKitMediaModule>
+  </PropertyGroup>
+</Project>

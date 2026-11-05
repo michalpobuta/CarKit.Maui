@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- CarKit adds the CarAppService with NAVIGATION and FEATURE_CLUSTER, the NAVIGATION_TEMPLATES and ACCESS_SURFACE
+     permissions, and automotive_app_desc -->
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+	<application android:allowBackup="true" android:icon="@mipmap/appicon" android:roundIcon="@mipmap/appicon_round" android:supportsRtl="true"></application>
+</manifest>

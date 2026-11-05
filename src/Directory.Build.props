@@ -1,0 +1,46 @@
+<Project>
+  <Import Project="$([MSBuild]::GetPathOfFileAbove('Directory.Build.props', '$(MSBuildThisFileDirectory)../'))" />
+
+  <PropertyGroup>
+    <IsPackable>true</IsPackable>
+    <IsTrimmable>true</IsTrimmable>
+    <IsAotCompatible>true</IsAotCompatible>
+    <!-- MAUI targets turn off EnableTrimAnalyzer in libraries when TrimMode != full; we want the analysis always -->
+    <_MauiDoNotConfigureTrimAnalyzer>true</_MauiDoNotConfigureTrimAnalyzer>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <EnablePackageValidation>true</EnablePackageValidation>
+    <CarKitPublicApi>true</CarKitPublicApi>
+    <!-- The generated Resource class (AndroidX resources from Car App) is not part of the public API -->
+    <AndroidResourceDesignerClassModifier>internal</AndroidResourceDesignerClassModifier>
+  </PropertyGroup>
+
+  <!--
+    Stage 10: packages (spec: "Documentation and release decisions (Stage 10)"): snupkg symbols, Source Link from the SDK (repo
+    address and commit from the clone: git remote origin), package README, tags. ContinuousIntegrationBuild (/_/ paths in the PDB) and
+    Deterministic are in Directory.Build.props.
+  -->
+  <PropertyGroup>
+    <IncludeSymbols>true</IncludeSymbols>
+    <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <PublishRepositoryUrl>true</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageTags>maui;dotnet-maui;carplay;android-auto;car;automotive</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="/" Condition="Exists('$(MSBuildProjectDirectory)/README.md')" />
+    <None Include="$(MSBuildThisFileDirectory)icon.png" Pack="true" PackagePath="/" Visible="false" />
+  </ItemGroup>
+
+  <!--
+    Stage 9: iOS libraries have two assets (spec: "New platform features decisions (Stage 9)"). net10.0-ios = ref pack 26.0
+    (the default library TPV in the workload), net10.0-ios26.4 = ref pack 26.4 with the CarPlay iOS 26.4 API (#if IOS26_4_OR_GREATER
+    + OperatingSystem.IsIOSVersionAtLeast(26, 4) at runtime). NuGet gives apps (TPV 26.4) the 26.4 asset, and libraries
+    on net10.0-ios the 26.0 asset. Once Xcode 27 is installed, net10.0-ios27.0 is added here (iOS 27 API gate).
+  -->
+  <PropertyGroup>
+    <CarKitIosTargetFrameworks Condition="'$(CarKitIosTargetFrameworks)' == ''">net10.0-ios;net10.0-ios26.4</CarKitIosTargetFrameworks>
+  </PropertyGroup>
+</Project>

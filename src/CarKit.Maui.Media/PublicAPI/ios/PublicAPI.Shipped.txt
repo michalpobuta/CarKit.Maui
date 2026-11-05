@@ -1,0 +1,117 @@
+#nullable enable
+CarKit.Maui.Media.CarKitMediaBuilderExtensions
+CarKit.Maui.Media.CarMediaBuilder
+CarKit.Maui.Media.CarMediaBuilder.HandleAudioFocus.get -> bool
+CarKit.Maui.Media.CarMediaBuilder.HandleAudioFocus.set -> void
+CarKit.Maui.Media.CarMediaBuilder.NowPlaying.get -> CarKit.Maui.CarNowPlayingTemplate?
+CarKit.Maui.Media.CarMediaBuilder.NowPlaying.set -> void
+CarKit.Maui.Media.CarMediaBuilder.PlaybackRates.get -> System.Collections.Generic.IList<float>!
+CarKit.Maui.Media.CarMediaBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+CarKit.Maui.Media.CarMediaBuilder.UseAutoBrowse() -> CarKit.Maui.Media.CarMediaBuilder!
+CarKit.Maui.Media.CarMediaBuilder.UseLibrary<TLibrary>() -> CarKit.Maui.Media.CarMediaBuilder!
+CarKit.Maui.Media.CarMediaBuilder.UsePlayer<TPlayer>() -> CarKit.Maui.Media.CarMediaBuilder!
+CarKit.Maui.Media.CarMediaBuilder.UseTemplatedMediaOnAndroid.get -> bool
+CarKit.Maui.Media.CarMediaBuilder.UseTemplatedMediaOnAndroid.set -> void
+CarKit.Maui.Media.CarMediaChildrenStyle
+CarKit.Maui.Media.CarMediaChildrenStyle.Grid = 1 -> CarKit.Maui.Media.CarMediaChildrenStyle
+CarKit.Maui.Media.CarMediaChildrenStyle.List = 0 -> CarKit.Maui.Media.CarMediaChildrenStyle
+CarKit.Maui.Media.CarMediaItem
+CarKit.Maui.Media.CarMediaItem.<Clone>$() -> CarKit.Maui.Media.CarMediaItem!
+CarKit.Maui.Media.CarMediaItem.Artwork.get -> CarKit.Maui.CarImage?
+CarKit.Maui.Media.CarMediaItem.Artwork.init -> void
+CarKit.Maui.Media.CarMediaItem.CarMediaItem(string! id, string! title) -> void
+CarKit.Maui.Media.CarMediaItem.ChildrenStyle.get -> CarKit.Maui.Media.CarMediaChildrenStyle
+CarKit.Maui.Media.CarMediaItem.ChildrenStyle.init -> void
+CarKit.Maui.Media.CarMediaItem.Duration.get -> System.TimeSpan?
+CarKit.Maui.Media.CarMediaItem.Duration.init -> void
+CarKit.Maui.Media.CarMediaItem.Equals(CarKit.Maui.Media.CarMediaItem? other) -> bool
+CarKit.Maui.Media.CarMediaItem.Id.get -> string!
+CarKit.Maui.Media.CarMediaItem.Id.init -> void
+CarKit.Maui.Media.CarMediaItem.IsBrowsable.get -> bool
+CarKit.Maui.Media.CarMediaItem.IsBrowsable.init -> void
+CarKit.Maui.Media.CarMediaItem.IsExplicit.get -> bool
+CarKit.Maui.Media.CarMediaItem.IsExplicit.init -> void
+CarKit.Maui.Media.CarMediaItem.IsPlayable.get -> bool
+CarKit.Maui.Media.CarMediaItem.IsPlayable.init -> void
+CarKit.Maui.Media.CarMediaItem.IsPlaying.get -> bool
+CarKit.Maui.Media.CarMediaItem.IsPlaying.init -> void
+CarKit.Maui.Media.CarMediaItem.Progress.get -> double?
+CarKit.Maui.Media.CarMediaItem.Progress.init -> void
+CarKit.Maui.Media.CarMediaItem.Sports.get -> CarKit.Maui.CarNowPlayingSports?
+CarKit.Maui.Media.CarMediaItem.Sports.init -> void
+CarKit.Maui.Media.CarMediaItem.Subtitle.get -> string?
+CarKit.Maui.Media.CarMediaItem.Subtitle.init -> void
+CarKit.Maui.Media.CarMediaItem.Title.get -> string!
+CarKit.Maui.Media.CarMediaItem.Title.init -> void
+CarKit.Maui.Media.CarPlaybackState
+CarKit.Maui.Media.CarPlaybackState.<Clone>$() -> CarKit.Maui.Media.CarPlaybackState!
+CarKit.Maui.Media.CarPlaybackState.CanSeek.get -> bool
+CarKit.Maui.Media.CarPlaybackState.CanSeek.init -> void
+CarKit.Maui.Media.CarPlaybackState.CanSkipNext.get -> bool
+CarKit.Maui.Media.CarPlaybackState.CanSkipNext.init -> void
+CarKit.Maui.Media.CarPlaybackState.CanSkipPrevious.get -> bool
+CarKit.Maui.Media.CarPlaybackState.CanSkipPrevious.init -> void
+CarKit.Maui.Media.CarPlaybackState.CarPlaybackState() -> void
+CarKit.Maui.Media.CarPlaybackState.Duration.get -> System.TimeSpan?
+CarKit.Maui.Media.CarPlaybackState.Duration.init -> void
+CarKit.Maui.Media.CarPlaybackState.Equals(CarKit.Maui.Media.CarPlaybackState? other) -> bool
+CarKit.Maui.Media.CarPlaybackState.ErrorMessage.get -> string?
+CarKit.Maui.Media.CarPlaybackState.ErrorMessage.init -> void
+CarKit.Maui.Media.CarPlaybackState.IsShuffleEnabled.get -> bool
+CarKit.Maui.Media.CarPlaybackState.IsShuffleEnabled.init -> void
+CarKit.Maui.Media.CarPlaybackState.Item.get -> CarKit.Maui.Media.CarMediaItem?
+CarKit.Maui.Media.CarPlaybackState.Item.init -> void
+CarKit.Maui.Media.CarPlaybackState.Position.get -> System.TimeSpan
+CarKit.Maui.Media.CarPlaybackState.Position.init -> void
+CarKit.Maui.Media.CarPlaybackState.Queue.get -> CarKit.Maui.CarArray<CarKit.Maui.Media.CarMediaItem!>
+CarKit.Maui.Media.CarPlaybackState.Queue.init -> void
+CarKit.Maui.Media.CarPlaybackState.QueueIndex.get -> int
+CarKit.Maui.Media.CarPlaybackState.QueueIndex.init -> void
+CarKit.Maui.Media.CarPlaybackState.Rate.get -> float
+CarKit.Maui.Media.CarPlaybackState.Rate.init -> void
+CarKit.Maui.Media.CarPlaybackState.RepeatMode.get -> CarKit.Maui.Media.CarRepeatMode
+CarKit.Maui.Media.CarPlaybackState.RepeatMode.init -> void
+CarKit.Maui.Media.CarPlaybackState.Status.get -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackState.Status.init -> void
+CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Buffering = 1 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Ended = 5 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Error = 6 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Idle = 0 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Paused = 3 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Playing = 2 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlaybackStatus.Stopped = 4 -> CarKit.Maui.Media.CarPlaybackStatus
+CarKit.Maui.Media.CarPlayMediaTemplateExtensions
+CarKit.Maui.Media.CarRepeatMode
+CarKit.Maui.Media.CarRepeatMode.All = 2 -> CarKit.Maui.Media.CarRepeatMode
+CarKit.Maui.Media.CarRepeatMode.Off = 0 -> CarKit.Maui.Media.CarRepeatMode
+CarKit.Maui.Media.CarRepeatMode.One = 1 -> CarKit.Maui.Media.CarRepeatMode
+CarKit.Maui.Media.ICarMediaLibrary
+CarKit.Maui.Media.ICarMediaLibrary.GetChildrenAsync(string! parentId, int page, int pageSize, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<CarKit.Maui.Media.CarMediaItem!>!>!
+CarKit.Maui.Media.ICarMediaLibrary.GetItemAsync(string! id, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<CarKit.Maui.Media.CarMediaItem?>!
+CarKit.Maui.Media.ICarMediaLibrary.GetRootAsync(System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<CarKit.Maui.Media.CarMediaItem!>!
+CarKit.Maui.Media.ICarMediaLibrary.SearchAsync(string! query, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<CarKit.Maui.Media.CarMediaItem!>!>!
+CarKit.Maui.Media.ICarMediaPlayer
+CarKit.Maui.Media.ICarMediaPlayer.InvokeCustomActionAsync(string! actionId) -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.PauseAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.PlayAsync(string! itemId) -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.ResumeAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.SeekAsync(System.TimeSpan position) -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.SetRateAsync(float rate) -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.SetRepeatAsync(CarKit.Maui.Media.CarRepeatMode mode) -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.SetShuffleAsync(bool on) -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.SkipNextAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.SkipPreviousAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Media.ICarMediaPlayer.State.get -> System.IObservable<CarKit.Maui.Media.CarPlaybackState!>!
+override CarKit.Maui.Media.CarMediaItem.Equals(object? obj) -> bool
+override CarKit.Maui.Media.CarMediaItem.GetHashCode() -> int
+override CarKit.Maui.Media.CarMediaItem.ToString() -> string!
+override CarKit.Maui.Media.CarPlaybackState.Equals(object? obj) -> bool
+override CarKit.Maui.Media.CarPlaybackState.GetHashCode() -> int
+override CarKit.Maui.Media.CarPlaybackState.ToString() -> string!
+static CarKit.Maui.Media.CarKitMediaBuilderExtensions.UseMedia(this CarKit.Maui.CarKitBuilder! car, System.Action<CarKit.Maui.Media.CarMediaBuilder!>! configure) -> CarKit.Maui.CarKitBuilder!
+static CarKit.Maui.Media.CarMediaItem.operator !=(CarKit.Maui.Media.CarMediaItem? left, CarKit.Maui.Media.CarMediaItem? right) -> bool
+static CarKit.Maui.Media.CarMediaItem.operator ==(CarKit.Maui.Media.CarMediaItem? left, CarKit.Maui.Media.CarMediaItem? right) -> bool
+static CarKit.Maui.Media.CarPlaybackState.operator !=(CarKit.Maui.Media.CarPlaybackState? left, CarKit.Maui.Media.CarPlaybackState? right) -> bool
+static CarKit.Maui.Media.CarPlaybackState.operator ==(CarKit.Maui.Media.CarPlaybackState? left, CarKit.Maui.Media.CarPlaybackState? right) -> bool
+static CarKit.Maui.Media.CarPlayMediaTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarNowPlayingTemplate! template, System.Action<CarPlay.CPNowPlayingTemplate!>! configure) -> CarKit.Maui.CarNowPlayingTemplate!

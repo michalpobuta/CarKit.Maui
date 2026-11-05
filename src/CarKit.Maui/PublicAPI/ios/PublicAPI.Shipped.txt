@@ -1,0 +1,52 @@
+#nullable enable
+CarKit.Maui.CarImageSourceExtensions
+CarKit.Maui.CarKitAndroidOptions
+CarKit.Maui.CarKitAndroidOptions.AllowedHosts.get -> System.Collections.Generic.IList<string!>!
+CarKit.Maui.CarKitAndroidOptions.CarKitAndroidOptions() -> void
+CarKit.Maui.CarKitAppBuilderExtensions
+CarKit.Maui.CarKitBuilder
+CarKit.Maui.CarKitBuilder.Android.get -> CarKit.Maui.CarKitAndroidOptions!
+CarKit.Maui.CarKitBuilder.Categories.get -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarKitBuilder.Categories.set -> void
+CarKit.Maui.CarKitBuilder.Diagnostics.get -> CarKit.Maui.CarDiagnosticsOptions!
+CarKit.Maui.CarKitBuilder.Limits.get -> CarKit.Maui.CarLimitOptions!
+CarKit.Maui.CarKitBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+CarKit.Maui.CarKitBuilder.UnsupportedTemplateBehavior.get -> CarKit.Maui.UnsupportedTemplateBehavior
+CarKit.Maui.CarKitBuilder.UnsupportedTemplateBehavior.set -> void
+CarKit.Maui.CarKitBuilder.UseHandler<THandler>() -> CarKit.Maui.CarKitBuilder!
+CarKit.Maui.CarKitBuilder.Validation.get -> CarKit.Maui.CarValidationMode
+CarKit.Maui.CarKitBuilder.Validation.set -> void
+CarKit.Maui.CarKitDashboardSceneDelegate
+CarKit.Maui.CarKitDashboardSceneDelegate.CarKitDashboardSceneDelegate() -> void
+CarKit.Maui.CarKitInstrumentClusterSceneDelegate
+CarKit.Maui.CarKitInstrumentClusterSceneDelegate.CarKitInstrumentClusterSceneDelegate() -> void
+CarKit.Maui.CarKitPhoneSceneDelegate
+CarKit.Maui.CarKitPhoneSceneDelegate.CarKitPhoneSceneDelegate() -> void
+CarKit.Maui.CarKitSceneDelegate
+CarKit.Maui.CarKitSceneDelegate.CarKitSceneDelegate() -> void
+CarKit.Maui.CarPlayTemplateExtensions
+override CarKit.Maui.CarKitDashboardSceneDelegate.DidConnectDashboardController(CarPlay.CPTemplateApplicationDashboardScene! templateApplicationDashboardScene, CarPlay.CPDashboardController! dashboardController, UIKit.UIWindow! window) -> void
+override CarKit.Maui.CarKitDashboardSceneDelegate.DidDisconnectDashboardController(CarPlay.CPTemplateApplicationDashboardScene! templateApplicationDashboardScene, CarPlay.CPDashboardController! dashboardController, UIKit.UIWindow! window) -> void
+override CarKit.Maui.CarKitInstrumentClusterSceneDelegate.ContentStyleDidChange(UIKit.UIUserInterfaceStyle contentStyle) -> void
+override CarKit.Maui.CarKitInstrumentClusterSceneDelegate.DidConnectInstrumentClusterController(CarPlay.CPTemplateApplicationInstrumentClusterScene! templateApplicationInstrumentClusterScene, CarPlay.CPInstrumentClusterController! instrumentClusterController) -> void
+override CarKit.Maui.CarKitInstrumentClusterSceneDelegate.DidDisconnectInstrumentClusterController(CarPlay.CPTemplateApplicationInstrumentClusterScene! templateApplicationInstrumentClusterScene, CarPlay.CPInstrumentClusterController! instrumentClusterController) -> void
+override CarKit.Maui.CarKitSceneDelegate.ContentStyleDidChange(UIKit.UIUserInterfaceStyle contentStyle) -> void
+override CarKit.Maui.CarKitSceneDelegate.DidConnect(CarPlay.CPTemplateApplicationScene! templateApplicationScene, CarPlay.CPInterfaceController! interfaceController) -> void
+override CarKit.Maui.CarKitSceneDelegate.DidConnect(CarPlay.CPTemplateApplicationScene! templateApplicationScene, CarPlay.CPInterfaceController! interfaceController, CarPlay.CPWindow! window) -> void
+override CarKit.Maui.CarKitSceneDelegate.DidDisconnect(CarPlay.CPTemplateApplicationScene! templateApplicationScene, CarPlay.CPInterfaceController! interfaceController) -> void
+override CarKit.Maui.CarKitSceneDelegate.DidDisconnect(CarPlay.CPTemplateApplicationScene! templateApplicationScene, CarPlay.CPInterfaceController! interfaceController, CarPlay.CPWindow! window) -> void
+override CarKit.Maui.CarKitSceneDelegate.DidSelect(CarPlay.CPTemplateApplicationScene! templateApplicationScene, CarPlay.CPManeuver! maneuver) -> void
+override CarKit.Maui.CarKitSceneDelegate.DidSelect(CarPlay.CPTemplateApplicationScene! templateApplicationScene, CarPlay.CPNavigationAlert! navigationAlert) -> void
+static CarKit.Maui.CarImageSourceExtensions.ToCarImage(this Microsoft.Maui.Controls.ImageSource! source) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarKitAppBuilderExtensions.UseCarKit(this Microsoft.Maui.Hosting.MauiAppBuilder! builder, System.Action<CarKit.Maui.CarKitBuilder!>! configure) -> Microsoft.Maui.Hosting.MauiAppBuilder!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarActionSheetTemplate! template, System.Action<CarPlay.CPActionSheetTemplate!>! configure) -> CarKit.Maui.CarActionSheetTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarAlertTemplate! template, System.Action<CarPlay.CPAlertTemplate!>! configure) -> CarKit.Maui.CarAlertTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarGridTemplate! template, System.Action<CarPlay.CPGridTemplate!>! configure) -> CarKit.Maui.CarGridTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarInformationTemplate! template, System.Action<CarPlay.CPInformationTemplate!>! configure) -> CarKit.Maui.CarInformationTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarListTemplate! template, System.Action<CarPlay.CPListTemplate!>! configure) -> CarKit.Maui.CarListTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarMessageTemplate! template, System.Action<CarPlay.CPInformationTemplate!>! configure) -> CarKit.Maui.CarMessageTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarPlayContactTemplate! template, System.Action<CarPlay.CPContactTemplate!>! configure) -> CarKit.Maui.CarPlayContactTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarPointOfInterestTemplate! template, System.Action<CarPlay.CPPointOfInterestTemplate!>! configure) -> CarKit.Maui.CarPointOfInterestTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarSearchTemplate! template, System.Action<CarPlay.CPSearchTemplate!>! configure) -> CarKit.Maui.CarSearchTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarTabTemplate! template, System.Action<CarPlay.CPTabBarTemplate!>! configure) -> CarKit.Maui.CarTabTemplate!
+static CarKit.Maui.CarPlayTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarVoiceControlTemplate! template, System.Action<CarPlay.CPVoiceControlTemplate!>! configure) -> CarKit.Maui.CarVoiceControlTemplate!

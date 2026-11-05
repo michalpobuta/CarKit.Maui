@@ -1,0 +1,209 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: macos-26
+    # Stage 9: two iOS assets (a second iOS build of each library), a second device test run and the NuGet smoke test;
+    # Stage 10: Release device tests, the quickstart guide, documentation and the release gate (about 35 min in total locally)
+    timeout-minutes: 110
+    env:
+      DOTNET_NOLOGO: true
+      DOTNET_CLI_TELEMETRY_OPTOUT: true
+
+    steps:
+      - uses: actions/checkout@v7
+
+      # The iOS 26.4 workload requires Xcode 26.4 (on the image a link to 26.4.x)
+      - name: Select Xcode 26.4
+        run: |
+          ls -d /Applications/Xcode*
+          sudo xcode-select -s /Applications/Xcode_26.4.app
+          xcodebuild -version
+
+      - uses: actions/setup-dotnet@v6
+        with:
+          global-json-file: global.json
+
+      - uses: actions/setup-java@v6
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      # The same workload set as locally (README)
+      - name: Install MAUI workloads
+        run: dotnet workload install maui-ios maui-android --version 10.0.204.1
+
+      - name: Restore
+        run: dotnet restore CarKit.Maui.slnx
+
+      # -warnaserror: also the MSBuild warnings from targets (CARKIT00x), which the compiler TreatWarningsAsErrors does not cover
+      - name: Build
+        run: dotnet build CarKit.Maui.slnx -c Release --no-restore -warnaserror
+
+      # The solution builds iOS for the simulator; here an AOT compilation for the device (unsigned) as a smoke test.
+      # Trimming analysis of the libraries is provided by EnableTrimAnalyzer in src/ (guard in src/Directory.Build.targets).
+      # The Communication sample embeds the Intents Extension (.NET, IsAppExtension) in the app PlugIns/
+      - name: Build samples for iOS device (AOT)
+        run: |
+          dotnet build samples/CarKit.Sample -c Release -f net10.0-ios -r ios-arm64 -p:EnableCodeSigning=false -warnaserror
+          dotnet build samples/CarKit.Sample.Media -c Release -f net10.0-ios -r ios-arm64 -p:EnableCodeSigning=false -warnaserror
+          dotnet build samples/CarKit.Sample.Communication -c Release -f net10.0-ios -r ios-arm64 -p:EnableCodeSigning=false -warnaserror
+          test -d samples/CarKit.Sample.Communication/bin/Release/net10.0-ios/ios-arm64/CarKit.Sample.Communication.app/PlugIns/CarKit.Sample.Communication.Intents.appex
+
+      # Stage 8: the navigation sample with the CarPlay dashboard and cluster (scene roles and CPSupports…NavigationScene,
+      # UIBackgroundModes audio in Info.plist) and the Android manifest with NAVIGATION, FEATURE_CLUSTER, NAVIGATION_TEMPLATES
+      # and ACCESS_SURFACE (without MAP_TEMPLATES)
+      - name: Build navigation sample
+        run: |
+          dotnet build samples/CarKit.Sample.Navigation -c Release -f net10.0-ios -r ios-arm64 -p:EnableCodeSigning=false -warnaserror
+          plist=samples/CarKit.Sample.Navigation/bin/Release/net10.0-ios/ios-arm64/CarKit.Sample.Navigation.app/Info.plist
+          plutil -p $plist | grep -q 'CPSupportsDashboardNavigationScene" => true'
+          plutil -p $plist | grep -q 'CPSupportsInstrumentClusterNavigationScene" => true'
+          plutil -p $plist | grep -q 'CarKitDashboardSceneDelegate'
+          plutil -p $plist | grep -q 'CarKitInstrumentClusterSceneDelegate'
+          plutil -extract UIBackgroundModes json -o - $plist | grep -q '"audio"'
+          manifest=samples/CarKit.Sample.Navigation/obj/Release/net10.0-android/android/AndroidManifest.xml
+          grep -q 'androidx.car.app.category.NAVIGATION' $manifest
+          grep -q 'androidx.car.app.category.FEATURE_CLUSTER' $manifest
+          grep -q 'androidx.car.app.NAVIGATION_TEMPLATES' $manifest
+          grep -q 'androidx.car.app.ACCESS_SURFACE' $manifest
+          if grep -q 'MAP_TEMPLATES' $manifest; then echo "Navigation sample declares MAP_TEMPLATES" >&2; exit 1; fi
+
+      # Stage 7: the sample category flows in CarKitCategories variants (separate intermediate directories): iOS AOT with
+      # CarPlay-only categories (Info.plist with NSMicrophoneUsageDescription for VoiceConversational), Android with IoT and
+      # weather (CarAppService with IOT and WEATHER, without MAP_TEMPLATES). Android for a single ABI: the overridden
+      # IntermediateOutputPath has no RID suffix, and a multi-ABI Release AOT would write temporary files to the same directory
+      - name: Build sample category variants
+        run: |
+          dotnet build samples/CarKit.Sample -c Release -f net10.0-ios -r ios-arm64 -p:EnableCodeSigning=false -warnaserror \
+            -p:CarKitCategories=EvCharging%3BFueling%3BQuickFoodOrdering%3BDrivingTask%3BVoiceConversational \
+            -p:IntermediateOutputPath=obj/variant-ios/ -p:OutputPath=bin/variant-ios/
+          plutil -p samples/CarKit.Sample/bin/variant-ios/CarKit.Sample.app/Info.plist | grep -q NSMicrophoneUsageDescription
+          dotnet build samples/CarKit.Sample -c Release -f net10.0-android -r android-arm64 -warnaserror -p:CarKitCategories=Iot%3BWeather \
+            -p:IntermediateOutputPath=obj/variant-android/ -p:OutputPath=bin/variant-android/
+          manifest=samples/CarKit.Sample/obj/variant-android/android/manifest/AndroidManifest.xml
+          grep -q 'androidx.car.app.category.IOT' $manifest
+          grep -q 'androidx.car.app.category.WEATHER' $manifest
+          if grep -q 'MAP_TEMPLATES' $manifest; then echo "IoT/Weather variant declares MAP_TEMPLATES" >&2; exit 1; fi
+
+      - name: Test
+        run: dotnet test tests/CarKit.Maui.Core.Tests -c Release --no-build -p:CollectCoverage=true
+
+      # Hosting, renderer logic, the Media (Media/), Communication (Communication/) and Navigation (Navigation/) modules,
+      # sample screens (sources on net10.0) and the source generator and MSBuild targets (dotnet msbuild on probe projects)
+      # Stage 10: CarKit.Maui.Build.Tests also covers the release targets (ReleaseTargetsTests) and the release gate
+      # (ReleaseGateTests)
+      - name: Test hosting and build
+        run: |
+          dotnet test tests/CarKit.Maui.Tests -c Release --no-build
+          dotnet test tests/CarKit.Maui.Build.Tests -c Release --no-build
+
+      # CarPlay renderers (including CPPointOfInterestTemplate and CPMapTemplate with a navigation session, Stage 9: iOS 26.4
+      # features and gate), the Now Playing/AVAudioSession bridge, CPMessageListItem, the notification category, the Intents
+      # Extension, CallKit, map surfaces in a placeholder window and AVSpeechSynthesizer on the iOS simulator
+      # (tests/CarKit.Maui.DeviceTests, own runner).
+      # The Android variant (eng/run-device-tests.sh android) is local only: the macOS runner has no emulator acceleration.
+      - name: Device tests (iOS simulator)
+        run: eng/run-device-tests.sh ios
+
+      # Stage 10: the same suite in Release (AOT on the simulator, recorder and trimming as in Release apps)
+      - name: Device tests (iOS simulator, Release)
+        run: CONFIGURATION=Release DEVICE_TESTS_LOG=artifacts/device-tests-ios-release.log eng/run-device-tests.sh ios
+
+      # Stage 9: the net10.0-ios asset (ref pack 26.0) — the test app targets net10.0-ios26.0 (the iOS 26.0 SDK requires
+      # Xcode 26.0, only for the build through DEVELOPER_DIR). On an image without Xcode 26.0 the step warns instead of
+      # passing silently.
+      - name: Device tests (iOS simulator, net10.0-ios asset)
+        run: |
+          xcode26=$(ls -d /Applications/Xcode_26.0*.app 2>/dev/null | head -1 || true)
+          if [ -z "$xcode26" ]; then echo "::warning::Xcode 26.0 not found on the runner; the net10.0-ios (26.0) asset was not device-tested"; exit 0; fi
+          IOS_ASSET=26.0 XCODE_26_0=$xcode26 DEVICE_TESTS_LOG=artifacts/device-tests-ios-asset-26.0.log eng/run-device-tests.sh ios
+
+      # Stage 10: 0.1.0-dev with symbols (.snupkg), README and Source Link (repo address and commit from the clone)
+      - name: Pack
+        run: dotnet pack CarKit.Maui.slnx -c Release --no-build -o artifacts/packages
+
+      # 6 packages; CarKit.Maui carries the generator, targets and the R8 rule, the modules depend on it without exclude and
+      # with an exact version; Media carries the module marker (buildTransitive props) and Media3 1.9.0 (Android); Communication:
+      # the module marker, without Telecom packages (Android calls wait for the Core-Telecom binding); Navigation: the module
+      # marker, without map SDKs
+      - name: Verify packages
+        run: |
+          test "$(ls artifacts/packages/*.nupkg | wc -l | tr -d ' ')" = "6"
+          test "$(ls artifacts/packages/*.snupkg | wc -l | tr -d ' ')" = "6"
+          maui=$(ls artifacts/packages/CarKit.Maui.[0-9]*.nupkg)
+          unzip -l "$maui" | grep -q 'analyzers/dotnet/cs/CarKit.Maui.SourceGenerators.dll'
+          unzip -l "$maui" | grep -q 'buildTransitive/CarKit.Maui.targets'
+          media=$(ls artifacts/packages/CarKit.Maui.Media.[0-9]*.nupkg)
+          unzip -p "$media" CarKit.Maui.Media.nuspec | grep -q 'id="CarKit.Maui" version="\[[^]]*\]" include="All"'
+          unzip -l "$media" | grep -q 'buildTransitive/CarKit.Maui.Media.props'
+          unzip -p "$media" CarKit.Maui.Media.nuspec | grep -q 'id="Xamarin.AndroidX.Media3.Session" version="1.9.0"'
+          unzip -l "$maui" | grep -q 'buildTransitive/CarKit.Maui.proguard.cfg'
+          unzip -p "$maui" buildTransitive/CarKit.Maui.targets | grep -q 'com.apple.developer.carplay-voice-based-conversation'
+          communication=$(ls artifacts/packages/CarKit.Maui.Communication.[0-9]*.nupkg)
+          unzip -p "$communication" CarKit.Maui.Communication.nuspec | grep -q 'id="CarKit.Maui" version="\[[^]]*\]" include="All"'
+          unzip -l "$communication" | grep -q 'buildTransitive/CarKit.Maui.Communication.props'
+          if unzip -p "$communication" CarKit.Maui.Communication.nuspec | grep -qi 'telecom'; then echo "Communication depends on a Telecom package" >&2; exit 1; fi
+          unzip -p "$maui" buildTransitive/CarKit.Maui.targets | grep -q 'CarKitDashboardSceneDelegate'
+          unzip -p "$maui" buildTransitive/CarKit.Maui.targets | grep -q 'CARKIT009'
+          navigation=$(ls artifacts/packages/CarKit.Maui.Navigation.[0-9]*.nupkg)
+          unzip -p "$navigation" CarKit.Maui.Navigation.nuspec | grep -q 'id="CarKit.Maui" version="\[[^]]*\]" include="All"'
+          unzip -l "$navigation" | grep -q 'buildTransitive/CarKit.Maui.Navigation.props'
+          unzip -p "$navigation" buildTransitive/CarKit.Maui.Navigation.props | grep -q '<CarKitNavigationModule>true</CarKitNavigationModule>'
+          # Stage 10: dependencies only (the package description and tags mention maps)
+          if unzip -p "$navigation" CarKit.Maui.Navigation.nuspec | sed -n '/<dependencies>/,/<\/dependencies>/p' | grep -qiE 'mapbox|google.android.gms.maps|maps'; then echo "Navigation depends on a map SDK" >&2; exit 1; fi
+          # Stage 9: two iOS assets (ref pack 26.0 and 26.4) in every iOS package and the Car App gate in the targets
+          for package in CarKit.Maui CarKit.Maui.Media CarKit.Maui.Communication CarKit.Maui.Navigation; do
+            nupkg=$(ls artifacts/packages/$package.[0-9]*.nupkg)
+            for tfm in net10.0-ios26.0 net10.0-ios26.4 net10.0-android36.0; do
+              unzip -l "$nupkg" | grep -q "lib/$tfm/$package.dll"
+              unzip -p "$nupkg" $package.nuspec | grep -q "targetFramework=\"$tfm\""
+            done
+          done
+          unzip -p "$maui" buildTransitive/CarKit.Maui.targets | grep -q '_CarKitMaxCarApiLevel'
+
+      # Stage 9: package consumers — a MAUI app on net10.0-ios and net10.0-ios26.4 → the 26.4 asset,
+      # a library on net10.0-ios → the 26.0 asset
+      - name: NuGet consumer smoke test
+        run: eng/nuget-smoke/smoke.sh
+
+      # Stage 10: the quickstart guide steps and code on a fresh `dotnet new maui` with the packages from artifacts/packages
+      # (iOS and Android build)
+      - name: Quickstart guide
+        run: eng/quickstart/run.sh
+
+      # Stage 10: the documentation site (DocFX from .config/dotnet-tools.json), warnings = errors (dead links, xref)
+      - name: Documentation
+        run: |
+          dotnet tool restore
+          eng/docs/build.sh --no-build
+
+      # Stage 10: the release gate is informational, with the tag derived from the package version: after steps 1–2 of the
+      # checklist PASS 8 FAIL 0 is expected; only release.yml blocks
+      - name: Release gate (informational)
+        continue-on-error: true
+        run: dotnet run --project eng/ReleaseGate -c Release --no-build -- --packages artifacts/packages --tag "v$(unzip -p artifacts/packages/CarKit.Maui.Core.*.nupkg CarKit.Maui.Core.nuspec | sed -n 's:.*<version>\(.*\)</version>.*:\1:p')" --repo .
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: packages
+          path: |
+            artifacts/packages/*.nupkg
+            artifacts/packages/*.snupkg
+
+      - uses: actions/upload-artifact@v7
+        with:
+          name: docs
+          path: artifacts/docs/_site

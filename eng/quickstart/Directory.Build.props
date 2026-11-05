@@ -1,0 +1,10 @@
+<Project>
+  <!-- Stage 10: the quickstart guide project (eng/quickstart/work) cut off from the repo's Directory.Build.props/Packages.props (CPM,
+       analyzers, TreatWarningsAsErrors), with an isolated package cache so that development-version CarKit packages do not reach
+       the global cache; NuGetPackageRoot is still empty here, so the fallback does not work and the cache has its own copies
+       (about 800 MB, a cost of disk space only) -->
+  <PropertyGroup>
+    <RestorePackagesPath>$(MSBuildThisFileDirectory)packages</RestorePackagesPath>
+    <RestoreAdditionalProjectFallbackFolders>$(NuGetPackageRoot)</RestoreAdditionalProjectFallbackFolders>
+  </PropertyGroup>
+</Project>

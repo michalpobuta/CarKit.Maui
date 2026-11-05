@@ -1,0 +1,139 @@
+#nullable enable
+CarKit.Maui.Testing.FakeCarDispatcher
+CarKit.Maui.Testing.FakeCarDispatcher.DispatchAsync(System.Func<System.Threading.Tasks.Task!>! work) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarDispatcher.DispatchAsync<T>(System.Func<System.Threading.Tasks.Task<T>!>! work) -> System.Threading.Tasks.Task<T>!
+CarKit.Maui.Testing.FakeCarDispatcher.DispatchCount.get -> int
+CarKit.Maui.Testing.FakeCarDispatcher.Dispose() -> void
+CarKit.Maui.Testing.FakeCarDispatcher.FakeCarDispatcher() -> void
+CarKit.Maui.Testing.FakeCarDispatcher.IsDispatchRequired.get -> bool
+CarKit.Maui.Testing.FakeCarHost
+CarKit.Maui.Testing.FakeCarHost.AnswerWaypointProposalAsync(CarKit.Maui.CarWaypoint! waypoint, bool accepted, int? segmentIndex) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.CallDelay.get -> System.TimeSpan
+CarKit.Maui.Testing.FakeCarHost.CallDelay.set -> void
+CarKit.Maui.Testing.FakeCarHost.Calls.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.Testing.FakeCarHostCall!>!
+CarKit.Maui.Testing.FakeCarHost.CarAppApiLevel.get -> int
+CarKit.Maui.Testing.FakeCarHost.CarAppApiLevel.set -> void
+CarKit.Maui.Testing.FakeCarHost.ChangeContentStyleAsync(CarKit.Maui.CarContentStyle style) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.ChangeMapRegionAsync(CarKit.Maui.CarMapRegion region) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.ChangeRouteSourceAsync(CarKit.Maui.CarRouteSource source) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.ConnectAsync(CarKit.Maui.ICarAppHandler! handler) -> System.Threading.Tasks.Task<CarKit.Maui.ICarSession!>!
+CarKit.Maui.Testing.FakeCarHost.ContentStyle.get -> CarKit.Maui.CarContentStyle
+CarKit.Maui.Testing.FakeCarHost.DisconnectAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.DismissPresentedAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.Dispatcher.get -> CarKit.Maui.Testing.FakeCarDispatcher!
+CarKit.Maui.Testing.FakeCarHost.Dispose() -> void
+CarKit.Maui.Testing.FakeCarHost.EnableAutoDriveAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.EndNavigationFromCarAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.Errors.get -> System.Collections.Generic.IReadOnlyList<System.Exception!>!
+CarKit.Maui.Testing.FakeCarHost.FailNextCall(System.Exception! exception) -> void
+CarKit.Maui.Testing.FakeCarHost.FakeCarHost(CarKit.Maui.CarAppCategory categories, CarKit.Maui.CarPlatform platform = CarKit.Maui.CarPlatform.CarPlay) -> void
+CarKit.Maui.Testing.FakeCarHost.Features.get -> System.Collections.Generic.ISet<CarKit.Maui.CarFeature>!
+CarKit.Maui.Testing.FakeCarHost.IosVersion.get -> System.Version!
+CarKit.Maui.Testing.FakeCarHost.IosVersion.set -> void
+CarKit.Maui.Testing.FakeCarHost.Logger.get -> Microsoft.Extensions.Logging.ILogger!
+CarKit.Maui.Testing.FakeCarHost.Logger.set -> void
+CarKit.Maui.Testing.FakeCarHost.MarkAsReadAsync(CarKit.Maui.CarConversationItem! item) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.Navigation.get -> CarKit.Maui.ICarNavigationSession!
+CarKit.Maui.Testing.FakeCarHost.NavigationCalls.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.Testing.FakeCarNavigationCall!>!
+CarKit.Maui.Testing.FakeCarHost.NavigationHandler.get -> CarKit.Maui.ICarNavigationHandler?
+CarKit.Maui.Testing.FakeCarHost.NavigationHandler.set -> void
+CarKit.Maui.Testing.FakeCarHost.Options.get -> CarKit.Maui.CarKitOptions!
+CarKit.Maui.Testing.FakeCarHost.Platform.get -> CarKit.Maui.CarPlatform
+CarKit.Maui.Testing.FakeCarHost.PressBackAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.RefreshAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.ReplyAsync(CarKit.Maui.CarConversationItem! item, string! text) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.RequestDestinationAsync(CarKit.Maui.CarWaypoint! destination) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.RequestNavigationAsync(string! uri) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.RequestWaypointInsertAsync(CarKit.Maui.CarWaypoint! waypoint, int segmentIndex) -> System.Threading.Tasks.Task<CarKit.Maui.CarTravelEstimates?>!
+CarKit.Maui.Testing.FakeCarHost.SearchAsync(string! text) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarListItem!>!>!
+CarKit.Maui.Testing.FakeCarHost.SelectAsync(CarKit.Maui.CarElement! element) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SelectImageAsync(CarKit.Maui.CarListImageRowItem! item, int index) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SelectManeuverAsync(CarKit.Maui.CarManeuver! maneuver) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SelectNavigationAlertAsync(CarKit.Maui.CarNavigationAlert! alert) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SelectTabAsync(CarKit.Maui.CarTemplate! tab) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SelectTripPreviewAsync(CarKit.Maui.CarTrip! trip, CarKit.Maui.CarRouteChoice! route) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.Session.get -> CarKit.Maui.ICarSession?
+CarKit.Maui.Testing.FakeCarHost.SetLimit(CarKit.Maui.CarLimitKind kind, int maximum) -> void
+CarKit.Maui.Testing.FakeCarHost.StartTripFromCarAsync(CarKit.Maui.CarTrip! trip, CarKit.Maui.CarRouteChoice! route) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SubmitInputAsync(string! text) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.SubmitSearchAsync(string! text) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHost.ToggleAsync(CarKit.Maui.CarListItem! item, bool isChecked) -> System.Threading.Tasks.Task!
+CarKit.Maui.Testing.FakeCarHostCall
+CarKit.Maui.Testing.FakeCarHostCall.<Clone>$() -> CarKit.Maui.Testing.FakeCarHostCall!
+CarKit.Maui.Testing.FakeCarHostCall.Animated.get -> bool
+CarKit.Maui.Testing.FakeCarHostCall.Animated.init -> void
+CarKit.Maui.Testing.FakeCarHostCall.Deconstruct(out CarKit.Maui.Testing.FakeCarHostOperation Operation, out CarKit.Maui.CarTemplate? Template, out bool Animated, out bool OnMainThread) -> void
+CarKit.Maui.Testing.FakeCarHostCall.Equals(CarKit.Maui.Testing.FakeCarHostCall? other) -> bool
+CarKit.Maui.Testing.FakeCarHostCall.FakeCarHostCall(CarKit.Maui.Testing.FakeCarHostOperation Operation, CarKit.Maui.CarTemplate? Template, bool Animated, bool OnMainThread) -> void
+CarKit.Maui.Testing.FakeCarHostCall.OnMainThread.get -> bool
+CarKit.Maui.Testing.FakeCarHostCall.OnMainThread.init -> void
+CarKit.Maui.Testing.FakeCarHostCall.Operation.get -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostCall.Operation.init -> void
+CarKit.Maui.Testing.FakeCarHostCall.Template.get -> CarKit.Maui.CarTemplate?
+CarKit.Maui.Testing.FakeCarHostCall.Template.init -> void
+CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.Dismiss = 6 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.Pop = 2 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.PopTo = 3 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.PopToRoot = 4 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.Present = 5 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.Push = 1 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.SetRoot = 0 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarHostOperation.Update = 7 -> CarKit.Maui.Testing.FakeCarHostOperation
+CarKit.Maui.Testing.FakeCarNavigationCall
+CarKit.Maui.Testing.FakeCarNavigationCall.<Clone>$() -> CarKit.Maui.Testing.FakeCarNavigationCall!
+CarKit.Maui.Testing.FakeCarNavigationCall.Alert.get -> CarKit.Maui.CarNavigationAlert?
+CarKit.Maui.Testing.FakeCarNavigationCall.Alert.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Deconstruct(out CarKit.Maui.Testing.FakeCarNavigationOperation Operation, out CarKit.Maui.CarNavigationState State, out bool OnMainThread) -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Equals(CarKit.Maui.Testing.FakeCarNavigationCall? other) -> bool
+CarKit.Maui.Testing.FakeCarNavigationCall.FakeCarNavigationCall(CarKit.Maui.Testing.FakeCarNavigationOperation Operation, CarKit.Maui.CarNavigationState State, bool OnMainThread) -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.ManeuverEstimates.get -> CarKit.Maui.CarTravelEstimates?
+CarKit.Maui.Testing.FakeCarNavigationCall.ManeuverEstimates.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Maneuvers.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarManeuver!>!
+CarKit.Maui.Testing.FakeCarNavigationCall.Maneuvers.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.OnMainThread.get -> bool
+CarKit.Maui.Testing.FakeCarNavigationCall.OnMainThread.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Operation.get -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationCall.Operation.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.PauseDescription.get -> CarKit.Maui.CarText?
+CarKit.Maui.Testing.FakeCarNavigationCall.PauseDescription.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.PauseReason.get -> CarKit.Maui.CarNavigationPauseReason?
+CarKit.Maui.Testing.FakeCarNavigationCall.PauseReason.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.RerouteReason.get -> CarKit.Maui.CarRerouteReason?
+CarKit.Maui.Testing.FakeCarNavigationCall.RerouteReason.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Route.get -> CarKit.Maui.CarRouteChoice?
+CarKit.Maui.Testing.FakeCarNavigationCall.Route.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.SegmentIndex.get -> int
+CarKit.Maui.Testing.FakeCarNavigationCall.SegmentIndex.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.State.get -> CarKit.Maui.CarNavigationState
+CarKit.Maui.Testing.FakeCarNavigationCall.State.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Trip.get -> CarKit.Maui.CarTrip?
+CarKit.Maui.Testing.FakeCarNavigationCall.Trip.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.TripEstimates.get -> CarKit.Maui.CarTravelEstimates?
+CarKit.Maui.Testing.FakeCarNavigationCall.TripEstimates.init -> void
+CarKit.Maui.Testing.FakeCarNavigationCall.Trips.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarTrip!>!
+CarKit.Maui.Testing.FakeCarNavigationCall.Trips.init -> void
+CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.Cancel = 10 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.EndedByCar = 11 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.Finish = 9 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.HideTripPreviews = 2 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.Pause = 8 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.Reroute = 7 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.Restore = 0 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.ShowAlert = 6 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.ShowTripPreviews = 1 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.StartTrip = 3 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.UpdateEstimates = 5 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.UpdateManeuvers = 4 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+CarKit.Maui.Testing.FakeCarNavigationOperation.UpdateSegment = 12 -> CarKit.Maui.Testing.FakeCarNavigationOperation
+override CarKit.Maui.Testing.FakeCarHostCall.Equals(object? obj) -> bool
+override CarKit.Maui.Testing.FakeCarHostCall.GetHashCode() -> int
+override CarKit.Maui.Testing.FakeCarHostCall.ToString() -> string!
+override CarKit.Maui.Testing.FakeCarNavigationCall.Equals(object? obj) -> bool
+override CarKit.Maui.Testing.FakeCarNavigationCall.GetHashCode() -> int
+override CarKit.Maui.Testing.FakeCarNavigationCall.ToString() -> string!
+static CarKit.Maui.Testing.FakeCarHostCall.operator !=(CarKit.Maui.Testing.FakeCarHostCall? left, CarKit.Maui.Testing.FakeCarHostCall? right) -> bool
+static CarKit.Maui.Testing.FakeCarHostCall.operator ==(CarKit.Maui.Testing.FakeCarHostCall? left, CarKit.Maui.Testing.FakeCarHostCall? right) -> bool
+static CarKit.Maui.Testing.FakeCarNavigationCall.operator !=(CarKit.Maui.Testing.FakeCarNavigationCall? left, CarKit.Maui.Testing.FakeCarNavigationCall? right) -> bool
+static CarKit.Maui.Testing.FakeCarNavigationCall.operator ==(CarKit.Maui.Testing.FakeCarNavigationCall? left, CarKit.Maui.Testing.FakeCarNavigationCall? right) -> bool

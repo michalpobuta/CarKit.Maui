@@ -1,0 +1,59 @@
+name: Bug report
+description: Something in CarKit.Maui does not work as documented
+labels: [bug]
+body:
+  - type: input
+    id: version
+    attributes:
+      label: Package and version
+      placeholder: CarKit.Maui 0.1.0-beta.1
+    validations:
+      required: true
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - CarPlay
+        - Android Auto
+        - Both
+    validations:
+      required: true
+  - type: dropdown
+    id: host
+    attributes:
+      label: Where did it happen?
+      multiple: true
+      options:
+        - CarPlay Simulator
+        - Android Auto Desktop Head Unit
+        - Real car or head unit
+        - Build or packaging
+    validations:
+      required: true
+  - type: input
+    id: environment
+    attributes:
+      label: Environment
+      description: .NET SDK, MAUI version, Xcode, iOS or Android version, car model if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened, and what did you expect?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      description: A minimal template or handler that shows the problem helps the most.
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs and diagnostics
+      description: CARKIT diagnostic codes, validator messages or native logs.
+      render: text

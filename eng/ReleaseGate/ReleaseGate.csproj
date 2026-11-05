@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Stage 10: release gate, a check of finished packages before publishing
+       (spec: "Documentation and release decisions (Stage 10)").
+       Run: dotnet run -\-project eng/ReleaseGate -c Release -\- -\-packages artifacts/packages -\-tag v0.1.0-beta.1 -\-repo . -->
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.ReleaseGate</RootNamespace>
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="CarKit.Maui.Build.Tests" />
+  </ItemGroup>
+</Project>

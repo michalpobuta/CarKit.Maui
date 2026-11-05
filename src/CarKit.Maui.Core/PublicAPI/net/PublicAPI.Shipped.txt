@@ -1,0 +1,1608 @@
+#nullable enable
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate.CarPlayVideoBrowseTemplate(CarKit.Maui.CarText! title) -> void
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate.DetailsHeader.get -> CarKit.Maui.CarListDetailsHeader?
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate.DetailsHeader.init -> void
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate.Equals(CarKit.Maui.CarPlayVideoBrowseTemplate? other) -> bool
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate.Sections.get -> CarKit.Maui.CarArray<CarKit.Maui.CarSection!>
+[CARKIT0001]CarKit.Maui.CarPlayVideoBrowseTemplate.Sections.init -> void
+[CARKIT0001]override CarKit.Maui.CarPlayVideoBrowseTemplate.<Clone>$() -> CarKit.Maui.CarPlayVideoBrowseTemplate!
+[CARKIT0001]override CarKit.Maui.CarPlayVideoBrowseTemplate.Equals(object? obj) -> bool
+[CARKIT0001]override CarKit.Maui.CarPlayVideoBrowseTemplate.GetHashCode() -> int
+[CARKIT0001]override CarKit.Maui.CarPlayVideoBrowseTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+[CARKIT0001]override CarKit.Maui.CarPlayVideoBrowseTemplate.ToString() -> string!
+[CARKIT0001]override sealed CarKit.Maui.CarPlayVideoBrowseTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+[CARKIT0001]static CarKit.Maui.CarPlayVideoBrowseTemplate.operator !=(CarKit.Maui.CarPlayVideoBrowseTemplate? left, CarKit.Maui.CarPlayVideoBrowseTemplate? right) -> bool
+[CARKIT0001]static CarKit.Maui.CarPlayVideoBrowseTemplate.operator ==(CarKit.Maui.CarPlayVideoBrowseTemplate? left, CarKit.Maui.CarPlayVideoBrowseTemplate? right) -> bool
+abstract CarKit.Maui.AndroidAutoSignInMethod.<Clone>$() -> CarKit.Maui.AndroidAutoSignInMethod!
+abstract CarKit.Maui.CarElement.<Clone>$() -> CarKit.Maui.CarElement!
+abstract CarKit.Maui.CarImage.<Clone>$() -> CarKit.Maui.CarImage!
+abstract CarKit.Maui.CarTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.AndroidAutoInputSignIn
+CarKit.Maui.AndroidAutoInputSignIn.AndroidAutoInputSignIn() -> void
+CarKit.Maui.AndroidAutoInputSignIn.DefaultValue.get -> string?
+CarKit.Maui.AndroidAutoInputSignIn.DefaultValue.init -> void
+CarKit.Maui.AndroidAutoInputSignIn.Equals(CarKit.Maui.AndroidAutoInputSignIn? other) -> bool
+CarKit.Maui.AndroidAutoInputSignIn.ErrorMessage.get -> CarKit.Maui.CarText?
+CarKit.Maui.AndroidAutoInputSignIn.ErrorMessage.init -> void
+CarKit.Maui.AndroidAutoInputSignIn.Hint.get -> CarKit.Maui.CarText?
+CarKit.Maui.AndroidAutoInputSignIn.Hint.init -> void
+CarKit.Maui.AndroidAutoInputSignIn.InputType.get -> CarKit.Maui.AndroidAutoInputType
+CarKit.Maui.AndroidAutoInputSignIn.InputType.init -> void
+CarKit.Maui.AndroidAutoInputSignIn.KeyboardType.get -> CarKit.Maui.AndroidAutoKeyboardType
+CarKit.Maui.AndroidAutoInputSignIn.KeyboardType.init -> void
+CarKit.Maui.AndroidAutoInputSignIn.OnInputSubmitted.get -> System.Func<CarKit.Maui.CarTextInputContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.AndroidAutoInputSignIn.OnInputSubmitted.init -> void
+CarKit.Maui.AndroidAutoInputType
+CarKit.Maui.AndroidAutoInputType.Default = 0 -> CarKit.Maui.AndroidAutoInputType
+CarKit.Maui.AndroidAutoInputType.Password = 1 -> CarKit.Maui.AndroidAutoInputType
+CarKit.Maui.AndroidAutoKeyboardType
+CarKit.Maui.AndroidAutoKeyboardType.Default = 0 -> CarKit.Maui.AndroidAutoKeyboardType
+CarKit.Maui.AndroidAutoKeyboardType.Email = 1 -> CarKit.Maui.AndroidAutoKeyboardType
+CarKit.Maui.AndroidAutoKeyboardType.Number = 3 -> CarKit.Maui.AndroidAutoKeyboardType
+CarKit.Maui.AndroidAutoKeyboardType.Phone = 2 -> CarKit.Maui.AndroidAutoKeyboardType
+CarKit.Maui.AndroidAutoPinSignIn
+CarKit.Maui.AndroidAutoPinSignIn.AndroidAutoPinSignIn(string! pin) -> void
+CarKit.Maui.AndroidAutoPinSignIn.Equals(CarKit.Maui.AndroidAutoPinSignIn? other) -> bool
+CarKit.Maui.AndroidAutoPinSignIn.Pin.get -> string!
+CarKit.Maui.AndroidAutoProviderSignIn
+CarKit.Maui.AndroidAutoProviderSignIn.Action.get -> CarKit.Maui.CarAction!
+CarKit.Maui.AndroidAutoProviderSignIn.AndroidAutoProviderSignIn(CarKit.Maui.CarAction! action) -> void
+CarKit.Maui.AndroidAutoProviderSignIn.Equals(CarKit.Maui.AndroidAutoProviderSignIn? other) -> bool
+CarKit.Maui.AndroidAutoQrCodeSignIn
+CarKit.Maui.AndroidAutoQrCodeSignIn.AndroidAutoQrCodeSignIn(System.Uri! uri) -> void
+CarKit.Maui.AndroidAutoQrCodeSignIn.Equals(CarKit.Maui.AndroidAutoQrCodeSignIn? other) -> bool
+CarKit.Maui.AndroidAutoQrCodeSignIn.Uri.get -> System.Uri!
+CarKit.Maui.AndroidAutoSignInMethod
+CarKit.Maui.AndroidAutoSignInMethod.AndroidAutoSignInMethod(CarKit.Maui.AndroidAutoSignInMethod! original) -> void
+CarKit.Maui.AndroidAutoSignInTemplate
+CarKit.Maui.AndroidAutoSignInTemplate.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.AndroidAutoSignInTemplate.Actions.init -> void
+CarKit.Maui.AndroidAutoSignInTemplate.AdditionalText.get -> CarKit.Maui.CarText?
+CarKit.Maui.AndroidAutoSignInTemplate.AdditionalText.init -> void
+CarKit.Maui.AndroidAutoSignInTemplate.AndroidAutoSignInTemplate(CarKit.Maui.CarText! title, CarKit.Maui.AndroidAutoSignInMethod! method) -> void
+CarKit.Maui.AndroidAutoSignInTemplate.Equals(CarKit.Maui.AndroidAutoSignInTemplate? other) -> bool
+CarKit.Maui.AndroidAutoSignInTemplate.Instructions.get -> CarKit.Maui.CarText?
+CarKit.Maui.AndroidAutoSignInTemplate.Instructions.init -> void
+CarKit.Maui.AndroidAutoSignInTemplate.IsLoading.get -> bool
+CarKit.Maui.AndroidAutoSignInTemplate.IsLoading.init -> void
+CarKit.Maui.AndroidAutoSignInTemplate.Method.get -> CarKit.Maui.AndroidAutoSignInMethod!
+CarKit.Maui.AndroidAutoSignInTemplate.Method.init -> void
+CarKit.Maui.CarAction
+CarKit.Maui.CarAction.CarAction(CarKit.Maui.CarText! title, System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>? onSelected = null) -> void
+CarKit.Maui.CarAction.Equals(CarKit.Maui.CarAction? other) -> bool
+CarKit.Maui.CarAction.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarAction.Image.init -> void
+CarKit.Maui.CarAction.IsEnabled.get -> bool
+CarKit.Maui.CarAction.IsEnabled.init -> void
+CarKit.Maui.CarAction.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarAction.OnSelected.init -> void
+CarKit.Maui.CarAction.Style.get -> CarKit.Maui.CarActionStyle
+CarKit.Maui.CarAction.Style.init -> void
+CarKit.Maui.CarAction.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarAction.Title.init -> void
+CarKit.Maui.CarActionSheetTemplate
+CarKit.Maui.CarActionSheetTemplate.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarActionSheetTemplate.Actions.init -> void
+CarKit.Maui.CarActionSheetTemplate.CarActionSheetTemplate(CarKit.Maui.CarText? title, CarKit.Maui.CarText? message) -> void
+CarKit.Maui.CarActionSheetTemplate.Equals(CarKit.Maui.CarActionSheetTemplate? other) -> bool
+CarKit.Maui.CarActionSheetTemplate.Message.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarActionSheetTemplate.Message.init -> void
+CarKit.Maui.CarActionStyle
+CarKit.Maui.CarActionStyle.Cancel = 2 -> CarKit.Maui.CarActionStyle
+CarKit.Maui.CarActionStyle.Default = 0 -> CarKit.Maui.CarActionStyle
+CarKit.Maui.CarActionStyle.Destructive = 3 -> CarKit.Maui.CarActionStyle
+CarKit.Maui.CarActionStyle.Primary = 1 -> CarKit.Maui.CarActionStyle
+CarKit.Maui.CarAlertTemplate
+CarKit.Maui.CarAlertTemplate.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarAlertTemplate.Actions.init -> void
+CarKit.Maui.CarAlertTemplate.CarAlertTemplate(CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarAlertTemplate.Duration.get -> System.TimeSpan?
+CarKit.Maui.CarAlertTemplate.Duration.init -> void
+CarKit.Maui.CarAlertTemplate.Equals(CarKit.Maui.CarAlertTemplate? other) -> bool
+CarKit.Maui.CarAlertTemplate.Icon.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarAlertTemplate.Icon.init -> void
+CarKit.Maui.CarAlertTemplate.Subtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarAlertTemplate.Subtitle.init -> void
+CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Audio = 1 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Communication = 2 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.DrivingTask = 128 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.EvCharging = 16 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Fueling = 32 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Iot = 2048 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Navigation = 4 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.None = 0 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Parking = 8 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.PublicSafety = 1024 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.QuickFoodOrdering = 64 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Video = 512 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.VoiceConversational = 256 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarAppCategory.Weather = 4096 -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarArray
+CarKit.Maui.CarArray<T>
+CarKit.Maui.CarArray<T>.Add(T item) -> CarKit.Maui.CarArray<T>
+CarKit.Maui.CarArray<T>.AsImmutableArray() -> System.Collections.Immutable.ImmutableArray<T>
+CarKit.Maui.CarArray<T>.CarArray() -> void
+CarKit.Maui.CarArray<T>.CarArray(System.Collections.Immutable.ImmutableArray<T> items) -> void
+CarKit.Maui.CarArray<T>.Count.get -> int
+CarKit.Maui.CarArray<T>.Equals(CarKit.Maui.CarArray<T> other) -> bool
+CarKit.Maui.CarArray<T>.GetEnumerator() -> System.Collections.Immutable.ImmutableArray<T>.Enumerator
+CarKit.Maui.CarArray<T>.Insert(int index, T item) -> CarKit.Maui.CarArray<T>
+CarKit.Maui.CarArray<T>.IsEmpty.get -> bool
+CarKit.Maui.CarArray<T>.RemoveAt(int index) -> CarKit.Maui.CarArray<T>
+CarKit.Maui.CarArray<T>.SetItem(int index, T item) -> CarKit.Maui.CarArray<T>
+CarKit.Maui.CarArray<T>.this[int index].get -> T
+CarKit.Maui.CarBarButton
+CarKit.Maui.CarBarButton.CarBarButton(CarKit.Maui.CarImage! image) -> void
+CarKit.Maui.CarBarButton.CarBarButton(CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarBarButton.Equals(CarKit.Maui.CarBarButton? other) -> bool
+CarKit.Maui.CarBarButton.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarBarButton.Image.init -> void
+CarKit.Maui.CarBarButton.IsEnabled.get -> bool
+CarKit.Maui.CarBarButton.IsEnabled.init -> void
+CarKit.Maui.CarBarButton.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarBarButton.OnSelected.init -> void
+CarKit.Maui.CarBarButton.Title.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarBarButton.Title.init -> void
+CarKit.Maui.CarBytesImage
+CarKit.Maui.CarBytesImage.CarBytesImage(System.ReadOnlySpan<byte> data) -> void
+CarKit.Maui.CarBytesImage.Data.get -> CarKit.Maui.CarArray<byte>
+CarKit.Maui.CarBytesImage.Equals(CarKit.Maui.CarBytesImage? other) -> bool
+CarKit.Maui.CarColor
+CarKit.Maui.CarColor.Alpha.get -> byte
+CarKit.Maui.CarColor.Alpha.init -> void
+CarKit.Maui.CarColor.Blue.get -> byte
+CarKit.Maui.CarColor.Blue.init -> void
+CarKit.Maui.CarColor.CarColor() -> void
+CarKit.Maui.CarColor.CarColor(byte Red, byte Green, byte Blue, byte Alpha = 255) -> void
+CarKit.Maui.CarColor.Deconstruct(out byte Red, out byte Green, out byte Blue, out byte Alpha) -> void
+CarKit.Maui.CarColor.Equals(CarKit.Maui.CarColor other) -> bool
+CarKit.Maui.CarColor.Green.get -> byte
+CarKit.Maui.CarColor.Green.init -> void
+CarKit.Maui.CarColor.Red.get -> byte
+CarKit.Maui.CarColor.Red.init -> void
+CarKit.Maui.CarContentStyle
+CarKit.Maui.CarContentStyle.Dark = 1 -> CarKit.Maui.CarContentStyle
+CarKit.Maui.CarContentStyle.Light = 0 -> CarKit.Maui.CarContentStyle
+CarKit.Maui.CarConversationItem
+CarKit.Maui.CarConversationItem.CarConversationItem(string! id, CarKit.Maui.CarText! title, CarKit.Maui.CarPerson! self, System.Collections.Generic.IEnumerable<CarKit.Maui.CarConversationMessage!>! messages) -> void
+CarKit.Maui.CarConversationItem.Detail.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarConversationItem.Detail.init -> void
+CarKit.Maui.CarConversationItem.Equals(CarKit.Maui.CarConversationItem? other) -> bool
+CarKit.Maui.CarConversationItem.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarConversationItem.Image.init -> void
+CarKit.Maui.CarConversationItem.IsGroupConversation.get -> bool
+CarKit.Maui.CarConversationItem.IsGroupConversation.init -> void
+CarKit.Maui.CarConversationItem.IsMuted.get -> bool
+CarKit.Maui.CarConversationItem.IsMuted.init -> void
+CarKit.Maui.CarConversationItem.IsPinned.get -> bool
+CarKit.Maui.CarConversationItem.IsPinned.init -> void
+CarKit.Maui.CarConversationItem.IsUnread.get -> bool
+CarKit.Maui.CarConversationItem.Messages.get -> CarKit.Maui.CarArray<CarKit.Maui.CarConversationMessage!>
+CarKit.Maui.CarConversationItem.Messages.init -> void
+CarKit.Maui.CarConversationItem.OnMarkAsRead.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarConversationItem.OnMarkAsRead.init -> void
+CarKit.Maui.CarConversationItem.OnReply.get -> System.Func<CarKit.Maui.CarTextInputContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarConversationItem.OnReply.init -> void
+CarKit.Maui.CarConversationItem.Self.get -> CarKit.Maui.CarPerson!
+CarKit.Maui.CarConversationItem.Self.init -> void
+CarKit.Maui.CarConversationItem.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarConversationItem.Title.init -> void
+CarKit.Maui.CarConversationItem.TrailingText.get -> string?
+CarKit.Maui.CarConversationItem.TrailingText.init -> void
+CarKit.Maui.CarConversationMessage
+CarKit.Maui.CarConversationMessage.<Clone>$() -> CarKit.Maui.CarConversationMessage!
+CarKit.Maui.CarConversationMessage.CarConversationMessage(string! id, CarKit.Maui.CarPerson? sender, string! text, System.DateTimeOffset timestamp) -> void
+CarKit.Maui.CarConversationMessage.Equals(CarKit.Maui.CarConversationMessage? other) -> bool
+CarKit.Maui.CarConversationMessage.Id.get -> string!
+CarKit.Maui.CarConversationMessage.Id.init -> void
+CarKit.Maui.CarConversationMessage.IsRead.get -> bool
+CarKit.Maui.CarConversationMessage.IsRead.init -> void
+CarKit.Maui.CarConversationMessage.Sender.get -> CarKit.Maui.CarPerson?
+CarKit.Maui.CarConversationMessage.Sender.init -> void
+CarKit.Maui.CarConversationMessage.Text.get -> string!
+CarKit.Maui.CarConversationMessage.Text.init -> void
+CarKit.Maui.CarConversationMessage.Timestamp.get -> System.DateTimeOffset
+CarKit.Maui.CarConversationMessage.Timestamp.init -> void
+CarKit.Maui.CarConversationStore
+CarKit.Maui.CarConversationStore.CarConversationStore(string! directory) -> void
+CarKit.Maui.CarConversationStore.DequeueAllAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarMessageRequest!>!>!
+CarKit.Maui.CarConversationStore.Directory.get -> string!
+CarKit.Maui.CarConversationStore.EnqueueAsync(CarKit.Maui.CarMessageRequest! request, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
+CarKit.Maui.CarConversationStore.LoadConversationsAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarConversationItem!>!>!
+CarKit.Maui.CarConversationStore.SaveConversationsAsync(System.Collections.Generic.IEnumerable<CarKit.Maui.CarConversationItem!>! conversations, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
+CarKit.Maui.CarDiagnosticsOptions
+CarKit.Maui.CarDiagnosticsOptions.CarDiagnosticsOptions() -> void
+CarKit.Maui.CarDiagnosticsOptions.LogNativeCalls.get -> bool
+CarKit.Maui.CarDiagnosticsOptions.LogNativeCalls.set -> void
+CarKit.Maui.CarDistance
+CarKit.Maui.CarDistance.CarDistance() -> void
+CarKit.Maui.CarDistance.CarDistance(double value, CarKit.Maui.CarDistanceUnit unit) -> void
+CarKit.Maui.CarDistance.Equals(CarKit.Maui.CarDistance other) -> bool
+CarKit.Maui.CarDistance.Unit.get -> CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarDistance.Value.get -> double
+CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarDistanceUnit.Feet = 2 -> CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarDistanceUnit.Kilometers = 1 -> CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarDistanceUnit.Meters = 0 -> CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarDistanceUnit.Miles = 4 -> CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarDistanceUnit.Yards = 3 -> CarKit.Maui.CarDistanceUnit
+CarKit.Maui.CarElement
+CarKit.Maui.CarElement.CarElement(CarKit.Maui.CarElement! original) -> void
+CarKit.Maui.CarElement.Id.get -> string!
+CarKit.Maui.CarElement.Id.init -> void
+CarKit.Maui.CarErrorContext
+CarKit.Maui.CarErrorContext.CarErrorContext(string! operation, CarKit.Maui.CarElement? element) -> void
+CarKit.Maui.CarErrorContext.Element.get -> CarKit.Maui.CarElement?
+CarKit.Maui.CarErrorContext.Operation.get -> string!
+CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.ListDetailsHeader = 1 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.NowPlayingMiniPlayerOptOut = 6 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.NowPlayingSportsMode = 3 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.PlaybackConfiguration = 2 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.RouteSharing = 4 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.VideoPlayback = 5 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.VoiceControlActionButtons = 0 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFeature.VoiceControlOverlay = 7 -> CarKit.Maui.CarFeature
+CarKit.Maui.CarFileImage
+CarKit.Maui.CarFileImage.CarFileImage(string! path) -> void
+CarKit.Maui.CarFileImage.Equals(CarKit.Maui.CarFileImage? other) -> bool
+CarKit.Maui.CarFileImage.Path.get -> string!
+CarKit.Maui.CarGridItem
+CarKit.Maui.CarGridItem.CarGridItem(CarKit.Maui.CarText! title, CarKit.Maui.CarImage! image) -> void
+CarKit.Maui.CarGridItem.Equals(CarKit.Maui.CarGridItem? other) -> bool
+CarKit.Maui.CarGridItem.Image.get -> CarKit.Maui.CarImage!
+CarKit.Maui.CarGridItem.Image.init -> void
+CarKit.Maui.CarGridItem.IsEnabled.get -> bool
+CarKit.Maui.CarGridItem.IsEnabled.init -> void
+CarKit.Maui.CarGridItem.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarGridItem.OnSelected.init -> void
+CarKit.Maui.CarGridItem.Text.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarGridItem.Text.init -> void
+CarKit.Maui.CarGridItem.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarGridItem.Title.init -> void
+CarKit.Maui.CarGridTemplate
+CarKit.Maui.CarGridTemplate.CarGridTemplate(CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarGridTemplate.Equals(CarKit.Maui.CarGridTemplate? other) -> bool
+CarKit.Maui.CarGridTemplate.IsLoading.get -> bool
+CarKit.Maui.CarGridTemplate.IsLoading.init -> void
+CarKit.Maui.CarGridTemplate.Items.get -> CarKit.Maui.CarArray<CarKit.Maui.CarGridItem!>
+CarKit.Maui.CarGridTemplate.Items.init -> void
+CarKit.Maui.CarImage
+CarKit.Maui.CarImage.CarImage(CarKit.Maui.CarImage! original) -> void
+CarKit.Maui.CarImage.Dark.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarImage.Dark.init -> void
+CarKit.Maui.CarImage.Tint.get -> CarKit.Maui.CarColor?
+CarKit.Maui.CarImage.Tint.init -> void
+CarKit.Maui.CarImage.WithDarkVariant(CarKit.Maui.CarImage! dark) -> CarKit.Maui.CarImage!
+CarKit.Maui.CarImageRowContext
+CarKit.Maui.CarImageRowContext.ImageIndex.get -> int
+CarKit.Maui.CarInformationItem
+CarKit.Maui.CarInformationItem.<Clone>$() -> CarKit.Maui.CarInformationItem!
+CarKit.Maui.CarInformationItem.CarInformationItem(CarKit.Maui.CarText? title, CarKit.Maui.CarText! detail) -> void
+CarKit.Maui.CarInformationItem.Detail.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarInformationItem.Detail.init -> void
+CarKit.Maui.CarInformationItem.Equals(CarKit.Maui.CarInformationItem? other) -> bool
+CarKit.Maui.CarInformationItem.Title.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarInformationItem.Title.init -> void
+CarKit.Maui.CarInformationLayout
+CarKit.Maui.CarInformationLayout.Leading = 0 -> CarKit.Maui.CarInformationLayout
+CarKit.Maui.CarInformationLayout.TwoColumn = 1 -> CarKit.Maui.CarInformationLayout
+CarKit.Maui.CarInformationTemplate
+CarKit.Maui.CarInformationTemplate.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarInformationTemplate.Actions.init -> void
+CarKit.Maui.CarInformationTemplate.CarInformationTemplate(CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarInformationTemplate.Equals(CarKit.Maui.CarInformationTemplate? other) -> bool
+CarKit.Maui.CarInformationTemplate.IsLoading.get -> bool
+CarKit.Maui.CarInformationTemplate.IsLoading.init -> void
+CarKit.Maui.CarInformationTemplate.Items.get -> CarKit.Maui.CarArray<CarKit.Maui.CarInformationItem!>
+CarKit.Maui.CarInformationTemplate.Items.init -> void
+CarKit.Maui.CarInformationTemplate.Layout.get -> CarKit.Maui.CarInformationLayout
+CarKit.Maui.CarInformationTemplate.Layout.init -> void
+CarKit.Maui.CarItemContext
+CarKit.Maui.CarItemContext.CancellationToken.get -> System.Threading.CancellationToken
+CarKit.Maui.CarItemContext.Element.get -> CarKit.Maui.CarElement!
+CarKit.Maui.CarItemContext.Session.get -> CarKit.Maui.ICarSession!
+CarKit.Maui.CarKitException
+CarKit.Maui.CarKitException.CarKitException() -> void
+CarKit.Maui.CarKitException.CarKitException(string? message) -> void
+CarKit.Maui.CarKitException.CarKitException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarKitOptions
+CarKit.Maui.CarKitOptions.CarKitOptions() -> void
+CarKit.Maui.CarKitOptions.Categories.get -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarKitOptions.Categories.set -> void
+CarKit.Maui.CarKitOptions.Diagnostics.get -> CarKit.Maui.CarDiagnosticsOptions!
+CarKit.Maui.CarKitOptions.Limits.get -> CarKit.Maui.CarLimitOptions!
+CarKit.Maui.CarKitOptions.UnsupportedTemplateBehavior.get -> CarKit.Maui.UnsupportedTemplateBehavior
+CarKit.Maui.CarKitOptions.UnsupportedTemplateBehavior.set -> void
+CarKit.Maui.CarKitOptions.Validation.get -> CarKit.Maui.CarValidationMode
+CarKit.Maui.CarKitOptions.Validation.set -> void
+CarKit.Maui.CarLane
+CarKit.Maui.CarLane.<Clone>$() -> CarKit.Maui.CarLane!
+CarKit.Maui.CarLane.CarLane(System.Collections.Generic.IEnumerable<CarKit.Maui.CarLaneDirection>! directions) -> void
+CarKit.Maui.CarLane.Directions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarLaneDirection>
+CarKit.Maui.CarLane.Equals(CarKit.Maui.CarLane? other) -> bool
+CarKit.Maui.CarLaneDirection
+CarKit.Maui.CarLaneDirection.CarLaneDirection() -> void
+CarKit.Maui.CarLaneDirection.CarLaneDirection(CarKit.Maui.CarLaneShape Shape, bool IsRecommended) -> void
+CarKit.Maui.CarLaneDirection.Deconstruct(out CarKit.Maui.CarLaneShape Shape, out bool IsRecommended) -> void
+CarKit.Maui.CarLaneDirection.Equals(CarKit.Maui.CarLaneDirection other) -> bool
+CarKit.Maui.CarLaneDirection.IsRecommended.get -> bool
+CarKit.Maui.CarLaneDirection.IsRecommended.init -> void
+CarKit.Maui.CarLaneDirection.Shape.get -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneDirection.Shape.init -> void
+CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.Left = 3 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.Right = 7 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.SharpLeft = 4 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.SharpRight = 8 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.SlightLeft = 2 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.SlightRight = 6 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.Straight = 1 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.Unknown = 0 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.UTurnLeft = 5 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLaneShape.UTurnRight = 9 -> CarKit.Maui.CarLaneShape
+CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.Actions = 6 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.GridItems = 2 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.InformationItems = 4 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.ListItems = 0 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.ListSections = 1 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.MapButtons = 8 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.PointsOfInterest = 3 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.StackDepth = 7 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitKind.Tabs = 5 -> CarKit.Maui.CarLimitKind
+CarKit.Maui.CarLimitOptions
+CarKit.Maui.CarLimitOptions.CarLimitOptions() -> void
+CarKit.Maui.CarLimitOptions.OnOverflow.get -> CarKit.Maui.CarOverflowBehavior
+CarKit.Maui.CarLimitOptions.OnOverflow.set -> void
+CarKit.Maui.CarListDetailsHeader
+CarKit.Maui.CarListDetailsHeader.<Clone>$() -> CarKit.Maui.CarListDetailsHeader!
+CarKit.Maui.CarListDetailsHeader.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarListDetailsHeader.Actions.init -> void
+CarKit.Maui.CarListDetailsHeader.Body.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarListDetailsHeader.Body.init -> void
+CarKit.Maui.CarListDetailsHeader.CarListDetailsHeader(CarKit.Maui.CarImage! thumbnail) -> void
+CarKit.Maui.CarListDetailsHeader.Equals(CarKit.Maui.CarListDetailsHeader? other) -> bool
+CarKit.Maui.CarListDetailsHeader.Playback.get -> CarKit.Maui.CarPlaybackConfiguration?
+CarKit.Maui.CarListDetailsHeader.Playback.init -> void
+CarKit.Maui.CarListDetailsHeader.Subtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarListDetailsHeader.Subtitle.init -> void
+CarKit.Maui.CarListDetailsHeader.Thumbnail.get -> CarKit.Maui.CarImage!
+CarKit.Maui.CarListDetailsHeader.Thumbnail.init -> void
+CarKit.Maui.CarListDetailsHeader.Title.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarListDetailsHeader.Title.init -> void
+CarKit.Maui.CarListDetailsHeader.UsesAdaptiveBackground.get -> bool
+CarKit.Maui.CarListDetailsHeader.UsesAdaptiveBackground.init -> void
+CarKit.Maui.CarListImageRowItem
+CarKit.Maui.CarListImageRowItem.CarListImageRowItem(CarKit.Maui.CarText! text, System.Collections.Generic.IEnumerable<CarKit.Maui.CarImage!>! images) -> void
+CarKit.Maui.CarListImageRowItem.Equals(CarKit.Maui.CarListImageRowItem? other) -> bool
+CarKit.Maui.CarListImageRowItem.Images.get -> CarKit.Maui.CarArray<CarKit.Maui.CarImage!>
+CarKit.Maui.CarListImageRowItem.Images.init -> void
+CarKit.Maui.CarListImageRowItem.OnImageSelected.get -> System.Func<CarKit.Maui.CarImageRowContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarListImageRowItem.OnImageSelected.init -> void
+CarKit.Maui.CarListImageRowItem.Text.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarListImageRowItem.Text.init -> void
+CarKit.Maui.CarListItem
+CarKit.Maui.CarListItem.Accessory.get -> CarKit.Maui.CarListItemAccessory
+CarKit.Maui.CarListItem.Accessory.init -> void
+CarKit.Maui.CarListItem.CarListItem(CarKit.Maui.CarText! text) -> void
+CarKit.Maui.CarListItem.Detail.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarListItem.Detail.init -> void
+CarKit.Maui.CarListItem.Equals(CarKit.Maui.CarListItem? other) -> bool
+CarKit.Maui.CarListItem.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarListItem.Image.init -> void
+CarKit.Maui.CarListItem.IsBrowsable.get -> bool
+CarKit.Maui.CarListItem.IsBrowsable.init -> void
+CarKit.Maui.CarListItem.IsExplicitContent.get -> bool
+CarKit.Maui.CarListItem.IsExplicitContent.init -> void
+CarKit.Maui.CarListItem.IsPlaying.get -> bool
+CarKit.Maui.CarListItem.IsPlaying.init -> void
+CarKit.Maui.CarListItem.Location.get -> CarKit.Maui.CarLocation?
+CarKit.Maui.CarListItem.Location.init -> void
+CarKit.Maui.CarListItem.Playback.get -> CarKit.Maui.CarPlaybackConfiguration?
+CarKit.Maui.CarListItem.Playback.init -> void
+CarKit.Maui.CarListItem.PlaybackProgress.get -> double?
+CarKit.Maui.CarListItem.PlaybackProgress.init -> void
+CarKit.Maui.CarListItem.Text.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarListItem.Text.init -> void
+CarKit.Maui.CarListItem.Toggle.get -> CarKit.Maui.CarListItemToggle?
+CarKit.Maui.CarListItem.Toggle.init -> void
+CarKit.Maui.CarListItemAccessory
+CarKit.Maui.CarListItemAccessory.Cloud = 2 -> CarKit.Maui.CarListItemAccessory
+CarKit.Maui.CarListItemAccessory.DisclosureIndicator = 1 -> CarKit.Maui.CarListItemAccessory
+CarKit.Maui.CarListItemAccessory.None = 0 -> CarKit.Maui.CarListItemAccessory
+CarKit.Maui.CarListItemToggle
+CarKit.Maui.CarListItemToggle.<Clone>$() -> CarKit.Maui.CarListItemToggle!
+CarKit.Maui.CarListItemToggle.CarListItemToggle(bool IsChecked) -> void
+CarKit.Maui.CarListItemToggle.Deconstruct(out bool IsChecked) -> void
+CarKit.Maui.CarListItemToggle.Equals(CarKit.Maui.CarListItemToggle? other) -> bool
+CarKit.Maui.CarListItemToggle.IsChecked.get -> bool
+CarKit.Maui.CarListItemToggle.IsChecked.init -> void
+CarKit.Maui.CarListItemToggle.OnToggled.get -> System.Func<CarKit.Maui.CarToggleContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarListItemToggle.OnToggled.init -> void
+CarKit.Maui.CarListTemplate
+CarKit.Maui.CarListTemplate.CarListTemplate(CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarListTemplate.DetailsHeader.get -> CarKit.Maui.CarListDetailsHeader?
+CarKit.Maui.CarListTemplate.DetailsHeader.init -> void
+CarKit.Maui.CarListTemplate.EmptyViewSubtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarListTemplate.EmptyViewSubtitle.init -> void
+CarKit.Maui.CarListTemplate.EmptyViewTitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarListTemplate.EmptyViewTitle.init -> void
+CarKit.Maui.CarListTemplate.Equals(CarKit.Maui.CarListTemplate? other) -> bool
+CarKit.Maui.CarListTemplate.IsLoading.get -> bool
+CarKit.Maui.CarListTemplate.IsLoading.init -> void
+CarKit.Maui.CarListTemplate.Sections.get -> CarKit.Maui.CarArray<CarKit.Maui.CarSection!>
+CarKit.Maui.CarListTemplate.Sections.init -> void
+CarKit.Maui.CarListTemplateItem
+CarKit.Maui.CarListTemplateItem.CarListTemplateItem(CarKit.Maui.CarListTemplateItem! original) -> void
+CarKit.Maui.CarListTemplateItem.IsEnabled.get -> bool
+CarKit.Maui.CarListTemplateItem.IsEnabled.init -> void
+CarKit.Maui.CarListTemplateItem.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarListTemplateItem.OnSelected.init -> void
+CarKit.Maui.CarLocation
+CarKit.Maui.CarLocation.CarLocation() -> void
+CarKit.Maui.CarLocation.CarLocation(double latitude, double longitude) -> void
+CarKit.Maui.CarLocation.Equals(CarKit.Maui.CarLocation other) -> bool
+CarKit.Maui.CarLocation.Latitude.get -> double
+CarKit.Maui.CarLocation.Longitude.get -> double
+CarKit.Maui.CarLongMessageTemplate
+CarKit.Maui.CarLongMessageTemplate.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarLongMessageTemplate.Actions.init -> void
+CarKit.Maui.CarLongMessageTemplate.CarLongMessageTemplate(CarKit.Maui.CarText! title, string! message) -> void
+CarKit.Maui.CarLongMessageTemplate.Equals(CarKit.Maui.CarLongMessageTemplate? other) -> bool
+CarKit.Maui.CarLongMessageTemplate.Message.get -> string!
+CarKit.Maui.CarLongMessageTemplate.Message.init -> void
+CarKit.Maui.CarManeuver
+CarKit.Maui.CarManeuver.CarManeuver(CarKit.Maui.CarText! instruction) -> void
+CarKit.Maui.CarManeuver.Equals(CarKit.Maui.CarManeuver? other) -> bool
+CarKit.Maui.CarManeuver.Icon.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarManeuver.Icon.init -> void
+CarKit.Maui.CarManeuver.InitialEstimates.get -> CarKit.Maui.CarTravelEstimates?
+CarKit.Maui.CarManeuver.InitialEstimates.init -> void
+CarKit.Maui.CarManeuver.Instruction.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarManeuver.Instruction.init -> void
+CarKit.Maui.CarManeuver.JunctionImage.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarManeuver.JunctionImage.init -> void
+CarKit.Maui.CarManeuver.Kind.get -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuver.Kind.init -> void
+CarKit.Maui.CarManeuver.Lanes.get -> CarKit.Maui.CarArray<CarKit.Maui.CarLane!>
+CarKit.Maui.CarManeuver.Lanes.init -> void
+CarKit.Maui.CarManeuver.LanesImage.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarManeuver.LanesImage.init -> void
+CarKit.Maui.CarManeuver.Road.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarManeuver.Road.init -> void
+CarKit.Maui.CarManeuver.RoundaboutExitAngle.get -> int?
+CarKit.Maui.CarManeuver.RoundaboutExitAngle.init -> void
+CarKit.Maui.CarManeuver.RoundaboutExitNumber.get -> int?
+CarKit.Maui.CarManeuver.RoundaboutExitNumber.init -> void
+CarKit.Maui.CarManeuver.TrafficSide.get -> CarKit.Maui.CarTrafficSide
+CarKit.Maui.CarManeuver.TrafficSide.init -> void
+CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Depart = 1 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Destination = 25 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.DestinationLeft = 26 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.DestinationRight = 27 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Ferry = 24 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.ForkLeft = 19 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.ForkRight = 20 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.KeepLeft = 11 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.KeepRight = 12 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Left = 4 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.MergeLeft = 13 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.MergeRight = 14 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.NameChange = 28 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.OffRampLeft = 17 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.OffRampRight = 18 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.OnRampLeft = 15 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.OnRampRight = 16 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Right = 7 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Roundabout = 23 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.RoundaboutEnter = 21 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.RoundaboutExit = 22 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.SharpLeft = 5 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.SharpRight = 8 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.SlightLeft = 3 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.SlightRight = 6 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Straight = 2 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.Unknown = 0 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.UTurnLeft = 9 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarManeuverKind.UTurnRight = 10 -> CarKit.Maui.CarManeuverKind
+CarKit.Maui.CarMapButton
+CarKit.Maui.CarMapButton.CarMapButton(CarKit.Maui.CarImage! image) -> void
+CarKit.Maui.CarMapButton.Equals(CarKit.Maui.CarMapButton? other) -> bool
+CarKit.Maui.CarMapButton.FocusedImage.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarMapButton.FocusedImage.init -> void
+CarKit.Maui.CarMapButton.Image.get -> CarKit.Maui.CarImage!
+CarKit.Maui.CarMapButton.Image.init -> void
+CarKit.Maui.CarMapButton.IsEnabled.get -> bool
+CarKit.Maui.CarMapButton.IsEnabled.init -> void
+CarKit.Maui.CarMapButton.IsHidden.get -> bool
+CarKit.Maui.CarMapButton.IsHidden.init -> void
+CarKit.Maui.CarMapButton.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarMapButton.OnSelected.init -> void
+CarKit.Maui.CarMapRegion
+CarKit.Maui.CarMapRegion.CarMapRegion() -> void
+CarKit.Maui.CarMapRegion.CarMapRegion(CarKit.Maui.CarLocation center, double latitudeDelta, double longitudeDelta) -> void
+CarKit.Maui.CarMapRegion.Center.get -> CarKit.Maui.CarLocation
+CarKit.Maui.CarMapRegion.Equals(CarKit.Maui.CarMapRegion other) -> bool
+CarKit.Maui.CarMapRegion.LatitudeDelta.get -> double
+CarKit.Maui.CarMapRegion.LongitudeDelta.get -> double
+CarKit.Maui.CarMapRegionContext
+CarKit.Maui.CarMapRegionContext.Region.get -> CarKit.Maui.CarMapRegion
+CarKit.Maui.CarMapTemplate
+CarKit.Maui.CarMapTemplate.AutomaticallyHidesNavigationBar.get -> bool
+CarKit.Maui.CarMapTemplate.AutomaticallyHidesNavigationBar.init -> void
+CarKit.Maui.CarMapTemplate.CarMapTemplate() -> void
+CarKit.Maui.CarMapTemplate.Equals(CarKit.Maui.CarMapTemplate? other) -> bool
+CarKit.Maui.CarMapTemplate.GuidanceBackgroundColor.get -> CarKit.Maui.CarColor?
+CarKit.Maui.CarMapTemplate.GuidanceBackgroundColor.init -> void
+CarKit.Maui.CarMapTemplate.IsPanningEnabled.get -> bool
+CarKit.Maui.CarMapTemplate.IsPanningEnabled.init -> void
+CarKit.Maui.CarMapTemplate.MapButtons.get -> CarKit.Maui.CarArray<CarKit.Maui.CarMapButton!>
+CarKit.Maui.CarMapTemplate.MapButtons.init -> void
+CarKit.Maui.CarMapTemplate.StartTripTitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarMapTemplate.StartTripTitle.init -> void
+CarKit.Maui.CarMessageRequest
+CarKit.Maui.CarMessageRequest.<Clone>$() -> CarKit.Maui.CarMessageRequest!
+CarKit.Maui.CarMessageRequest.CarMessageRequest(CarKit.Maui.CarMessageRequestKind Kind, string! ConversationId) -> void
+CarKit.Maui.CarMessageRequest.ConversationId.get -> string!
+CarKit.Maui.CarMessageRequest.ConversationId.init -> void
+CarKit.Maui.CarMessageRequest.Deconstruct(out CarKit.Maui.CarMessageRequestKind Kind, out string! ConversationId) -> void
+CarKit.Maui.CarMessageRequest.Equals(CarKit.Maui.CarMessageRequest? other) -> bool
+CarKit.Maui.CarMessageRequest.Kind.get -> CarKit.Maui.CarMessageRequestKind
+CarKit.Maui.CarMessageRequest.Kind.init -> void
+CarKit.Maui.CarMessageRequest.Text.get -> string?
+CarKit.Maui.CarMessageRequest.Text.init -> void
+CarKit.Maui.CarMessageRequestKind
+CarKit.Maui.CarMessageRequestKind.MarkAsRead = 1 -> CarKit.Maui.CarMessageRequestKind
+CarKit.Maui.CarMessageRequestKind.Reply = 0 -> CarKit.Maui.CarMessageRequestKind
+CarKit.Maui.CarMessageTemplate
+CarKit.Maui.CarMessageTemplate.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarMessageTemplate.Actions.init -> void
+CarKit.Maui.CarMessageTemplate.CarMessageTemplate(CarKit.Maui.CarText! message) -> void
+CarKit.Maui.CarMessageTemplate.Equals(CarKit.Maui.CarMessageTemplate? other) -> bool
+CarKit.Maui.CarMessageTemplate.Icon.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarMessageTemplate.Icon.init -> void
+CarKit.Maui.CarMessageTemplate.IsLoading.get -> bool
+CarKit.Maui.CarMessageTemplate.IsLoading.init -> void
+CarKit.Maui.CarMessageTemplate.Message.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarMessageTemplate.Message.init -> void
+CarKit.Maui.CarModalTemplate
+CarKit.Maui.CarModalTemplate.CarModalTemplate(CarKit.Maui.CarModalTemplate! original) -> void
+CarKit.Maui.CarNavigationAlert
+CarKit.Maui.CarNavigationAlert.CarNavigationAlert(CarKit.Maui.CarText! title, CarKit.Maui.CarAction! primaryAction) -> void
+CarKit.Maui.CarNavigationAlert.Duration.get -> System.TimeSpan
+CarKit.Maui.CarNavigationAlert.Duration.init -> void
+CarKit.Maui.CarNavigationAlert.Equals(CarKit.Maui.CarNavigationAlert? other) -> bool
+CarKit.Maui.CarNavigationAlert.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarNavigationAlert.Image.init -> void
+CarKit.Maui.CarNavigationAlert.PrimaryAction.get -> CarKit.Maui.CarAction!
+CarKit.Maui.CarNavigationAlert.PrimaryAction.init -> void
+CarKit.Maui.CarNavigationAlert.SecondaryAction.get -> CarKit.Maui.CarAction?
+CarKit.Maui.CarNavigationAlert.SecondaryAction.init -> void
+CarKit.Maui.CarNavigationAlert.Subtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarNavigationAlert.Subtitle.init -> void
+CarKit.Maui.CarNavigationAlert.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarNavigationAlert.Title.init -> void
+CarKit.Maui.CarNavigationPauseReason
+CarKit.Maui.CarNavigationPauseReason.Arrived = 0 -> CarKit.Maui.CarNavigationPauseReason
+CarKit.Maui.CarNavigationPauseReason.Loading = 1 -> CarKit.Maui.CarNavigationPauseReason
+CarKit.Maui.CarNavigationPauseReason.Locating = 2 -> CarKit.Maui.CarNavigationPauseReason
+CarKit.Maui.CarNavigationPauseReason.ProceedToRoute = 4 -> CarKit.Maui.CarNavigationPauseReason
+CarKit.Maui.CarNavigationPauseReason.Rerouting = 3 -> CarKit.Maui.CarNavigationPauseReason
+CarKit.Maui.CarNavigationRequest
+CarKit.Maui.CarNavigationRequest.<Clone>$() -> CarKit.Maui.CarNavigationRequest!
+CarKit.Maui.CarNavigationRequest.CarNavigationRequest(System.Uri! uri) -> void
+CarKit.Maui.CarNavigationRequest.Equals(CarKit.Maui.CarNavigationRequest? other) -> bool
+CarKit.Maui.CarNavigationRequest.Location.get -> CarKit.Maui.CarLocation?
+CarKit.Maui.CarNavigationRequest.Query.get -> string?
+CarKit.Maui.CarNavigationRequest.Uri.get -> System.Uri!
+CarKit.Maui.CarNavigationState
+CarKit.Maui.CarNavigationState.Active = 2 -> CarKit.Maui.CarNavigationState
+CarKit.Maui.CarNavigationState.Idle = 0 -> CarKit.Maui.CarNavigationState
+CarKit.Maui.CarNavigationState.Paused = 3 -> CarKit.Maui.CarNavigationState
+CarKit.Maui.CarNavigationState.Previewing = 1 -> CarKit.Maui.CarNavigationState
+CarKit.Maui.CarNotConnectedException
+CarKit.Maui.CarNotConnectedException.CarNotConnectedException() -> void
+CarKit.Maui.CarNotConnectedException.CarNotConnectedException(string? message) -> void
+CarKit.Maui.CarNotConnectedException.CarNotConnectedException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarNowPlayingButton
+CarKit.Maui.CarNowPlayingButton.CarNowPlayingButton(CarKit.Maui.CarNowPlayingButtonKind kind) -> void
+CarKit.Maui.CarNowPlayingButton.Equals(CarKit.Maui.CarNowPlayingButton? other) -> bool
+CarKit.Maui.CarNowPlayingButton.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarNowPlayingButton.Image.init -> void
+CarKit.Maui.CarNowPlayingButton.IsEnabled.get -> bool
+CarKit.Maui.CarNowPlayingButton.IsEnabled.init -> void
+CarKit.Maui.CarNowPlayingButton.IsSelected.get -> bool
+CarKit.Maui.CarNowPlayingButton.IsSelected.init -> void
+CarKit.Maui.CarNowPlayingButton.Kind.get -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButton.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarNowPlayingButton.OnSelected.init -> void
+CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButtonKind.AddToLibrary = 3 -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButtonKind.Custom = 5 -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButtonKind.More = 4 -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButtonKind.PlaybackRate = 2 -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButtonKind.Repeat = 1 -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingButtonKind.Shuffle = 0 -> CarKit.Maui.CarNowPlayingButtonKind
+CarKit.Maui.CarNowPlayingSports
+CarKit.Maui.CarNowPlayingSports.<Clone>$() -> CarKit.Maui.CarNowPlayingSports!
+CarKit.Maui.CarNowPlayingSports.BackgroundArtwork.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarNowPlayingSports.BackgroundArtwork.init -> void
+CarKit.Maui.CarNowPlayingSports.CarNowPlayingSports(CarKit.Maui.CarSportsTeam! leftTeam, CarKit.Maui.CarSportsTeam! rightTeam) -> void
+CarKit.Maui.CarNowPlayingSports.Clock.get -> CarKit.Maui.CarSportsClock?
+CarKit.Maui.CarNowPlayingSports.Clock.init -> void
+CarKit.Maui.CarNowPlayingSports.Equals(CarKit.Maui.CarNowPlayingSports? other) -> bool
+CarKit.Maui.CarNowPlayingSports.LeftTeam.get -> CarKit.Maui.CarSportsTeam!
+CarKit.Maui.CarNowPlayingSports.LeftTeam.init -> void
+CarKit.Maui.CarNowPlayingSports.RightTeam.get -> CarKit.Maui.CarSportsTeam!
+CarKit.Maui.CarNowPlayingSports.RightTeam.init -> void
+CarKit.Maui.CarNowPlayingSports.Status.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarNowPlayingSports.Status.init -> void
+CarKit.Maui.CarNowPlayingSports.StatusImage.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarNowPlayingSports.StatusImage.init -> void
+CarKit.Maui.CarNowPlayingTemplate
+CarKit.Maui.CarNowPlayingTemplate.AllowsMiniPlayer.get -> bool
+CarKit.Maui.CarNowPlayingTemplate.AllowsMiniPlayer.init -> void
+CarKit.Maui.CarNowPlayingTemplate.Buttons.get -> CarKit.Maui.CarArray<CarKit.Maui.CarNowPlayingButton!>
+CarKit.Maui.CarNowPlayingTemplate.Buttons.init -> void
+CarKit.Maui.CarNowPlayingTemplate.CarNowPlayingTemplate() -> void
+CarKit.Maui.CarNowPlayingTemplate.Equals(CarKit.Maui.CarNowPlayingTemplate? other) -> bool
+CarKit.Maui.CarNowPlayingTemplate.IsAlbumArtistButtonEnabled.get -> bool
+CarKit.Maui.CarNowPlayingTemplate.IsAlbumArtistButtonEnabled.init -> void
+CarKit.Maui.CarNowPlayingTemplate.IsUpNextButtonEnabled.get -> bool
+CarKit.Maui.CarNowPlayingTemplate.IsUpNextButtonEnabled.init -> void
+CarKit.Maui.CarNowPlayingTemplate.OnAlbumArtistSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarNowPlayingTemplate.OnAlbumArtistSelected.init -> void
+CarKit.Maui.CarNowPlayingTemplate.OnUpNextSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarNowPlayingTemplate.OnUpNextSelected.init -> void
+CarKit.Maui.CarNowPlayingTemplate.Sports.get -> CarKit.Maui.CarNowPlayingSports?
+CarKit.Maui.CarNowPlayingTemplate.Sports.init -> void
+CarKit.Maui.CarNowPlayingTemplate.UpNextTitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarNowPlayingTemplate.UpNextTitle.init -> void
+CarKit.Maui.CarOverflowBehavior
+CarKit.Maui.CarOverflowBehavior.Throw = 1 -> CarKit.Maui.CarOverflowBehavior
+CarKit.Maui.CarOverflowBehavior.Truncate = 0 -> CarKit.Maui.CarOverflowBehavior
+CarKit.Maui.CarPerson
+CarKit.Maui.CarPerson.<Clone>$() -> CarKit.Maui.CarPerson!
+CarKit.Maui.CarPerson.CarPerson(string! key, string! name) -> void
+CarKit.Maui.CarPerson.Equals(CarKit.Maui.CarPerson? other) -> bool
+CarKit.Maui.CarPerson.Key.get -> string!
+CarKit.Maui.CarPerson.Key.init -> void
+CarKit.Maui.CarPerson.Name.get -> string!
+CarKit.Maui.CarPerson.Name.init -> void
+CarKit.Maui.CarPerson.PhoneOrEmail.get -> string?
+CarKit.Maui.CarPerson.PhoneOrEmail.init -> void
+CarKit.Maui.CarPlatform
+CarKit.Maui.CarPlatform.AndroidAuto = 1 -> CarKit.Maui.CarPlatform
+CarKit.Maui.CarPlatform.AndroidAutomotive = 2 -> CarKit.Maui.CarPlatform
+CarKit.Maui.CarPlatform.CarPlay = 0 -> CarKit.Maui.CarPlatform
+CarKit.Maui.CarPlatformException
+CarKit.Maui.CarPlatformException.CarPlatformException() -> void
+CarKit.Maui.CarPlatformException.CarPlatformException(string? message) -> void
+CarKit.Maui.CarPlatformException.CarPlatformException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarPlatformHooks
+CarKit.Maui.CarPlatformHooks.<Clone>$() -> CarKit.Maui.CarPlatformHooks!
+CarKit.Maui.CarPlatformHooks.Add(CarKit.Maui.CarPlatform platform, System.Delegate! hook) -> CarKit.Maui.CarPlatformHooks!
+CarKit.Maui.CarPlatformHooks.AndroidAuto.get -> System.Delegate?
+CarKit.Maui.CarPlatformHooks.AndroidAuto.init -> void
+CarKit.Maui.CarPlatformHooks.CarPlatformHooks() -> void
+CarKit.Maui.CarPlatformHooks.CarPlay.get -> System.Delegate?
+CarKit.Maui.CarPlatformHooks.CarPlay.init -> void
+CarKit.Maui.CarPlatformHooks.Equals(CarKit.Maui.CarPlatformHooks? other) -> bool
+CarKit.Maui.CarPlaybackAction
+CarKit.Maui.CarPlaybackAction.None = 0 -> CarKit.Maui.CarPlaybackAction
+CarKit.Maui.CarPlaybackAction.Pause = 2 -> CarKit.Maui.CarPlaybackAction
+CarKit.Maui.CarPlaybackAction.Play = 1 -> CarKit.Maui.CarPlaybackAction
+CarKit.Maui.CarPlaybackAction.Replay = 3 -> CarKit.Maui.CarPlaybackAction
+CarKit.Maui.CarPlaybackConfiguration
+CarKit.Maui.CarPlaybackConfiguration.<Clone>$() -> CarKit.Maui.CarPlaybackConfiguration!
+CarKit.Maui.CarPlaybackConfiguration.Action.get -> CarKit.Maui.CarPlaybackAction
+CarKit.Maui.CarPlaybackConfiguration.Action.init -> void
+CarKit.Maui.CarPlaybackConfiguration.CarPlaybackConfiguration() -> void
+CarKit.Maui.CarPlaybackConfiguration.Duration.get -> System.TimeSpan?
+CarKit.Maui.CarPlaybackConfiguration.Duration.init -> void
+CarKit.Maui.CarPlaybackConfiguration.Elapsed.get -> System.TimeSpan
+CarKit.Maui.CarPlaybackConfiguration.Elapsed.init -> void
+CarKit.Maui.CarPlaybackConfiguration.Equals(CarKit.Maui.CarPlaybackConfiguration? other) -> bool
+CarKit.Maui.CarPlaybackConfiguration.Presentation.get -> CarKit.Maui.CarPlaybackPresentation
+CarKit.Maui.CarPlaybackConfiguration.Presentation.init -> void
+CarKit.Maui.CarPlaybackPresentation
+CarKit.Maui.CarPlaybackPresentation.Audio = 1 -> CarKit.Maui.CarPlaybackPresentation
+CarKit.Maui.CarPlaybackPresentation.None = 0 -> CarKit.Maui.CarPlaybackPresentation
+CarKit.Maui.CarPlaybackPresentation.Video = 2 -> CarKit.Maui.CarPlaybackPresentation
+CarKit.Maui.CarPlayContactButton
+CarKit.Maui.CarPlayContactButton.CarPlayContactButton(CarKit.Maui.CarPlayContactButtonKind kind) -> void
+CarKit.Maui.CarPlayContactButton.Equals(CarKit.Maui.CarPlayContactButton? other) -> bool
+CarKit.Maui.CarPlayContactButton.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarPlayContactButton.Image.init -> void
+CarKit.Maui.CarPlayContactButton.Kind.get -> CarKit.Maui.CarPlayContactButtonKind
+CarKit.Maui.CarPlayContactButton.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarPlayContactButton.OnSelected.init -> void
+CarKit.Maui.CarPlayContactButton.PhoneOrEmail.get -> string?
+CarKit.Maui.CarPlayContactButton.PhoneOrEmail.init -> void
+CarKit.Maui.CarPlayContactButton.Title.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPlayContactButton.Title.init -> void
+CarKit.Maui.CarPlayContactButtonKind
+CarKit.Maui.CarPlayContactButtonKind.Call = 0 -> CarKit.Maui.CarPlayContactButtonKind
+CarKit.Maui.CarPlayContactButtonKind.Custom = 3 -> CarKit.Maui.CarPlayContactButtonKind
+CarKit.Maui.CarPlayContactButtonKind.Directions = 2 -> CarKit.Maui.CarPlayContactButtonKind
+CarKit.Maui.CarPlayContactButtonKind.Message = 1 -> CarKit.Maui.CarPlayContactButtonKind
+CarKit.Maui.CarPlayContactTemplate
+CarKit.Maui.CarPlayContactTemplate.Buttons.get -> CarKit.Maui.CarArray<CarKit.Maui.CarPlayContactButton!>
+CarKit.Maui.CarPlayContactTemplate.Buttons.init -> void
+CarKit.Maui.CarPlayContactTemplate.CarPlayContactTemplate(CarKit.Maui.CarText! name) -> void
+CarKit.Maui.CarPlayContactTemplate.Equals(CarKit.Maui.CarPlayContactTemplate? other) -> bool
+CarKit.Maui.CarPlayContactTemplate.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarPlayContactTemplate.Image.init -> void
+CarKit.Maui.CarPlayContactTemplate.InformativeText.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPlayContactTemplate.InformativeText.init -> void
+CarKit.Maui.CarPlayContactTemplate.Name.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarPlayContactTemplate.Name.init -> void
+CarKit.Maui.CarPlayContactTemplate.Subtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPlayContactTemplate.Subtitle.init -> void
+CarKit.Maui.CarPointOfInterest
+CarKit.Maui.CarPointOfInterest.CarPointOfInterest(CarKit.Maui.CarLocation location, CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarPointOfInterest.DetailSubtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPointOfInterest.DetailSubtitle.init -> void
+CarKit.Maui.CarPointOfInterest.DetailSummary.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPointOfInterest.DetailSummary.init -> void
+CarKit.Maui.CarPointOfInterest.DetailTitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPointOfInterest.DetailTitle.init -> void
+CarKit.Maui.CarPointOfInterest.Distance.get -> CarKit.Maui.CarDistance?
+CarKit.Maui.CarPointOfInterest.Distance.init -> void
+CarKit.Maui.CarPointOfInterest.Equals(CarKit.Maui.CarPointOfInterest? other) -> bool
+CarKit.Maui.CarPointOfInterest.Location.get -> CarKit.Maui.CarLocation
+CarKit.Maui.CarPointOfInterest.Location.init -> void
+CarKit.Maui.CarPointOfInterest.OnSelected.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarPointOfInterest.OnSelected.init -> void
+CarKit.Maui.CarPointOfInterest.PinImage.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarPointOfInterest.PinImage.init -> void
+CarKit.Maui.CarPointOfInterest.PrimaryAction.get -> CarKit.Maui.CarAction?
+CarKit.Maui.CarPointOfInterest.PrimaryAction.init -> void
+CarKit.Maui.CarPointOfInterest.SecondaryAction.get -> CarKit.Maui.CarAction?
+CarKit.Maui.CarPointOfInterest.SecondaryAction.init -> void
+CarKit.Maui.CarPointOfInterest.SelectedPinImage.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarPointOfInterest.SelectedPinImage.init -> void
+CarKit.Maui.CarPointOfInterest.Subtitle.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPointOfInterest.Subtitle.init -> void
+CarKit.Maui.CarPointOfInterest.Summary.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarPointOfInterest.Summary.init -> void
+CarKit.Maui.CarPointOfInterest.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarPointOfInterest.Title.init -> void
+CarKit.Maui.CarPointOfInterestTemplate
+CarKit.Maui.CarPointOfInterestTemplate.CarPointOfInterestTemplate(CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarPointOfInterestTemplate.Equals(CarKit.Maui.CarPointOfInterestTemplate? other) -> bool
+CarKit.Maui.CarPointOfInterestTemplate.IsLoading.get -> bool
+CarKit.Maui.CarPointOfInterestTemplate.IsLoading.init -> void
+CarKit.Maui.CarPointOfInterestTemplate.OnMapRegionChanged.get -> System.Func<CarKit.Maui.CarMapRegionContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarPointOfInterestTemplate.OnMapRegionChanged.init -> void
+CarKit.Maui.CarPointOfInterestTemplate.OnRefreshRequested.get -> System.Func<CarKit.Maui.CarItemContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarPointOfInterestTemplate.OnRefreshRequested.init -> void
+CarKit.Maui.CarPointOfInterestTemplate.Points.get -> CarKit.Maui.CarArray<CarKit.Maui.CarPointOfInterest!>
+CarKit.Maui.CarPointOfInterestTemplate.Points.init -> void
+CarKit.Maui.CarPointOfInterestTemplate.SelectedPointId.get -> string?
+CarKit.Maui.CarPointOfInterestTemplate.SelectedPointId.init -> void
+CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRerouteReason.AlternateRoute = 3 -> CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRerouteReason.Mandated = 5 -> CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRerouteReason.MissedTurn = 1 -> CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRerouteReason.Offline = 2 -> CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRerouteReason.Unknown = 0 -> CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRerouteReason.WaypointModified = 4 -> CarKit.Maui.CarRerouteReason
+CarKit.Maui.CarRouteChoice
+CarKit.Maui.CarRouteChoice.AdditionalInformation.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarRouteChoice.AdditionalInformation.init -> void
+CarKit.Maui.CarRouteChoice.CarRouteChoice(CarKit.Maui.CarText! summary) -> void
+CarKit.Maui.CarRouteChoice.Equals(CarKit.Maui.CarRouteChoice? other) -> bool
+CarKit.Maui.CarRouteChoice.Estimates.get -> CarKit.Maui.CarTravelEstimates?
+CarKit.Maui.CarRouteChoice.Estimates.init -> void
+CarKit.Maui.CarRouteChoice.Maneuvers.get -> CarKit.Maui.CarArray<CarKit.Maui.CarManeuver!>
+CarKit.Maui.CarRouteChoice.Maneuvers.init -> void
+CarKit.Maui.CarRouteChoice.Segments.get -> CarKit.Maui.CarArray<CarKit.Maui.CarRouteSegment!>
+CarKit.Maui.CarRouteChoice.Segments.init -> void
+CarKit.Maui.CarRouteChoice.SelectionSummary.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarRouteChoice.SelectionSummary.init -> void
+CarKit.Maui.CarRouteChoice.Summary.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarRouteChoice.Summary.init -> void
+CarKit.Maui.CarRouteSegment
+CarKit.Maui.CarRouteSegment.<Clone>$() -> CarKit.Maui.CarRouteSegment!
+CarKit.Maui.CarRouteSegment.CarRouteSegment(CarKit.Maui.CarWaypoint! origin, CarKit.Maui.CarWaypoint! destination) -> void
+CarKit.Maui.CarRouteSegment.Destination.get -> CarKit.Maui.CarWaypoint!
+CarKit.Maui.CarRouteSegment.Destination.init -> void
+CarKit.Maui.CarRouteSegment.Equals(CarKit.Maui.CarRouteSegment? other) -> bool
+CarKit.Maui.CarRouteSegment.Estimates.get -> CarKit.Maui.CarTravelEstimates?
+CarKit.Maui.CarRouteSegment.Estimates.init -> void
+CarKit.Maui.CarRouteSegment.Maneuvers.get -> CarKit.Maui.CarArray<CarKit.Maui.CarManeuver!>
+CarKit.Maui.CarRouteSegment.Maneuvers.init -> void
+CarKit.Maui.CarRouteSegment.Origin.get -> CarKit.Maui.CarWaypoint!
+CarKit.Maui.CarRouteSegment.Origin.init -> void
+CarKit.Maui.CarRouteSegment.Path.get -> CarKit.Maui.CarArray<CarKit.Maui.CarLocation>
+CarKit.Maui.CarRouteSegment.Path.init -> void
+CarKit.Maui.CarRouteSource
+CarKit.Maui.CarRouteSource.Inactive = 0 -> CarKit.Maui.CarRouteSource
+CarKit.Maui.CarRouteSource.PhoneDestinationsOnly = 4 -> CarKit.Maui.CarRouteSource
+CarKit.Maui.CarRouteSource.PhoneRouteAndDestinationsModified = 3 -> CarKit.Maui.CarRouteSource
+CarKit.Maui.CarRouteSource.PhoneRouteModified = 2 -> CarKit.Maui.CarRouteSource
+CarKit.Maui.CarRouteSource.PhoneUnchanged = 1 -> CarKit.Maui.CarRouteSource
+CarKit.Maui.CarRouteSource.Vehicle = 5 -> CarKit.Maui.CarRouteSource
+CarKit.Maui.CarSearchContext
+CarKit.Maui.CarSearchContext.Text.get -> string!
+CarKit.Maui.CarSearchTemplate
+CarKit.Maui.CarSearchTemplate.CarSearchTemplate() -> void
+CarKit.Maui.CarSearchTemplate.Equals(CarKit.Maui.CarSearchTemplate? other) -> bool
+CarKit.Maui.CarSearchTemplate.Hint.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarSearchTemplate.Hint.init -> void
+CarKit.Maui.CarSearchTemplate.InitialText.get -> string?
+CarKit.Maui.CarSearchTemplate.InitialText.init -> void
+CarKit.Maui.CarSearchTemplate.OnSearchSubmitted.get -> System.Func<CarKit.Maui.CarSearchContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarSearchTemplate.OnSearchSubmitted.init -> void
+CarKit.Maui.CarSearchTemplate.OnSearchTextChanged.get -> System.Func<CarKit.Maui.CarSearchContext!, System.Threading.Tasks.Task<System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarListItem!>!>!>?
+CarKit.Maui.CarSearchTemplate.OnSearchTextChanged.init -> void
+CarKit.Maui.CarSearchTemplate.ShowKeyboardByDefault.get -> bool
+CarKit.Maui.CarSearchTemplate.ShowKeyboardByDefault.init -> void
+CarKit.Maui.CarSection
+CarKit.Maui.CarSection.CarSection() -> void
+CarKit.Maui.CarSection.CarSection(System.Collections.Generic.IEnumerable<CarKit.Maui.CarListTemplateItem!>! items) -> void
+CarKit.Maui.CarSection.Equals(CarKit.Maui.CarSection? other) -> bool
+CarKit.Maui.CarSection.Header.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarSection.Header.init -> void
+CarKit.Maui.CarSection.IndexTitle.get -> string?
+CarKit.Maui.CarSection.IndexTitle.init -> void
+CarKit.Maui.CarSection.Items.get -> CarKit.Maui.CarArray<CarKit.Maui.CarListTemplateItem!>
+CarKit.Maui.CarSection.Items.init -> void
+CarKit.Maui.CarSportsClock
+CarKit.Maui.CarSportsClock.<Clone>$() -> CarKit.Maui.CarSportsClock!
+CarKit.Maui.CarSportsClock.CarSportsClock(System.TimeSpan time, bool countsUp) -> void
+CarKit.Maui.CarSportsClock.CountsUp.get -> bool
+CarKit.Maui.CarSportsClock.Equals(CarKit.Maui.CarSportsClock? other) -> bool
+CarKit.Maui.CarSportsClock.IsPaused.get -> bool
+CarKit.Maui.CarSportsClock.IsPaused.init -> void
+CarKit.Maui.CarSportsClock.Time.get -> System.TimeSpan
+CarKit.Maui.CarSportsTeam
+CarKit.Maui.CarSportsTeam.<Clone>$() -> CarKit.Maui.CarSportsTeam!
+CarKit.Maui.CarSportsTeam.CarSportsTeam(string! name) -> void
+CarKit.Maui.CarSportsTeam.Equals(CarKit.Maui.CarSportsTeam? other) -> bool
+CarKit.Maui.CarSportsTeam.Initials.get -> string!
+CarKit.Maui.CarSportsTeam.Initials.init -> void
+CarKit.Maui.CarSportsTeam.IsFavorite.get -> bool
+CarKit.Maui.CarSportsTeam.IsFavorite.init -> void
+CarKit.Maui.CarSportsTeam.Logo.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarSportsTeam.Logo.init -> void
+CarKit.Maui.CarSportsTeam.Name.get -> string!
+CarKit.Maui.CarSportsTeam.PossessionIndicator.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarSportsTeam.PossessionIndicator.init -> void
+CarKit.Maui.CarSportsTeam.Score.get -> string?
+CarKit.Maui.CarSportsTeam.Score.init -> void
+CarKit.Maui.CarSportsTeam.Standings.get -> string?
+CarKit.Maui.CarSportsTeam.Standings.init -> void
+CarKit.Maui.CarStackException
+CarKit.Maui.CarStackException.CarStackException() -> void
+CarKit.Maui.CarStackException.CarStackException(string? message) -> void
+CarKit.Maui.CarStackException.CarStackException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarStreamImage
+CarKit.Maui.CarStreamImage.CarStreamImage(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<System.IO.Stream!>!>! open) -> void
+CarKit.Maui.CarStreamImage.Equals(CarKit.Maui.CarStreamImage? other) -> bool
+CarKit.Maui.CarStreamImage.OpenAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task<System.IO.Stream!>!
+CarKit.Maui.CarSymbolImage
+CarKit.Maui.CarSymbolImage.AndroidIconName.get -> string?
+CarKit.Maui.CarSymbolImage.CarSymbolImage(string? iosSymbolName, string? androidIconName) -> void
+CarKit.Maui.CarSymbolImage.Equals(CarKit.Maui.CarSymbolImage? other) -> bool
+CarKit.Maui.CarSymbolImage.IosSymbolName.get -> string?
+CarKit.Maui.CarTabContext
+CarKit.Maui.CarTabContext.SelectedTab.get -> CarKit.Maui.CarTemplate!
+CarKit.Maui.CarTabInfo
+CarKit.Maui.CarTabInfo.<Clone>$() -> CarKit.Maui.CarTabInfo!
+CarKit.Maui.CarTabInfo.Badge.get -> int?
+CarKit.Maui.CarTabInfo.Badge.init -> void
+CarKit.Maui.CarTabInfo.CarTabInfo(CarKit.Maui.CarText! title, CarKit.Maui.CarImage? image = null) -> void
+CarKit.Maui.CarTabInfo.Equals(CarKit.Maui.CarTabInfo? other) -> bool
+CarKit.Maui.CarTabInfo.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarTabInfo.Image.init -> void
+CarKit.Maui.CarTabInfo.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarTabInfo.Title.init -> void
+CarKit.Maui.CarTabTemplate
+CarKit.Maui.CarTabTemplate.CarTabTemplate(System.Collections.Generic.IEnumerable<CarKit.Maui.CarTemplate!>! tabs) -> void
+CarKit.Maui.CarTabTemplate.Equals(CarKit.Maui.CarTabTemplate? other) -> bool
+CarKit.Maui.CarTabTemplate.OnTabSelected.get -> System.Func<CarKit.Maui.CarTabContext!, System.Threading.Tasks.Task!>?
+CarKit.Maui.CarTabTemplate.OnTabSelected.init -> void
+CarKit.Maui.CarTabTemplate.SelectedTabId.get -> string?
+CarKit.Maui.CarTabTemplate.SelectedTabId.init -> void
+CarKit.Maui.CarTabTemplate.Tabs.get -> CarKit.Maui.CarArray<CarKit.Maui.CarTemplate!>
+CarKit.Maui.CarTabTemplate.Tabs.init -> void
+CarKit.Maui.CarTemplate
+CarKit.Maui.CarTemplate.CarTemplate(CarKit.Maui.CarTemplate! original) -> void
+CarKit.Maui.CarTemplate.Fallback.get -> CarKit.Maui.CarTemplate?
+CarKit.Maui.CarTemplate.Fallback.init -> void
+CarKit.Maui.CarTemplate.LeadingBarButtons.get -> CarKit.Maui.CarArray<CarKit.Maui.CarBarButton!>
+CarKit.Maui.CarTemplate.LeadingBarButtons.init -> void
+CarKit.Maui.CarTemplate.PlatformHooks.get -> CarKit.Maui.CarPlatformHooks!
+CarKit.Maui.CarTemplate.PlatformHooks.init -> void
+CarKit.Maui.CarTemplate.TabInfo.get -> CarKit.Maui.CarTabInfo?
+CarKit.Maui.CarTemplate.TabInfo.init -> void
+CarKit.Maui.CarTemplate.Title.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarTemplate.Title.init -> void
+CarKit.Maui.CarTemplate.TrailingBarButtons.get -> CarKit.Maui.CarArray<CarKit.Maui.CarBarButton!>
+CarKit.Maui.CarTemplate.TrailingBarButtons.init -> void
+CarKit.Maui.CarTemplateEventArgs
+CarKit.Maui.CarTemplateEventArgs.Animated.get -> bool
+CarKit.Maui.CarTemplateEventArgs.CarTemplateEventArgs(CarKit.Maui.CarTemplate! template, bool animated) -> void
+CarKit.Maui.CarTemplateEventArgs.Template.get -> CarKit.Maui.CarTemplate!
+CarKit.Maui.CarTemplateExtensions
+CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.ActionSheet = 10 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Alert = 6 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.AndroidAutoSignIn = 14 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.CarPlayContact = 13 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.CarPlayVideoBrowse = 15 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Grid = 1 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Information = 3 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.List = 0 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.LongMessage = 11 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Map = 9 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Message = 7 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.NowPlaying = 8 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.PointOfInterest = 5 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Search = 4 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.Tab = 2 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateKind.VoiceControl = 12 -> CarKit.Maui.CarTemplateKind
+CarKit.Maui.CarTemplateLimitException
+CarKit.Maui.CarTemplateLimitException.Actual.get -> int
+CarKit.Maui.CarTemplateLimitException.CarTemplateLimitException() -> void
+CarKit.Maui.CarTemplateLimitException.CarTemplateLimitException(string? message) -> void
+CarKit.Maui.CarTemplateLimitException.CarTemplateLimitException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarTemplateLimitException.Limit.get -> CarKit.Maui.CarLimitKind?
+CarKit.Maui.CarTemplateLimitException.Maximum.get -> int
+CarKit.Maui.CarTemplateNotAllowedException
+CarKit.Maui.CarTemplateNotAllowedException.CarTemplateNotAllowedException() -> void
+CarKit.Maui.CarTemplateNotAllowedException.CarTemplateNotAllowedException(string? message) -> void
+CarKit.Maui.CarTemplateNotAllowedException.CarTemplateNotAllowedException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarTemplateNotAllowedException.Categories.get -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarTemplateNotAllowedException.Kind.get -> CarKit.Maui.CarTemplateKind?
+CarKit.Maui.CarTemplateNotSupportedException
+CarKit.Maui.CarTemplateNotSupportedException.CarTemplateNotSupportedException() -> void
+CarKit.Maui.CarTemplateNotSupportedException.CarTemplateNotSupportedException(string? message) -> void
+CarKit.Maui.CarTemplateNotSupportedException.CarTemplateNotSupportedException(string? message, System.Exception? innerException) -> void
+CarKit.Maui.CarTemplateNotSupportedException.Kind.get -> CarKit.Maui.CarTemplateKind?
+CarKit.Maui.CarTemplateNotSupportedException.Platform.get -> CarKit.Maui.CarPlatform?
+CarKit.Maui.CarText
+CarKit.Maui.CarText.<Clone>$() -> CarKit.Maui.CarText!
+CarKit.Maui.CarText.CarText(string! text) -> void
+CarKit.Maui.CarText.CarText(System.Collections.Generic.IEnumerable<string!>! variants) -> void
+CarKit.Maui.CarText.Equals(CarKit.Maui.CarText? other) -> bool
+CarKit.Maui.CarText.Text.get -> string!
+CarKit.Maui.CarText.Variants.get -> CarKit.Maui.CarArray<string!>
+CarKit.Maui.CarTextInputContext
+CarKit.Maui.CarTextInputContext.Text.get -> string!
+CarKit.Maui.CarToggleContext
+CarKit.Maui.CarToggleContext.IsChecked.get -> bool
+CarKit.Maui.CarTrafficSide
+CarKit.Maui.CarTrafficSide.Left = 1 -> CarKit.Maui.CarTrafficSide
+CarKit.Maui.CarTrafficSide.Right = 0 -> CarKit.Maui.CarTrafficSide
+CarKit.Maui.CarTravelEstimates
+CarKit.Maui.CarTravelEstimates.<Clone>$() -> CarKit.Maui.CarTravelEstimates!
+CarKit.Maui.CarTravelEstimates.ArrivalTime.get -> System.DateTimeOffset?
+CarKit.Maui.CarTravelEstimates.ArrivalTime.init -> void
+CarKit.Maui.CarTravelEstimates.CarTravelEstimates(CarKit.Maui.CarDistance distanceRemaining, System.TimeSpan timeRemaining) -> void
+CarKit.Maui.CarTravelEstimates.DistanceRemaining.get -> CarKit.Maui.CarDistance
+CarKit.Maui.CarTravelEstimates.Equals(CarKit.Maui.CarTravelEstimates? other) -> bool
+CarKit.Maui.CarTravelEstimates.TimeRemaining.get -> System.TimeSpan
+CarKit.Maui.CarTravelEstimates.TimeRemainingColor.get -> CarKit.Maui.CarTravelEstimatesColor
+CarKit.Maui.CarTravelEstimates.TimeRemainingColor.init -> void
+CarKit.Maui.CarTravelEstimatesColor
+CarKit.Maui.CarTravelEstimatesColor.Default = 0 -> CarKit.Maui.CarTravelEstimatesColor
+CarKit.Maui.CarTravelEstimatesColor.Green = 1 -> CarKit.Maui.CarTravelEstimatesColor
+CarKit.Maui.CarTravelEstimatesColor.Orange = 2 -> CarKit.Maui.CarTravelEstimatesColor
+CarKit.Maui.CarTravelEstimatesColor.Red = 3 -> CarKit.Maui.CarTravelEstimatesColor
+CarKit.Maui.CarTrip
+CarKit.Maui.CarTrip.CarTrip(CarKit.Maui.CarLocation origin, CarKit.Maui.CarLocation destination, System.Collections.Generic.IEnumerable<CarKit.Maui.CarRouteChoice!>! routes) -> void
+CarKit.Maui.CarTrip.Destination.get -> CarKit.Maui.CarLocation
+CarKit.Maui.CarTrip.DestinationAddress.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarTrip.DestinationAddress.init -> void
+CarKit.Maui.CarTrip.DestinationName.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarTrip.DestinationName.init -> void
+CarKit.Maui.CarTrip.Equals(CarKit.Maui.CarTrip? other) -> bool
+CarKit.Maui.CarTrip.IsDestinationShareable.get -> bool
+CarKit.Maui.CarTrip.IsDestinationShareable.init -> void
+CarKit.Maui.CarTrip.Origin.get -> CarKit.Maui.CarLocation
+CarKit.Maui.CarTrip.Routes.get -> CarKit.Maui.CarArray<CarKit.Maui.CarRouteChoice!>
+CarKit.Maui.CarUriImage
+CarKit.Maui.CarUriImage.CarUriImage(System.Uri! uri) -> void
+CarKit.Maui.CarUriImage.Equals(CarKit.Maui.CarUriImage? other) -> bool
+CarKit.Maui.CarUriImage.Uri.get -> System.Uri!
+CarKit.Maui.CarValidationMode
+CarKit.Maui.CarValidationMode.Off = 2 -> CarKit.Maui.CarValidationMode
+CarKit.Maui.CarValidationMode.Strict = 0 -> CarKit.Maui.CarValidationMode
+CarKit.Maui.CarValidationMode.Warn = 1 -> CarKit.Maui.CarValidationMode
+CarKit.Maui.CarVoiceControlState
+CarKit.Maui.CarVoiceControlState.<Clone>$() -> CarKit.Maui.CarVoiceControlState!
+CarKit.Maui.CarVoiceControlState.Actions.get -> CarKit.Maui.CarArray<CarKit.Maui.CarAction!>
+CarKit.Maui.CarVoiceControlState.Actions.init -> void
+CarKit.Maui.CarVoiceControlState.AnimationDuration.get -> System.TimeSpan
+CarKit.Maui.CarVoiceControlState.AnimationDuration.init -> void
+CarKit.Maui.CarVoiceControlState.AnimationImages.get -> CarKit.Maui.CarArray<CarKit.Maui.CarImage!>
+CarKit.Maui.CarVoiceControlState.AnimationImages.init -> void
+CarKit.Maui.CarVoiceControlState.CarVoiceControlState(string! identifier, CarKit.Maui.CarText! title) -> void
+CarKit.Maui.CarVoiceControlState.Equals(CarKit.Maui.CarVoiceControlState? other) -> bool
+CarKit.Maui.CarVoiceControlState.Identifier.get -> string!
+CarKit.Maui.CarVoiceControlState.Image.get -> CarKit.Maui.CarImage?
+CarKit.Maui.CarVoiceControlState.Image.init -> void
+CarKit.Maui.CarVoiceControlState.Repeats.get -> bool
+CarKit.Maui.CarVoiceControlState.Repeats.init -> void
+CarKit.Maui.CarVoiceControlState.Title.get -> CarKit.Maui.CarText!
+CarKit.Maui.CarVoiceControlState.Title.init -> void
+CarKit.Maui.CarVoiceControlTemplate
+CarKit.Maui.CarVoiceControlTemplate.ActiveStateId.get -> string?
+CarKit.Maui.CarVoiceControlTemplate.ActiveStateId.init -> void
+CarKit.Maui.CarVoiceControlTemplate.CarVoiceControlTemplate(System.Collections.Generic.IEnumerable<CarKit.Maui.CarVoiceControlState!>! states) -> void
+CarKit.Maui.CarVoiceControlTemplate.Equals(CarKit.Maui.CarVoiceControlTemplate? other) -> bool
+CarKit.Maui.CarVoiceControlTemplate.IsOverlay.get -> bool
+CarKit.Maui.CarVoiceControlTemplate.IsOverlay.init -> void
+CarKit.Maui.CarVoiceControlTemplate.States.get -> CarKit.Maui.CarArray<CarKit.Maui.CarVoiceControlState!>
+CarKit.Maui.CarVoiceControlTemplate.States.init -> void
+CarKit.Maui.CarWaypoint
+CarKit.Maui.CarWaypoint.<Clone>$() -> CarKit.Maui.CarWaypoint!
+CarKit.Maui.CarWaypoint.Address.get -> string?
+CarKit.Maui.CarWaypoint.Address.init -> void
+CarKit.Maui.CarWaypoint.CarWaypoint(CarKit.Maui.CarLocation location) -> void
+CarKit.Maui.CarWaypoint.Equals(CarKit.Maui.CarWaypoint? other) -> bool
+CarKit.Maui.CarWaypoint.Location.get -> CarKit.Maui.CarLocation
+CarKit.Maui.CarWaypoint.Name.get -> CarKit.Maui.CarText?
+CarKit.Maui.CarWaypoint.Name.init -> void
+CarKit.Maui.ICarAppHandler
+CarKit.Maui.ICarAppHandler.OnConnectedAsync(CarKit.Maui.ICarSession! session, System.Threading.CancellationToken ct) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarAppHandler.OnDisconnectedAsync(CarKit.Maui.ICarSession! session) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarCapabilities
+CarKit.Maui.ICarCapabilities.CarAppApiLevel.get -> int?
+CarKit.Maui.ICarCapabilities.GetLimit(CarKit.Maui.CarLimitKind kind) -> int?
+CarKit.Maui.ICarCapabilities.IosVersion.get -> System.Version?
+CarKit.Maui.ICarCapabilities.Platform.get -> CarKit.Maui.CarPlatform
+CarKit.Maui.ICarCapabilities.Supports(CarKit.Maui.CarFeature feature) -> bool
+CarKit.Maui.ICarCapabilities.Supports(CarKit.Maui.CarTemplateKind kind) -> bool
+CarKit.Maui.ICarCapabilities.Supports<TTemplate>() -> bool
+CarKit.Maui.ICarDispatcher
+CarKit.Maui.ICarDispatcher.DispatchAsync(System.Func<System.Threading.Tasks.Task!>! work) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarDispatcher.DispatchAsync<T>(System.Func<System.Threading.Tasks.Task<T>!>! work) -> System.Threading.Tasks.Task<T>!
+CarKit.Maui.ICarDispatcher.IsDispatchRequired.get -> bool
+CarKit.Maui.ICarErrorHandler
+CarKit.Maui.ICarErrorHandler.HandleError(System.Exception! exception, CarKit.Maui.CarErrorContext! context) -> void
+CarKit.Maui.ICarNavigationHandler
+CarKit.Maui.ICarNavigationHandler.OnAutoDriveRequestedAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnDestinationRequestedAsync(CarKit.Maui.CarWaypoint! destination) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnManeuverSelectedAsync(CarKit.Maui.CarManeuver! maneuver) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnNavigationAlertSelectedAsync(CarKit.Maui.CarNavigationAlert! alert) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnNavigationEndedByCarAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnNavigationRequestedAsync(CarKit.Maui.CarNavigationRequest! request) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnRouteSourceChangedAsync(CarKit.Maui.CarRouteSource source) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnTripPreviewSelectedAsync(CarKit.Maui.CarTrip! trip, CarKit.Maui.CarRouteChoice! route) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnTripStartRequestedAsync(CarKit.Maui.CarTrip! trip, CarKit.Maui.CarRouteChoice! route) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationHandler.OnWaypointInsertRequestedAsync(CarKit.Maui.CarWaypoint! waypoint, int segmentIndex) -> System.Threading.Tasks.Task<CarKit.Maui.CarTravelEstimates?>!
+CarKit.Maui.ICarNavigationHandler.OnWaypointProposalAnsweredAsync(CarKit.Maui.CarWaypoint! waypoint, bool accepted, int? segmentIndex) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession
+CarKit.Maui.ICarNavigationSession.CancelAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.CurrentSegmentIndex.get -> int
+CarKit.Maui.ICarNavigationSession.FinishAsync() -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.PauseAsync(CarKit.Maui.CarNavigationPauseReason reason) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.PauseAsync(CarKit.Maui.CarNavigationPauseReason reason, CarKit.Maui.CarText? description) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.RerouteAsync(CarKit.Maui.CarRouteChoice! route) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.RerouteAsync(CarKit.Maui.CarRouteChoice! route, CarKit.Maui.CarRerouteReason reason) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.Route.get -> CarKit.Maui.CarRouteChoice?
+CarKit.Maui.ICarNavigationSession.ShowAlertAsync(CarKit.Maui.CarNavigationAlert! alert) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.ShowTripPreviewsAsync(System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarTrip!>! trips, CarKit.Maui.CarTrip? selected) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.StartTripAsync(CarKit.Maui.CarTrip! trip, CarKit.Maui.CarRouteChoice! route) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.State.get -> CarKit.Maui.CarNavigationState
+CarKit.Maui.ICarNavigationSession.StateChanged -> System.EventHandler<CarKit.Maui.CarNavigationState>!
+CarKit.Maui.ICarNavigationSession.Trip.get -> CarKit.Maui.CarTrip?
+CarKit.Maui.ICarNavigationSession.TripPreviews.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarTrip!>!
+CarKit.Maui.ICarNavigationSession.UpcomingManeuvers.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarManeuver!>!
+CarKit.Maui.ICarNavigationSession.UpdateCurrentSegmentAsync(int index) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.UpdateEstimatesAsync(CarKit.Maui.CarTravelEstimates! trip, CarKit.Maui.CarTravelEstimates? maneuver) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarNavigationSession.UpdateManeuversAsync(System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarManeuver!>! upcoming) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession
+CarKit.Maui.ICarSession.Capabilities.get -> CarKit.Maui.ICarCapabilities!
+CarKit.Maui.ICarSession.ContentStyle.get -> CarKit.Maui.CarContentStyle
+CarKit.Maui.ICarSession.ContentStyleChanged -> System.EventHandler<CarKit.Maui.CarContentStyle>!
+CarKit.Maui.ICarSession.Disconnected -> System.EventHandler!
+CarKit.Maui.ICarSession.DismissAsync(bool animated = true) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.GetNative<TNative>() -> TNative?
+CarKit.Maui.ICarSession.IsConnected.get -> bool
+CarKit.Maui.ICarSession.Platform.get -> CarKit.Maui.CarPlatform
+CarKit.Maui.ICarSession.PopAsync(bool animated = true) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.PopToAsync(CarKit.Maui.CarTemplate! template, bool animated = true) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.PopToRootAsync(bool animated = true) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.PresentAsync(CarKit.Maui.CarModalTemplate! modal, bool animated = true) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.Presented.get -> CarKit.Maui.CarTemplate?
+CarKit.Maui.ICarSession.PushAsync(CarKit.Maui.CarTemplate! template, bool animated = true) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.SetRootAsync(CarKit.Maui.CarTemplate! root, bool animated = false) -> System.Threading.Tasks.Task!
+CarKit.Maui.ICarSession.Stack.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.CarTemplate!>!
+CarKit.Maui.ICarSession.TemplateAppeared -> System.EventHandler<CarKit.Maui.CarTemplateEventArgs!>!
+CarKit.Maui.ICarSession.TemplateDisappeared -> System.EventHandler<CarKit.Maui.CarTemplateEventArgs!>!
+CarKit.Maui.ICarSession.UpdateAsync(CarKit.Maui.CarTemplate! updated) -> System.Threading.Tasks.Task!
+CarKit.Maui.UnsupportedTemplateBehavior
+CarKit.Maui.UnsupportedTemplateBehavior.Throw = 1 -> CarKit.Maui.UnsupportedTemplateBehavior
+CarKit.Maui.UnsupportedTemplateBehavior.UseFallbackOrThrow = 0 -> CarKit.Maui.UnsupportedTemplateBehavior
+const CarKit.Maui.CarKitOptions.ValidationSwitchName = "CarKit.Maui.Validation" -> string!
+override abstract CarKit.Maui.CarListTemplateItem.<Clone>$() -> CarKit.Maui.CarListTemplateItem!
+override abstract CarKit.Maui.CarModalTemplate.<Clone>$() -> CarKit.Maui.CarModalTemplate!
+override abstract CarKit.Maui.CarTemplate.<Clone>$() -> CarKit.Maui.CarTemplate!
+override CarKit.Maui.AndroidAutoInputSignIn.<Clone>$() -> CarKit.Maui.AndroidAutoInputSignIn!
+override CarKit.Maui.AndroidAutoInputSignIn.Equals(object? obj) -> bool
+override CarKit.Maui.AndroidAutoInputSignIn.GetHashCode() -> int
+override CarKit.Maui.AndroidAutoInputSignIn.ToString() -> string!
+override CarKit.Maui.AndroidAutoPinSignIn.<Clone>$() -> CarKit.Maui.AndroidAutoPinSignIn!
+override CarKit.Maui.AndroidAutoPinSignIn.Equals(object? obj) -> bool
+override CarKit.Maui.AndroidAutoPinSignIn.GetHashCode() -> int
+override CarKit.Maui.AndroidAutoPinSignIn.ToString() -> string!
+override CarKit.Maui.AndroidAutoProviderSignIn.<Clone>$() -> CarKit.Maui.AndroidAutoProviderSignIn!
+override CarKit.Maui.AndroidAutoProviderSignIn.Equals(object? obj) -> bool
+override CarKit.Maui.AndroidAutoProviderSignIn.GetHashCode() -> int
+override CarKit.Maui.AndroidAutoProviderSignIn.ToString() -> string!
+override CarKit.Maui.AndroidAutoQrCodeSignIn.<Clone>$() -> CarKit.Maui.AndroidAutoQrCodeSignIn!
+override CarKit.Maui.AndroidAutoQrCodeSignIn.Equals(object? obj) -> bool
+override CarKit.Maui.AndroidAutoQrCodeSignIn.GetHashCode() -> int
+override CarKit.Maui.AndroidAutoQrCodeSignIn.ToString() -> string!
+override CarKit.Maui.AndroidAutoSignInMethod.Equals(object? obj) -> bool
+override CarKit.Maui.AndroidAutoSignInMethod.GetHashCode() -> int
+override CarKit.Maui.AndroidAutoSignInMethod.ToString() -> string!
+override CarKit.Maui.AndroidAutoSignInTemplate.<Clone>$() -> CarKit.Maui.AndroidAutoSignInTemplate!
+override CarKit.Maui.AndroidAutoSignInTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.AndroidAutoSignInTemplate.GetHashCode() -> int
+override CarKit.Maui.AndroidAutoSignInTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.AndroidAutoSignInTemplate.ToString() -> string!
+override CarKit.Maui.CarAction.<Clone>$() -> CarKit.Maui.CarAction!
+override CarKit.Maui.CarAction.Equals(object? obj) -> bool
+override CarKit.Maui.CarAction.GetHashCode() -> int
+override CarKit.Maui.CarAction.ToString() -> string!
+override CarKit.Maui.CarActionSheetTemplate.<Clone>$() -> CarKit.Maui.CarActionSheetTemplate!
+override CarKit.Maui.CarActionSheetTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarActionSheetTemplate.GetHashCode() -> int
+override CarKit.Maui.CarActionSheetTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarActionSheetTemplate.ToString() -> string!
+override CarKit.Maui.CarAlertTemplate.<Clone>$() -> CarKit.Maui.CarAlertTemplate!
+override CarKit.Maui.CarAlertTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarAlertTemplate.GetHashCode() -> int
+override CarKit.Maui.CarAlertTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarAlertTemplate.ToString() -> string!
+override CarKit.Maui.CarArray<T>.Equals(object? obj) -> bool
+override CarKit.Maui.CarArray<T>.GetHashCode() -> int
+override CarKit.Maui.CarArray<T>.ToString() -> string!
+override CarKit.Maui.CarBarButton.<Clone>$() -> CarKit.Maui.CarBarButton!
+override CarKit.Maui.CarBarButton.Equals(object? obj) -> bool
+override CarKit.Maui.CarBarButton.GetHashCode() -> int
+override CarKit.Maui.CarBarButton.ToString() -> string!
+override CarKit.Maui.CarBytesImage.<Clone>$() -> CarKit.Maui.CarBytesImage!
+override CarKit.Maui.CarBytesImage.Equals(object? obj) -> bool
+override CarKit.Maui.CarBytesImage.GetHashCode() -> int
+override CarKit.Maui.CarBytesImage.ToString() -> string!
+override CarKit.Maui.CarColor.GetHashCode() -> int
+override CarKit.Maui.CarConversationItem.<Clone>$() -> CarKit.Maui.CarConversationItem!
+override CarKit.Maui.CarConversationItem.Equals(object? obj) -> bool
+override CarKit.Maui.CarConversationItem.GetHashCode() -> int
+override CarKit.Maui.CarConversationItem.ToString() -> string!
+override CarKit.Maui.CarConversationMessage.Equals(object? obj) -> bool
+override CarKit.Maui.CarConversationMessage.GetHashCode() -> int
+override CarKit.Maui.CarConversationMessage.ToString() -> string!
+override CarKit.Maui.CarDistance.GetHashCode() -> int
+override CarKit.Maui.CarElement.Equals(object? obj) -> bool
+override CarKit.Maui.CarElement.GetHashCode() -> int
+override CarKit.Maui.CarElement.ToString() -> string!
+override CarKit.Maui.CarFileImage.<Clone>$() -> CarKit.Maui.CarFileImage!
+override CarKit.Maui.CarFileImage.Equals(object? obj) -> bool
+override CarKit.Maui.CarFileImage.GetHashCode() -> int
+override CarKit.Maui.CarFileImage.ToString() -> string!
+override CarKit.Maui.CarGridItem.<Clone>$() -> CarKit.Maui.CarGridItem!
+override CarKit.Maui.CarGridItem.Equals(object? obj) -> bool
+override CarKit.Maui.CarGridItem.GetHashCode() -> int
+override CarKit.Maui.CarGridItem.ToString() -> string!
+override CarKit.Maui.CarGridTemplate.<Clone>$() -> CarKit.Maui.CarGridTemplate!
+override CarKit.Maui.CarGridTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarGridTemplate.GetHashCode() -> int
+override CarKit.Maui.CarGridTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarGridTemplate.ToString() -> string!
+override CarKit.Maui.CarImage.Equals(object? obj) -> bool
+override CarKit.Maui.CarImage.GetHashCode() -> int
+override CarKit.Maui.CarImage.ToString() -> string!
+override CarKit.Maui.CarInformationItem.Equals(object? obj) -> bool
+override CarKit.Maui.CarInformationItem.GetHashCode() -> int
+override CarKit.Maui.CarInformationItem.ToString() -> string!
+override CarKit.Maui.CarInformationTemplate.<Clone>$() -> CarKit.Maui.CarInformationTemplate!
+override CarKit.Maui.CarInformationTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarInformationTemplate.GetHashCode() -> int
+override CarKit.Maui.CarInformationTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarInformationTemplate.ToString() -> string!
+override CarKit.Maui.CarLane.Equals(object? obj) -> bool
+override CarKit.Maui.CarLane.GetHashCode() -> int
+override CarKit.Maui.CarLane.ToString() -> string!
+override CarKit.Maui.CarLaneDirection.GetHashCode() -> int
+override CarKit.Maui.CarListDetailsHeader.Equals(object? obj) -> bool
+override CarKit.Maui.CarListDetailsHeader.GetHashCode() -> int
+override CarKit.Maui.CarListDetailsHeader.ToString() -> string!
+override CarKit.Maui.CarListImageRowItem.<Clone>$() -> CarKit.Maui.CarListImageRowItem!
+override CarKit.Maui.CarListImageRowItem.Equals(object? obj) -> bool
+override CarKit.Maui.CarListImageRowItem.GetHashCode() -> int
+override CarKit.Maui.CarListImageRowItem.ToString() -> string!
+override CarKit.Maui.CarListItem.<Clone>$() -> CarKit.Maui.CarListItem!
+override CarKit.Maui.CarListItem.Equals(object? obj) -> bool
+override CarKit.Maui.CarListItem.GetHashCode() -> int
+override CarKit.Maui.CarListItem.ToString() -> string!
+override CarKit.Maui.CarListItemToggle.Equals(object? obj) -> bool
+override CarKit.Maui.CarListItemToggle.GetHashCode() -> int
+override CarKit.Maui.CarListItemToggle.ToString() -> string!
+override CarKit.Maui.CarListTemplate.<Clone>$() -> CarKit.Maui.CarListTemplate!
+override CarKit.Maui.CarListTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarListTemplate.GetHashCode() -> int
+override CarKit.Maui.CarListTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarListTemplate.ToString() -> string!
+override CarKit.Maui.CarListTemplateItem.EqualityContract.get -> System.Type!
+override CarKit.Maui.CarListTemplateItem.Equals(object? obj) -> bool
+override CarKit.Maui.CarListTemplateItem.GetHashCode() -> int
+override CarKit.Maui.CarListTemplateItem.PrintMembers(System.Text.StringBuilder! builder) -> bool
+override CarKit.Maui.CarListTemplateItem.ToString() -> string!
+override CarKit.Maui.CarLocation.GetHashCode() -> int
+override CarKit.Maui.CarLongMessageTemplate.<Clone>$() -> CarKit.Maui.CarLongMessageTemplate!
+override CarKit.Maui.CarLongMessageTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarLongMessageTemplate.GetHashCode() -> int
+override CarKit.Maui.CarLongMessageTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarLongMessageTemplate.ToString() -> string!
+override CarKit.Maui.CarManeuver.<Clone>$() -> CarKit.Maui.CarManeuver!
+override CarKit.Maui.CarManeuver.Equals(object? obj) -> bool
+override CarKit.Maui.CarManeuver.GetHashCode() -> int
+override CarKit.Maui.CarManeuver.ToString() -> string!
+override CarKit.Maui.CarMapButton.<Clone>$() -> CarKit.Maui.CarMapButton!
+override CarKit.Maui.CarMapButton.Equals(object? obj) -> bool
+override CarKit.Maui.CarMapButton.GetHashCode() -> int
+override CarKit.Maui.CarMapButton.ToString() -> string!
+override CarKit.Maui.CarMapRegion.GetHashCode() -> int
+override CarKit.Maui.CarMapTemplate.<Clone>$() -> CarKit.Maui.CarMapTemplate!
+override CarKit.Maui.CarMapTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarMapTemplate.GetHashCode() -> int
+override CarKit.Maui.CarMapTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarMapTemplate.ToString() -> string!
+override CarKit.Maui.CarMessageRequest.Equals(object? obj) -> bool
+override CarKit.Maui.CarMessageRequest.GetHashCode() -> int
+override CarKit.Maui.CarMessageRequest.ToString() -> string!
+override CarKit.Maui.CarMessageTemplate.<Clone>$() -> CarKit.Maui.CarMessageTemplate!
+override CarKit.Maui.CarMessageTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarMessageTemplate.GetHashCode() -> int
+override CarKit.Maui.CarMessageTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarMessageTemplate.ToString() -> string!
+override CarKit.Maui.CarModalTemplate.EqualityContract.get -> System.Type!
+override CarKit.Maui.CarModalTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarModalTemplate.GetHashCode() -> int
+override CarKit.Maui.CarModalTemplate.PrintMembers(System.Text.StringBuilder! builder) -> bool
+override CarKit.Maui.CarModalTemplate.ToString() -> string!
+override CarKit.Maui.CarNavigationAlert.<Clone>$() -> CarKit.Maui.CarNavigationAlert!
+override CarKit.Maui.CarNavigationAlert.Equals(object? obj) -> bool
+override CarKit.Maui.CarNavigationAlert.GetHashCode() -> int
+override CarKit.Maui.CarNavigationAlert.ToString() -> string!
+override CarKit.Maui.CarNavigationRequest.Equals(object? obj) -> bool
+override CarKit.Maui.CarNavigationRequest.GetHashCode() -> int
+override CarKit.Maui.CarNavigationRequest.ToString() -> string!
+override CarKit.Maui.CarNowPlayingButton.<Clone>$() -> CarKit.Maui.CarNowPlayingButton!
+override CarKit.Maui.CarNowPlayingButton.Equals(object? obj) -> bool
+override CarKit.Maui.CarNowPlayingButton.GetHashCode() -> int
+override CarKit.Maui.CarNowPlayingButton.ToString() -> string!
+override CarKit.Maui.CarNowPlayingSports.Equals(object? obj) -> bool
+override CarKit.Maui.CarNowPlayingSports.GetHashCode() -> int
+override CarKit.Maui.CarNowPlayingSports.ToString() -> string!
+override CarKit.Maui.CarNowPlayingTemplate.<Clone>$() -> CarKit.Maui.CarNowPlayingTemplate!
+override CarKit.Maui.CarNowPlayingTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarNowPlayingTemplate.GetHashCode() -> int
+override CarKit.Maui.CarNowPlayingTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarNowPlayingTemplate.ToString() -> string!
+override CarKit.Maui.CarPerson.Equals(object? obj) -> bool
+override CarKit.Maui.CarPerson.GetHashCode() -> int
+override CarKit.Maui.CarPerson.ToString() -> string!
+override CarKit.Maui.CarPlatformHooks.Equals(object? obj) -> bool
+override CarKit.Maui.CarPlatformHooks.GetHashCode() -> int
+override CarKit.Maui.CarPlatformHooks.ToString() -> string!
+override CarKit.Maui.CarPlaybackConfiguration.Equals(object? obj) -> bool
+override CarKit.Maui.CarPlaybackConfiguration.GetHashCode() -> int
+override CarKit.Maui.CarPlaybackConfiguration.ToString() -> string!
+override CarKit.Maui.CarPlayContactButton.<Clone>$() -> CarKit.Maui.CarPlayContactButton!
+override CarKit.Maui.CarPlayContactButton.Equals(object? obj) -> bool
+override CarKit.Maui.CarPlayContactButton.GetHashCode() -> int
+override CarKit.Maui.CarPlayContactButton.ToString() -> string!
+override CarKit.Maui.CarPlayContactTemplate.<Clone>$() -> CarKit.Maui.CarPlayContactTemplate!
+override CarKit.Maui.CarPlayContactTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarPlayContactTemplate.GetHashCode() -> int
+override CarKit.Maui.CarPlayContactTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarPlayContactTemplate.ToString() -> string!
+override CarKit.Maui.CarPointOfInterest.<Clone>$() -> CarKit.Maui.CarPointOfInterest!
+override CarKit.Maui.CarPointOfInterest.Equals(object? obj) -> bool
+override CarKit.Maui.CarPointOfInterest.GetHashCode() -> int
+override CarKit.Maui.CarPointOfInterest.ToString() -> string!
+override CarKit.Maui.CarPointOfInterestTemplate.<Clone>$() -> CarKit.Maui.CarPointOfInterestTemplate!
+override CarKit.Maui.CarPointOfInterestTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarPointOfInterestTemplate.GetHashCode() -> int
+override CarKit.Maui.CarPointOfInterestTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarPointOfInterestTemplate.ToString() -> string!
+override CarKit.Maui.CarRouteChoice.<Clone>$() -> CarKit.Maui.CarRouteChoice!
+override CarKit.Maui.CarRouteChoice.Equals(object? obj) -> bool
+override CarKit.Maui.CarRouteChoice.GetHashCode() -> int
+override CarKit.Maui.CarRouteChoice.ToString() -> string!
+override CarKit.Maui.CarRouteSegment.Equals(object? obj) -> bool
+override CarKit.Maui.CarRouteSegment.GetHashCode() -> int
+override CarKit.Maui.CarRouteSegment.ToString() -> string!
+override CarKit.Maui.CarSearchTemplate.<Clone>$() -> CarKit.Maui.CarSearchTemplate!
+override CarKit.Maui.CarSearchTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarSearchTemplate.GetHashCode() -> int
+override CarKit.Maui.CarSearchTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarSearchTemplate.ToString() -> string!
+override CarKit.Maui.CarSection.<Clone>$() -> CarKit.Maui.CarSection!
+override CarKit.Maui.CarSection.Equals(object? obj) -> bool
+override CarKit.Maui.CarSection.GetHashCode() -> int
+override CarKit.Maui.CarSection.ToString() -> string!
+override CarKit.Maui.CarSportsClock.Equals(object? obj) -> bool
+override CarKit.Maui.CarSportsClock.GetHashCode() -> int
+override CarKit.Maui.CarSportsClock.ToString() -> string!
+override CarKit.Maui.CarSportsTeam.Equals(object? obj) -> bool
+override CarKit.Maui.CarSportsTeam.GetHashCode() -> int
+override CarKit.Maui.CarSportsTeam.ToString() -> string!
+override CarKit.Maui.CarStreamImage.<Clone>$() -> CarKit.Maui.CarStreamImage!
+override CarKit.Maui.CarStreamImage.Equals(object? obj) -> bool
+override CarKit.Maui.CarStreamImage.GetHashCode() -> int
+override CarKit.Maui.CarStreamImage.ToString() -> string!
+override CarKit.Maui.CarSymbolImage.<Clone>$() -> CarKit.Maui.CarSymbolImage!
+override CarKit.Maui.CarSymbolImage.Equals(object? obj) -> bool
+override CarKit.Maui.CarSymbolImage.GetHashCode() -> int
+override CarKit.Maui.CarSymbolImage.ToString() -> string!
+override CarKit.Maui.CarTabInfo.Equals(object? obj) -> bool
+override CarKit.Maui.CarTabInfo.GetHashCode() -> int
+override CarKit.Maui.CarTabInfo.ToString() -> string!
+override CarKit.Maui.CarTabTemplate.<Clone>$() -> CarKit.Maui.CarTabTemplate!
+override CarKit.Maui.CarTabTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarTabTemplate.GetHashCode() -> int
+override CarKit.Maui.CarTabTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarTabTemplate.ToString() -> string!
+override CarKit.Maui.CarTemplate.EqualityContract.get -> System.Type!
+override CarKit.Maui.CarTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarTemplate.GetHashCode() -> int
+override CarKit.Maui.CarTemplate.PrintMembers(System.Text.StringBuilder! builder) -> bool
+override CarKit.Maui.CarTemplate.ToString() -> string!
+override CarKit.Maui.CarText.Equals(object? obj) -> bool
+override CarKit.Maui.CarText.GetHashCode() -> int
+override CarKit.Maui.CarText.ToString() -> string!
+override CarKit.Maui.CarTravelEstimates.Equals(object? obj) -> bool
+override CarKit.Maui.CarTravelEstimates.GetHashCode() -> int
+override CarKit.Maui.CarTravelEstimates.ToString() -> string!
+override CarKit.Maui.CarTrip.<Clone>$() -> CarKit.Maui.CarTrip!
+override CarKit.Maui.CarTrip.Equals(object? obj) -> bool
+override CarKit.Maui.CarTrip.GetHashCode() -> int
+override CarKit.Maui.CarTrip.ToString() -> string!
+override CarKit.Maui.CarUriImage.<Clone>$() -> CarKit.Maui.CarUriImage!
+override CarKit.Maui.CarUriImage.Equals(object? obj) -> bool
+override CarKit.Maui.CarUriImage.GetHashCode() -> int
+override CarKit.Maui.CarUriImage.ToString() -> string!
+override CarKit.Maui.CarVoiceControlState.Equals(object? obj) -> bool
+override CarKit.Maui.CarVoiceControlState.GetHashCode() -> int
+override CarKit.Maui.CarVoiceControlState.ToString() -> string!
+override CarKit.Maui.CarVoiceControlTemplate.<Clone>$() -> CarKit.Maui.CarVoiceControlTemplate!
+override CarKit.Maui.CarVoiceControlTemplate.Equals(object? obj) -> bool
+override CarKit.Maui.CarVoiceControlTemplate.GetHashCode() -> int
+override CarKit.Maui.CarVoiceControlTemplate.Kind.get -> CarKit.Maui.CarTemplateKind
+override CarKit.Maui.CarVoiceControlTemplate.ToString() -> string!
+override CarKit.Maui.CarWaypoint.Equals(object? obj) -> bool
+override CarKit.Maui.CarWaypoint.GetHashCode() -> int
+override CarKit.Maui.CarWaypoint.ToString() -> string!
+override sealed CarKit.Maui.AndroidAutoInputSignIn.Equals(CarKit.Maui.AndroidAutoSignInMethod? other) -> bool
+override sealed CarKit.Maui.AndroidAutoPinSignIn.Equals(CarKit.Maui.AndroidAutoSignInMethod? other) -> bool
+override sealed CarKit.Maui.AndroidAutoProviderSignIn.Equals(CarKit.Maui.AndroidAutoSignInMethod? other) -> bool
+override sealed CarKit.Maui.AndroidAutoQrCodeSignIn.Equals(CarKit.Maui.AndroidAutoSignInMethod? other) -> bool
+override sealed CarKit.Maui.AndroidAutoSignInTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarAction.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarActionSheetTemplate.Equals(CarKit.Maui.CarModalTemplate? other) -> bool
+override sealed CarKit.Maui.CarAlertTemplate.Equals(CarKit.Maui.CarModalTemplate? other) -> bool
+override sealed CarKit.Maui.CarBarButton.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarBytesImage.Equals(CarKit.Maui.CarImage? other) -> bool
+override sealed CarKit.Maui.CarConversationItem.Equals(CarKit.Maui.CarListTemplateItem? other) -> bool
+override sealed CarKit.Maui.CarFileImage.Equals(CarKit.Maui.CarImage? other) -> bool
+override sealed CarKit.Maui.CarGridItem.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarGridTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarInformationTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarListImageRowItem.Equals(CarKit.Maui.CarListTemplateItem? other) -> bool
+override sealed CarKit.Maui.CarListItem.Equals(CarKit.Maui.CarListTemplateItem? other) -> bool
+override sealed CarKit.Maui.CarListTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarListTemplateItem.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarLongMessageTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarManeuver.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarMapButton.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarMapTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarMessageTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarModalTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarNavigationAlert.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarNowPlayingButton.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarNowPlayingTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarPlayContactButton.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarPlayContactTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarPointOfInterest.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarPointOfInterestTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarRouteChoice.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarSearchTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarSection.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarStreamImage.Equals(CarKit.Maui.CarImage? other) -> bool
+override sealed CarKit.Maui.CarSymbolImage.Equals(CarKit.Maui.CarImage? other) -> bool
+override sealed CarKit.Maui.CarTabTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+override sealed CarKit.Maui.CarTemplate.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarTrip.Equals(CarKit.Maui.CarElement? other) -> bool
+override sealed CarKit.Maui.CarUriImage.Equals(CarKit.Maui.CarImage? other) -> bool
+override sealed CarKit.Maui.CarVoiceControlTemplate.Equals(CarKit.Maui.CarModalTemplate? other) -> bool
+static CarKit.Maui.AndroidAutoInputSignIn.operator !=(CarKit.Maui.AndroidAutoInputSignIn? left, CarKit.Maui.AndroidAutoInputSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoInputSignIn.operator ==(CarKit.Maui.AndroidAutoInputSignIn? left, CarKit.Maui.AndroidAutoInputSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoPinSignIn.operator !=(CarKit.Maui.AndroidAutoPinSignIn? left, CarKit.Maui.AndroidAutoPinSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoPinSignIn.operator ==(CarKit.Maui.AndroidAutoPinSignIn? left, CarKit.Maui.AndroidAutoPinSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoProviderSignIn.operator !=(CarKit.Maui.AndroidAutoProviderSignIn? left, CarKit.Maui.AndroidAutoProviderSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoProviderSignIn.operator ==(CarKit.Maui.AndroidAutoProviderSignIn? left, CarKit.Maui.AndroidAutoProviderSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoQrCodeSignIn.operator !=(CarKit.Maui.AndroidAutoQrCodeSignIn? left, CarKit.Maui.AndroidAutoQrCodeSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoQrCodeSignIn.operator ==(CarKit.Maui.AndroidAutoQrCodeSignIn? left, CarKit.Maui.AndroidAutoQrCodeSignIn? right) -> bool
+static CarKit.Maui.AndroidAutoSignInMethod.operator !=(CarKit.Maui.AndroidAutoSignInMethod? left, CarKit.Maui.AndroidAutoSignInMethod? right) -> bool
+static CarKit.Maui.AndroidAutoSignInMethod.operator ==(CarKit.Maui.AndroidAutoSignInMethod? left, CarKit.Maui.AndroidAutoSignInMethod? right) -> bool
+static CarKit.Maui.AndroidAutoSignInTemplate.operator !=(CarKit.Maui.AndroidAutoSignInTemplate? left, CarKit.Maui.AndroidAutoSignInTemplate? right) -> bool
+static CarKit.Maui.AndroidAutoSignInTemplate.operator ==(CarKit.Maui.AndroidAutoSignInTemplate? left, CarKit.Maui.AndroidAutoSignInTemplate? right) -> bool
+static CarKit.Maui.CarAction.operator !=(CarKit.Maui.CarAction? left, CarKit.Maui.CarAction? right) -> bool
+static CarKit.Maui.CarAction.operator ==(CarKit.Maui.CarAction? left, CarKit.Maui.CarAction? right) -> bool
+static CarKit.Maui.CarActionSheetTemplate.operator !=(CarKit.Maui.CarActionSheetTemplate? left, CarKit.Maui.CarActionSheetTemplate? right) -> bool
+static CarKit.Maui.CarActionSheetTemplate.operator ==(CarKit.Maui.CarActionSheetTemplate? left, CarKit.Maui.CarActionSheetTemplate? right) -> bool
+static CarKit.Maui.CarAlertTemplate.operator !=(CarKit.Maui.CarAlertTemplate? left, CarKit.Maui.CarAlertTemplate? right) -> bool
+static CarKit.Maui.CarAlertTemplate.operator ==(CarKit.Maui.CarAlertTemplate? left, CarKit.Maui.CarAlertTemplate? right) -> bool
+static CarKit.Maui.CarArray.Create<T>(System.ReadOnlySpan<T> items) -> CarKit.Maui.CarArray<T>
+static CarKit.Maui.CarArray.ToCarArray<T>(this System.Collections.Generic.IEnumerable<T>! source) -> CarKit.Maui.CarArray<T>
+static CarKit.Maui.CarArray<T>.implicit operator CarKit.Maui.CarArray<T>(System.Collections.Immutable.ImmutableArray<T> items) -> CarKit.Maui.CarArray<T>
+static CarKit.Maui.CarArray<T>.implicit operator System.Collections.Immutable.ImmutableArray<T>(CarKit.Maui.CarArray<T> array) -> System.Collections.Immutable.ImmutableArray<T>
+static CarKit.Maui.CarArray<T>.operator !=(CarKit.Maui.CarArray<T> left, CarKit.Maui.CarArray<T> right) -> bool
+static CarKit.Maui.CarArray<T>.operator ==(CarKit.Maui.CarArray<T> left, CarKit.Maui.CarArray<T> right) -> bool
+static CarKit.Maui.CarBarButton.operator !=(CarKit.Maui.CarBarButton? left, CarKit.Maui.CarBarButton? right) -> bool
+static CarKit.Maui.CarBarButton.operator ==(CarKit.Maui.CarBarButton? left, CarKit.Maui.CarBarButton? right) -> bool
+static CarKit.Maui.CarBytesImage.operator !=(CarKit.Maui.CarBytesImage? left, CarKit.Maui.CarBytesImage? right) -> bool
+static CarKit.Maui.CarBytesImage.operator ==(CarKit.Maui.CarBytesImage? left, CarKit.Maui.CarBytesImage? right) -> bool
+static CarKit.Maui.CarColor.operator !=(CarKit.Maui.CarColor left, CarKit.Maui.CarColor right) -> bool
+static CarKit.Maui.CarColor.operator ==(CarKit.Maui.CarColor left, CarKit.Maui.CarColor right) -> bool
+static CarKit.Maui.CarConversationItem.operator !=(CarKit.Maui.CarConversationItem? left, CarKit.Maui.CarConversationItem? right) -> bool
+static CarKit.Maui.CarConversationItem.operator ==(CarKit.Maui.CarConversationItem? left, CarKit.Maui.CarConversationItem? right) -> bool
+static CarKit.Maui.CarConversationMessage.operator !=(CarKit.Maui.CarConversationMessage? left, CarKit.Maui.CarConversationMessage? right) -> bool
+static CarKit.Maui.CarConversationMessage.operator ==(CarKit.Maui.CarConversationMessage? left, CarKit.Maui.CarConversationMessage? right) -> bool
+static CarKit.Maui.CarConversationStore.ForAppGroupContainer(string! containerPath) -> CarKit.Maui.CarConversationStore!
+static CarKit.Maui.CarConversationStore.GetRequestsNotificationName(string! appGroup) -> string!
+static CarKit.Maui.CarDistance.operator !=(CarKit.Maui.CarDistance left, CarKit.Maui.CarDistance right) -> bool
+static CarKit.Maui.CarDistance.operator ==(CarKit.Maui.CarDistance left, CarKit.Maui.CarDistance right) -> bool
+static CarKit.Maui.CarElement.operator !=(CarKit.Maui.CarElement? left, CarKit.Maui.CarElement? right) -> bool
+static CarKit.Maui.CarElement.operator ==(CarKit.Maui.CarElement? left, CarKit.Maui.CarElement? right) -> bool
+static CarKit.Maui.CarFileImage.operator !=(CarKit.Maui.CarFileImage? left, CarKit.Maui.CarFileImage? right) -> bool
+static CarKit.Maui.CarFileImage.operator ==(CarKit.Maui.CarFileImage? left, CarKit.Maui.CarFileImage? right) -> bool
+static CarKit.Maui.CarGridItem.operator !=(CarKit.Maui.CarGridItem? left, CarKit.Maui.CarGridItem? right) -> bool
+static CarKit.Maui.CarGridItem.operator ==(CarKit.Maui.CarGridItem? left, CarKit.Maui.CarGridItem? right) -> bool
+static CarKit.Maui.CarGridTemplate.operator !=(CarKit.Maui.CarGridTemplate? left, CarKit.Maui.CarGridTemplate? right) -> bool
+static CarKit.Maui.CarGridTemplate.operator ==(CarKit.Maui.CarGridTemplate? left, CarKit.Maui.CarGridTemplate? right) -> bool
+static CarKit.Maui.CarImage.FromBytes(System.ReadOnlySpan<byte> data) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarImage.FromFile(string! path) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarImage.FromStream(System.Func<System.Threading.CancellationToken, System.Threading.Tasks.Task<System.IO.Stream!>!>! open) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarImage.FromSystemSymbol(string? iosSymbolName, string? androidIconName) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarImage.FromUri(System.Uri! uri) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarImage.operator !=(CarKit.Maui.CarImage? left, CarKit.Maui.CarImage? right) -> bool
+static CarKit.Maui.CarImage.operator ==(CarKit.Maui.CarImage? left, CarKit.Maui.CarImage? right) -> bool
+static CarKit.Maui.CarInformationItem.operator !=(CarKit.Maui.CarInformationItem? left, CarKit.Maui.CarInformationItem? right) -> bool
+static CarKit.Maui.CarInformationItem.operator ==(CarKit.Maui.CarInformationItem? left, CarKit.Maui.CarInformationItem? right) -> bool
+static CarKit.Maui.CarInformationTemplate.operator !=(CarKit.Maui.CarInformationTemplate? left, CarKit.Maui.CarInformationTemplate? right) -> bool
+static CarKit.Maui.CarInformationTemplate.operator ==(CarKit.Maui.CarInformationTemplate? left, CarKit.Maui.CarInformationTemplate? right) -> bool
+static CarKit.Maui.CarLane.operator !=(CarKit.Maui.CarLane? left, CarKit.Maui.CarLane? right) -> bool
+static CarKit.Maui.CarLane.operator ==(CarKit.Maui.CarLane? left, CarKit.Maui.CarLane? right) -> bool
+static CarKit.Maui.CarLaneDirection.operator !=(CarKit.Maui.CarLaneDirection left, CarKit.Maui.CarLaneDirection right) -> bool
+static CarKit.Maui.CarLaneDirection.operator ==(CarKit.Maui.CarLaneDirection left, CarKit.Maui.CarLaneDirection right) -> bool
+static CarKit.Maui.CarListDetailsHeader.operator !=(CarKit.Maui.CarListDetailsHeader? left, CarKit.Maui.CarListDetailsHeader? right) -> bool
+static CarKit.Maui.CarListDetailsHeader.operator ==(CarKit.Maui.CarListDetailsHeader? left, CarKit.Maui.CarListDetailsHeader? right) -> bool
+static CarKit.Maui.CarListImageRowItem.operator !=(CarKit.Maui.CarListImageRowItem? left, CarKit.Maui.CarListImageRowItem? right) -> bool
+static CarKit.Maui.CarListImageRowItem.operator ==(CarKit.Maui.CarListImageRowItem? left, CarKit.Maui.CarListImageRowItem? right) -> bool
+static CarKit.Maui.CarListItem.operator !=(CarKit.Maui.CarListItem? left, CarKit.Maui.CarListItem? right) -> bool
+static CarKit.Maui.CarListItem.operator ==(CarKit.Maui.CarListItem? left, CarKit.Maui.CarListItem? right) -> bool
+static CarKit.Maui.CarListItemToggle.operator !=(CarKit.Maui.CarListItemToggle? left, CarKit.Maui.CarListItemToggle? right) -> bool
+static CarKit.Maui.CarListItemToggle.operator ==(CarKit.Maui.CarListItemToggle? left, CarKit.Maui.CarListItemToggle? right) -> bool
+static CarKit.Maui.CarListTemplate.operator !=(CarKit.Maui.CarListTemplate? left, CarKit.Maui.CarListTemplate? right) -> bool
+static CarKit.Maui.CarListTemplate.operator ==(CarKit.Maui.CarListTemplate? left, CarKit.Maui.CarListTemplate? right) -> bool
+static CarKit.Maui.CarListTemplateItem.operator !=(CarKit.Maui.CarListTemplateItem? left, CarKit.Maui.CarListTemplateItem? right) -> bool
+static CarKit.Maui.CarListTemplateItem.operator ==(CarKit.Maui.CarListTemplateItem? left, CarKit.Maui.CarListTemplateItem? right) -> bool
+static CarKit.Maui.CarLocation.operator !=(CarKit.Maui.CarLocation left, CarKit.Maui.CarLocation right) -> bool
+static CarKit.Maui.CarLocation.operator ==(CarKit.Maui.CarLocation left, CarKit.Maui.CarLocation right) -> bool
+static CarKit.Maui.CarLongMessageTemplate.operator !=(CarKit.Maui.CarLongMessageTemplate? left, CarKit.Maui.CarLongMessageTemplate? right) -> bool
+static CarKit.Maui.CarLongMessageTemplate.operator ==(CarKit.Maui.CarLongMessageTemplate? left, CarKit.Maui.CarLongMessageTemplate? right) -> bool
+static CarKit.Maui.CarManeuver.operator !=(CarKit.Maui.CarManeuver? left, CarKit.Maui.CarManeuver? right) -> bool
+static CarKit.Maui.CarManeuver.operator ==(CarKit.Maui.CarManeuver? left, CarKit.Maui.CarManeuver? right) -> bool
+static CarKit.Maui.CarMapButton.operator !=(CarKit.Maui.CarMapButton? left, CarKit.Maui.CarMapButton? right) -> bool
+static CarKit.Maui.CarMapButton.operator ==(CarKit.Maui.CarMapButton? left, CarKit.Maui.CarMapButton? right) -> bool
+static CarKit.Maui.CarMapRegion.operator !=(CarKit.Maui.CarMapRegion left, CarKit.Maui.CarMapRegion right) -> bool
+static CarKit.Maui.CarMapRegion.operator ==(CarKit.Maui.CarMapRegion left, CarKit.Maui.CarMapRegion right) -> bool
+static CarKit.Maui.CarMapTemplate.operator !=(CarKit.Maui.CarMapTemplate? left, CarKit.Maui.CarMapTemplate? right) -> bool
+static CarKit.Maui.CarMapTemplate.operator ==(CarKit.Maui.CarMapTemplate? left, CarKit.Maui.CarMapTemplate? right) -> bool
+static CarKit.Maui.CarMessageRequest.operator !=(CarKit.Maui.CarMessageRequest? left, CarKit.Maui.CarMessageRequest? right) -> bool
+static CarKit.Maui.CarMessageRequest.operator ==(CarKit.Maui.CarMessageRequest? left, CarKit.Maui.CarMessageRequest? right) -> bool
+static CarKit.Maui.CarMessageTemplate.operator !=(CarKit.Maui.CarMessageTemplate? left, CarKit.Maui.CarMessageTemplate? right) -> bool
+static CarKit.Maui.CarMessageTemplate.operator ==(CarKit.Maui.CarMessageTemplate? left, CarKit.Maui.CarMessageTemplate? right) -> bool
+static CarKit.Maui.CarModalTemplate.operator !=(CarKit.Maui.CarModalTemplate? left, CarKit.Maui.CarModalTemplate? right) -> bool
+static CarKit.Maui.CarModalTemplate.operator ==(CarKit.Maui.CarModalTemplate? left, CarKit.Maui.CarModalTemplate? right) -> bool
+static CarKit.Maui.CarNavigationAlert.operator !=(CarKit.Maui.CarNavigationAlert? left, CarKit.Maui.CarNavigationAlert? right) -> bool
+static CarKit.Maui.CarNavigationAlert.operator ==(CarKit.Maui.CarNavigationAlert? left, CarKit.Maui.CarNavigationAlert? right) -> bool
+static CarKit.Maui.CarNavigationRequest.operator !=(CarKit.Maui.CarNavigationRequest? left, CarKit.Maui.CarNavigationRequest? right) -> bool
+static CarKit.Maui.CarNavigationRequest.operator ==(CarKit.Maui.CarNavigationRequest? left, CarKit.Maui.CarNavigationRequest? right) -> bool
+static CarKit.Maui.CarNowPlayingButton.operator !=(CarKit.Maui.CarNowPlayingButton? left, CarKit.Maui.CarNowPlayingButton? right) -> bool
+static CarKit.Maui.CarNowPlayingButton.operator ==(CarKit.Maui.CarNowPlayingButton? left, CarKit.Maui.CarNowPlayingButton? right) -> bool
+static CarKit.Maui.CarNowPlayingSports.operator !=(CarKit.Maui.CarNowPlayingSports? left, CarKit.Maui.CarNowPlayingSports? right) -> bool
+static CarKit.Maui.CarNowPlayingSports.operator ==(CarKit.Maui.CarNowPlayingSports? left, CarKit.Maui.CarNowPlayingSports? right) -> bool
+static CarKit.Maui.CarNowPlayingTemplate.operator !=(CarKit.Maui.CarNowPlayingTemplate? left, CarKit.Maui.CarNowPlayingTemplate? right) -> bool
+static CarKit.Maui.CarNowPlayingTemplate.operator ==(CarKit.Maui.CarNowPlayingTemplate? left, CarKit.Maui.CarNowPlayingTemplate? right) -> bool
+static CarKit.Maui.CarPerson.operator !=(CarKit.Maui.CarPerson? left, CarKit.Maui.CarPerson? right) -> bool
+static CarKit.Maui.CarPerson.operator ==(CarKit.Maui.CarPerson? left, CarKit.Maui.CarPerson? right) -> bool
+static CarKit.Maui.CarPlatformHooks.None.get -> CarKit.Maui.CarPlatformHooks!
+static CarKit.Maui.CarPlatformHooks.operator !=(CarKit.Maui.CarPlatformHooks? left, CarKit.Maui.CarPlatformHooks? right) -> bool
+static CarKit.Maui.CarPlatformHooks.operator ==(CarKit.Maui.CarPlatformHooks? left, CarKit.Maui.CarPlatformHooks? right) -> bool
+static CarKit.Maui.CarPlaybackConfiguration.operator !=(CarKit.Maui.CarPlaybackConfiguration? left, CarKit.Maui.CarPlaybackConfiguration? right) -> bool
+static CarKit.Maui.CarPlaybackConfiguration.operator ==(CarKit.Maui.CarPlaybackConfiguration? left, CarKit.Maui.CarPlaybackConfiguration? right) -> bool
+static CarKit.Maui.CarPlayContactButton.operator !=(CarKit.Maui.CarPlayContactButton? left, CarKit.Maui.CarPlayContactButton? right) -> bool
+static CarKit.Maui.CarPlayContactButton.operator ==(CarKit.Maui.CarPlayContactButton? left, CarKit.Maui.CarPlayContactButton? right) -> bool
+static CarKit.Maui.CarPlayContactTemplate.operator !=(CarKit.Maui.CarPlayContactTemplate? left, CarKit.Maui.CarPlayContactTemplate? right) -> bool
+static CarKit.Maui.CarPlayContactTemplate.operator ==(CarKit.Maui.CarPlayContactTemplate? left, CarKit.Maui.CarPlayContactTemplate? right) -> bool
+static CarKit.Maui.CarPointOfInterest.operator !=(CarKit.Maui.CarPointOfInterest? left, CarKit.Maui.CarPointOfInterest? right) -> bool
+static CarKit.Maui.CarPointOfInterest.operator ==(CarKit.Maui.CarPointOfInterest? left, CarKit.Maui.CarPointOfInterest? right) -> bool
+static CarKit.Maui.CarPointOfInterestTemplate.operator !=(CarKit.Maui.CarPointOfInterestTemplate? left, CarKit.Maui.CarPointOfInterestTemplate? right) -> bool
+static CarKit.Maui.CarPointOfInterestTemplate.operator ==(CarKit.Maui.CarPointOfInterestTemplate? left, CarKit.Maui.CarPointOfInterestTemplate? right) -> bool
+static CarKit.Maui.CarRouteChoice.operator !=(CarKit.Maui.CarRouteChoice? left, CarKit.Maui.CarRouteChoice? right) -> bool
+static CarKit.Maui.CarRouteChoice.operator ==(CarKit.Maui.CarRouteChoice? left, CarKit.Maui.CarRouteChoice? right) -> bool
+static CarKit.Maui.CarRouteSegment.operator !=(CarKit.Maui.CarRouteSegment? left, CarKit.Maui.CarRouteSegment? right) -> bool
+static CarKit.Maui.CarRouteSegment.operator ==(CarKit.Maui.CarRouteSegment? left, CarKit.Maui.CarRouteSegment? right) -> bool
+static CarKit.Maui.CarSearchTemplate.operator !=(CarKit.Maui.CarSearchTemplate? left, CarKit.Maui.CarSearchTemplate? right) -> bool
+static CarKit.Maui.CarSearchTemplate.operator ==(CarKit.Maui.CarSearchTemplate? left, CarKit.Maui.CarSearchTemplate? right) -> bool
+static CarKit.Maui.CarSection.operator !=(CarKit.Maui.CarSection? left, CarKit.Maui.CarSection? right) -> bool
+static CarKit.Maui.CarSection.operator ==(CarKit.Maui.CarSection? left, CarKit.Maui.CarSection? right) -> bool
+static CarKit.Maui.CarSportsClock.operator !=(CarKit.Maui.CarSportsClock? left, CarKit.Maui.CarSportsClock? right) -> bool
+static CarKit.Maui.CarSportsClock.operator ==(CarKit.Maui.CarSportsClock? left, CarKit.Maui.CarSportsClock? right) -> bool
+static CarKit.Maui.CarSportsTeam.operator !=(CarKit.Maui.CarSportsTeam? left, CarKit.Maui.CarSportsTeam? right) -> bool
+static CarKit.Maui.CarSportsTeam.operator ==(CarKit.Maui.CarSportsTeam? left, CarKit.Maui.CarSportsTeam? right) -> bool
+static CarKit.Maui.CarStreamImage.operator !=(CarKit.Maui.CarStreamImage? left, CarKit.Maui.CarStreamImage? right) -> bool
+static CarKit.Maui.CarStreamImage.operator ==(CarKit.Maui.CarStreamImage? left, CarKit.Maui.CarStreamImage? right) -> bool
+static CarKit.Maui.CarSymbolImage.operator !=(CarKit.Maui.CarSymbolImage? left, CarKit.Maui.CarSymbolImage? right) -> bool
+static CarKit.Maui.CarSymbolImage.operator ==(CarKit.Maui.CarSymbolImage? left, CarKit.Maui.CarSymbolImage? right) -> bool
+static CarKit.Maui.CarTabInfo.operator !=(CarKit.Maui.CarTabInfo? left, CarKit.Maui.CarTabInfo? right) -> bool
+static CarKit.Maui.CarTabInfo.operator ==(CarKit.Maui.CarTabInfo? left, CarKit.Maui.CarTabInfo? right) -> bool
+static CarKit.Maui.CarTabTemplate.operator !=(CarKit.Maui.CarTabTemplate? left, CarKit.Maui.CarTabTemplate? right) -> bool
+static CarKit.Maui.CarTabTemplate.operator ==(CarKit.Maui.CarTabTemplate? left, CarKit.Maui.CarTabTemplate? right) -> bool
+static CarKit.Maui.CarTemplate.operator !=(CarKit.Maui.CarTemplate? left, CarKit.Maui.CarTemplate? right) -> bool
+static CarKit.Maui.CarTemplate.operator ==(CarKit.Maui.CarTemplate? left, CarKit.Maui.CarTemplate? right) -> bool
+static CarKit.Maui.CarTemplateExtensions.WithFallback<TTemplate>(this TTemplate! template, CarKit.Maui.CarTemplate! fallback) -> TTemplate!
+static CarKit.Maui.CarText.FromString(string! text) -> CarKit.Maui.CarText!
+static CarKit.Maui.CarText.implicit operator CarKit.Maui.CarText!(string! text) -> CarKit.Maui.CarText!
+static CarKit.Maui.CarText.operator !=(CarKit.Maui.CarText? left, CarKit.Maui.CarText? right) -> bool
+static CarKit.Maui.CarText.operator ==(CarKit.Maui.CarText? left, CarKit.Maui.CarText? right) -> bool
+static CarKit.Maui.CarTravelEstimates.operator !=(CarKit.Maui.CarTravelEstimates? left, CarKit.Maui.CarTravelEstimates? right) -> bool
+static CarKit.Maui.CarTravelEstimates.operator ==(CarKit.Maui.CarTravelEstimates? left, CarKit.Maui.CarTravelEstimates? right) -> bool
+static CarKit.Maui.CarTrip.operator !=(CarKit.Maui.CarTrip? left, CarKit.Maui.CarTrip? right) -> bool
+static CarKit.Maui.CarTrip.operator ==(CarKit.Maui.CarTrip? left, CarKit.Maui.CarTrip? right) -> bool
+static CarKit.Maui.CarUriImage.operator !=(CarKit.Maui.CarUriImage? left, CarKit.Maui.CarUriImage? right) -> bool
+static CarKit.Maui.CarUriImage.operator ==(CarKit.Maui.CarUriImage? left, CarKit.Maui.CarUriImage? right) -> bool
+static CarKit.Maui.CarVoiceControlState.operator !=(CarKit.Maui.CarVoiceControlState? left, CarKit.Maui.CarVoiceControlState? right) -> bool
+static CarKit.Maui.CarVoiceControlState.operator ==(CarKit.Maui.CarVoiceControlState? left, CarKit.Maui.CarVoiceControlState? right) -> bool
+static CarKit.Maui.CarVoiceControlTemplate.operator !=(CarKit.Maui.CarVoiceControlTemplate? left, CarKit.Maui.CarVoiceControlTemplate? right) -> bool
+static CarKit.Maui.CarVoiceControlTemplate.operator ==(CarKit.Maui.CarVoiceControlTemplate? left, CarKit.Maui.CarVoiceControlTemplate? right) -> bool
+static CarKit.Maui.CarWaypoint.operator !=(CarKit.Maui.CarWaypoint? left, CarKit.Maui.CarWaypoint? right) -> bool
+static CarKit.Maui.CarWaypoint.operator ==(CarKit.Maui.CarWaypoint? left, CarKit.Maui.CarWaypoint? right) -> bool
+virtual CarKit.Maui.AndroidAutoSignInMethod.EqualityContract.get -> System.Type!
+virtual CarKit.Maui.AndroidAutoSignInMethod.Equals(CarKit.Maui.AndroidAutoSignInMethod? other) -> bool
+virtual CarKit.Maui.AndroidAutoSignInMethod.PrintMembers(System.Text.StringBuilder! builder) -> bool
+virtual CarKit.Maui.CarElement.EqualityContract.get -> System.Type!
+virtual CarKit.Maui.CarElement.Equals(CarKit.Maui.CarElement? other) -> bool
+virtual CarKit.Maui.CarElement.PrintMembers(System.Text.StringBuilder! builder) -> bool
+virtual CarKit.Maui.CarImage.EqualityContract.get -> System.Type!
+virtual CarKit.Maui.CarImage.Equals(CarKit.Maui.CarImage? other) -> bool
+virtual CarKit.Maui.CarImage.PrintMembers(System.Text.StringBuilder! builder) -> bool
+virtual CarKit.Maui.CarListTemplateItem.Equals(CarKit.Maui.CarListTemplateItem? other) -> bool
+virtual CarKit.Maui.CarModalTemplate.Equals(CarKit.Maui.CarModalTemplate? other) -> bool
+virtual CarKit.Maui.CarTemplate.Equals(CarKit.Maui.CarTemplate? other) -> bool
+~override CarKit.Maui.CarColor.Equals(object obj) -> bool
+~override CarKit.Maui.CarColor.ToString() -> string
+~override CarKit.Maui.CarDistance.Equals(object obj) -> bool
+~override CarKit.Maui.CarDistance.ToString() -> string
+~override CarKit.Maui.CarLaneDirection.Equals(object obj) -> bool
+~override CarKit.Maui.CarLaneDirection.ToString() -> string
+~override CarKit.Maui.CarLocation.Equals(object obj) -> bool
+~override CarKit.Maui.CarLocation.ToString() -> string
+~override CarKit.Maui.CarMapRegion.Equals(object obj) -> bool
+~override CarKit.Maui.CarMapRegion.ToString() -> string

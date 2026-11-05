@@ -1,0 +1,91 @@
+{
+  "source": "Matrix from the CarPlay Developer Guide in the CarKit.Maui specification (2026-10-29). Verify against the latest release before Stage 2. maxActions and defaultLimits are default values to be verified in Stage 3; at runtime the platform limits override them. items: list row kinds (Conversation = CPMessageListItem, iOS 14) and the categories in which they are allowed (Stage 6). Stage 7: the Parking/EvCharging/Fueling, QuickFoodOrdering and DrivingTask category rows are pinned by the spec matrix test; VoiceConversational (iOS 26.4) and PublicSafety/Video are still verified=false (the guide PDF is unreachable), the depth of 3 for conversational categories is confirmed by the guide overview from 2026-02-09; PointsOfInterest 12 without a runtime API. Stage 9: features = platform features with a minimum version (CarFeature; gate with the host asset), VoiceControl maxActions = state action buttons (CPVoiceControlState, iOS 26.4, up to two — WWDC26). Stage 10: category alertActions = CPAlertTemplate.maximumActionCount with the category entitlement (iOS 26.0 probe: audio 1, others 3), the default when there is no runtime limit.",
+  "templates": {
+    "List": { "minVersion": "12.0" },
+    "Grid": { "minVersion": "12.0" },
+    "Tab": { "minVersion": "14.0" },
+    "Information": { "minVersion": "14.0", "maxActions": 3 },
+    "Search": { "minVersion": "12.0" },
+    "PointOfInterest": { "minVersion": "14.0" },
+    "Alert": { "minVersion": "12.0", "maxActions": 2 },
+    "Message": { "minVersion": "14.0", "maxActions": 2 },
+    "NowPlaying": { "minVersion": "14.0" },
+    "Map": { "minVersion": "12.0" },
+    "ActionSheet": { "minVersion": "12.0" },
+    "VoiceControl": { "minVersion": "12.0", "maxActions": 2 },
+    "CarPlayContact": { "minVersion": "14.0" },
+    "CarPlayVideoBrowse": { "minVersion": "27.0" }
+  },
+  "categories": {
+    "Audio": {
+      "maxDepth": 5, "alertActions": 1,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "NowPlaying": {}, "Alert": {}, "ActionSheet": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "Communication": {
+      "maxDepth": 5,
+      "items": [ "Conversation" ],
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "CarPlayContact": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "Navigation": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "Search": {}, "Map": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": {} }
+    },
+    "Parking": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "PointOfInterest": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "EvCharging": {
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "PointOfInterest": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "Fueling": {
+      "maxDepth": 3,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "PointOfInterest": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "QuickFoodOrdering": {
+      "maxDepth": 3,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "PointOfInterest": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "DrivingTask": {
+      "maxDepth": 3,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "PointOfInterest": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    },
+    "VoiceConversational": {
+      "verified": false,
+      "maxDepth": 3,
+      "templates": { "VoiceControl": { "minVersion": "26.4" }, "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "Alert": {}, "ActionSheet": {}, "Message": {} }
+    },
+    "Video": {
+      "verified": false,
+      "maxDepth": 5,
+      "templates": { "CarPlayVideoBrowse": {}, "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": {} }
+    },
+    "PublicSafety": {
+      "verified": false,
+      "maxDepth": 5,
+      "templates": { "List": {}, "Grid": {}, "Tab": {}, "Information": {}, "PointOfInterest": {}, "Alert": {}, "ActionSheet": {}, "Message": {}, "VoiceControl": { "minVersion": "27.0" } }
+    }
+  },
+  "items": { "Conversation": { "minVersion": "14.0" } },
+  "features": {
+    "VoiceControlActionButtons": { "minVersion": "26.4" },
+    "ListDetailsHeader": { "minVersion": "26.4" },
+    "PlaybackConfiguration": { "minVersion": "26.4" },
+    "NowPlayingSportsMode": { "minVersion": "18.4" },
+    "RouteSharing": { "minVersion": "26.4" },
+    "VideoPlayback": { "minVersion": "26.4" },
+    "NowPlayingMiniPlayerOptOut": { "minVersion": "27.0" },
+    "VoiceControlOverlay": { "minVersion": "27.0" }
+  },
+  "tabChildren": [ "List", "Grid", "Information", "PointOfInterest" ],
+  "rootOnly": [ "Tab" ],
+  "defaultLimits": {
+    "ListItems": 12,
+    "ListSections": 5,
+    "GridItems": 8,
+    "PointsOfInterest": 12,
+    "InformationItems": 10,
+    "Tabs": 5,
+    "MapButtons": 4
+  }
+}

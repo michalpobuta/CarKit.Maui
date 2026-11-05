@@ -1,0 +1,33 @@
+<Project>
+  <!--
+    Stage 10: version and release mode (spec: "Documentation and release decisions (Stage 10)", Version; imported by
+    Directory.Build.props). Locally and in regular CI the version is $(VersionPrefix)-dev. Release mode: -p:CarKitRelease=true or a
+    v* tag in GitHub Actions (GITHUB_REF_TYPE=tag, GITHUB_REF_NAME): no suffix, and a tag with a suffix (v0.1.0-beta.1) yields that
+    suffix. CarKit.Release.targets (CARKITREL003) and the release gate (eng/ReleaseGate) check that the tag prefix matches
+    VersionPrefix.
+  -->
+  <PropertyGroup>
+    <CarKitReleaseTag Condition="'$(CarKitReleaseTag)' == '' and '$(GITHUB_REF_TYPE)' == 'tag' and $([System.String]::Copy('$(GITHUB_REF_NAME)').StartsWith('v'))">$(GITHUB_REF_NAME)</CarKitReleaseTag>
+    <CarKitRelease Condition="'$(CarKitRelease)' == '' and '$(CarKitReleaseTag)' != ''">true</CarKitRelease>
+    <_CarKitTagVersion Condition="'$(CarKitReleaseTag)' != ''">$(CarKitReleaseTag.TrimStart('v'))</_CarKitTagVersion>
+    <_CarKitTagSuffix Condition="$(_CarKitTagVersion.Contains('-'))">$(_CarKitTagVersion.Substring($([MSBuild]::Add($(_CarKitTagVersion.IndexOf('-')), 1))))</_CarKitTagSuffix>
+    <VersionSuffix Condition="'$(CarKitRelease)' == 'true'">$(_CarKitTagSuffix)</VersionSuffix>
+    <VersionSuffix Condition="'$(CarKitRelease)' != 'true' and '$(VersionSuffix)' == ''">dev</VersionSuffix>
+  </PropertyGroup>
+
+  <!--
+    Build without git metadata (source archive; local Source Link verification in a repo without commits): the commit and repo
+    address are given explicitly. Source Link does not query git, and the repo SourceRoot gets this data (PDB: /_/ paths with
+    ContinuousIntegrationBuild and Source Link raw.githubusercontent.com/<repo>/<commit>/*; probe in the Stage 10 ledger).
+  -->
+  <PropertyGroup Condition="'$(CarKitSourceRevisionId)' != ''">
+    <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
+    <SourceRevisionId>$(CarKitSourceRevisionId)</SourceRevisionId>
+    <RepositoryUrl Condition="'$(RepositoryUrl)' == ''">$(CarKitRepositoryUrl)</RepositoryUrl>
+    <RepositoryType Condition="'$(RepositoryType)' == ''">git</RepositoryType>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(CarKitSourceRevisionId)' != ''">
+    <SourceRoot Include="$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)..'))" SourceControl="git" RevisionId="$(CarKitSourceRevisionId)" ScmRepositoryUrl="$(CarKitRepositoryUrl)" RepositoryUrl="$(CarKitRepositoryUrl)" />
+  </ItemGroup>
+</Project>

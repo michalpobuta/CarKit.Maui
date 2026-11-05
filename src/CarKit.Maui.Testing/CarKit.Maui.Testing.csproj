@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Description>FakeCarHost for unit testing CarKit.Maui car screens without a simulator.</Description>
+    <PackageTags>$(PackageTags);testing;unit-testing</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CarKit.Maui.Core\CarKit.Maui.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-ios;net10.0-android</TargetFrameworks>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>CarKit.Sample.Communication</RootNamespace>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+
+    <ApplicationTitle>CarKit Messages</ApplicationTitle>
+    <ApplicationId>com.carkit.sample.communication</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+  </PropertyGroup>
+
+  <!--
+    Stage 6: communication app (spec: "Communication module decisions (Stage 6)", Sample). The Communication category
+    generates a CarAppService with MESSAGING (without CALLING until the Core-Telecom binding exists), a notification
+    action receiver, POST_NOTIFICATIONS, and automotive_app_desc with notification and template; on iOS, CarPlay scenes,
+    NSSiriUsageDescription and, on a device, the CarPlay and Siri entitlements and the App Group shared with the
+    Intents Extension.
+  -->
+  <PropertyGroup>
+    <CarKitCategories>Communication</CarKitCategories>
+    <CarKitIosAppGroup>group.com.carkit.sample.communication</CarKitIosAppGroup>
+  </PropertyGroup>
+
+  <!-- Emulates the CarKit.Maui.Communication package (ProjectReference does not import buildTransitive/): module marker -->
+  <Import Project="..\..\src\CarKit.Maui.Communication\buildTransitive\CarKit.Maui.Communication.props" />
+
+  <ItemGroup>
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#1E8E5A" />
+    <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#1E8E5A" BaseSize="128,128" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Debug" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.Communication\CarKit.Maui.Communication.csproj" />
+  </ItemGroup>
+
+  <!-- Intents Extension (Siri in CarPlay: read, reply, mark as read) embedded in the iOS app bundle (PlugIns/) -->
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'ios'">
+    <ProjectReference Include="..\CarKit.Sample.Communication.Intents\CarKit.Sample.Communication.Intents.csproj" IsAppExtension="true" IsWatchApp="false" />
+  </ItemGroup>
+</Project>

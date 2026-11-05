@@ -1,0 +1,5 @@
+[*.cs]
+# Test names with underscores
+dotnet_diagnostic.CA1707.severity = none
+# xUnit v3 test projects are Exe; test classes must be public
+dotnet_diagnostic.CA1515.severity = none

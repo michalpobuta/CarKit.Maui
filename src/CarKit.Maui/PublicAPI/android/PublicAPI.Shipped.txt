@@ -1,0 +1,38 @@
+#nullable enable
+CarKit.Maui.AndroidAutoTemplateExtensions
+CarKit.Maui.CarImageSourceExtensions
+CarKit.Maui.CarKitAndroidOptions
+CarKit.Maui.CarKitAndroidOptions.AllowedHosts.get -> System.Collections.Generic.IList<string!>!
+CarKit.Maui.CarKitAndroidOptions.CarKitAndroidOptions() -> void
+CarKit.Maui.CarKitAppBuilderExtensions
+CarKit.Maui.CarKitAppServiceBase
+CarKit.Maui.CarKitAppServiceBase.CarKitAppServiceBase() -> void
+CarKit.Maui.CarKitBuilder
+CarKit.Maui.CarKitBuilder.Android.get -> CarKit.Maui.CarKitAndroidOptions!
+CarKit.Maui.CarKitBuilder.Categories.get -> CarKit.Maui.CarAppCategory
+CarKit.Maui.CarKitBuilder.Categories.set -> void
+CarKit.Maui.CarKitBuilder.Diagnostics.get -> CarKit.Maui.CarDiagnosticsOptions!
+CarKit.Maui.CarKitBuilder.Limits.get -> CarKit.Maui.CarLimitOptions!
+CarKit.Maui.CarKitBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+CarKit.Maui.CarKitBuilder.UnsupportedTemplateBehavior.get -> CarKit.Maui.UnsupportedTemplateBehavior
+CarKit.Maui.CarKitBuilder.UnsupportedTemplateBehavior.set -> void
+CarKit.Maui.CarKitBuilder.UseHandler<THandler>() -> CarKit.Maui.CarKitBuilder!
+CarKit.Maui.CarKitBuilder.Validation.get -> CarKit.Maui.CarValidationMode
+CarKit.Maui.CarKitBuilder.Validation.set -> void
+override CarKit.Maui.CarKitAppServiceBase.CreateHostValidator() -> AndroidX.Car.App.Validation.HostValidator!
+override CarKit.Maui.CarKitAppServiceBase.OnCreate() -> void
+override CarKit.Maui.CarKitAppServiceBase.OnCreateSession() -> AndroidX.Car.App.Session!
+override CarKit.Maui.CarKitAppServiceBase.OnCreateSession(AndroidX.Car.App.SessionInfo? sessionInfo) -> AndroidX.Car.App.Session!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.AndroidAutoSignInTemplate! template, System.Action<AndroidX.Car.App.Model.SignIn.SignInTemplate.Builder!>! configure) -> CarKit.Maui.AndroidAutoSignInTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarAlertTemplate! template, System.Action<AndroidX.Car.App.Model.Alert.Builder!>! configure) -> CarKit.Maui.CarAlertTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarGridTemplate! template, System.Action<AndroidX.Car.App.Model.GridTemplate.Builder!>! configure) -> CarKit.Maui.CarGridTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarInformationTemplate! template, System.Action<AndroidX.Car.App.Model.PaneTemplate.Builder!>! configure) -> CarKit.Maui.CarInformationTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarListTemplate! template, System.Action<AndroidX.Car.App.Model.ListTemplate.Builder!>! configure) -> CarKit.Maui.CarListTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarLongMessageTemplate! template, System.Action<AndroidX.Car.App.Model.LongMessageTemplate.Builder!>! configure) -> CarKit.Maui.CarLongMessageTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarMessageTemplate! template, System.Action<AndroidX.Car.App.Model.MessageTemplate.Builder!>! configure) -> CarKit.Maui.CarMessageTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarPointOfInterestTemplate! template, System.Action<AndroidX.Car.App.Model.PlaceListMapTemplate.Builder!>! configure) -> CarKit.Maui.CarPointOfInterestTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarSearchTemplate! template, System.Action<AndroidX.Car.App.Model.SearchTemplate.Builder!>! configure) -> CarKit.Maui.CarSearchTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAuto(this CarKit.Maui.CarTabTemplate! template, System.Action<AndroidX.Car.App.Model.TabTemplate.Builder!>! configure) -> CarKit.Maui.CarTabTemplate!
+static CarKit.Maui.AndroidAutoTemplateExtensions.ConfigureAndroidAutoSectioned(this CarKit.Maui.CarListTemplate! template, System.Action<AndroidX.Car.App.Model.SectionedItemTemplate.Builder!>! configure) -> CarKit.Maui.CarListTemplate!
+static CarKit.Maui.CarImageSourceExtensions.ToCarImage(this Microsoft.Maui.Controls.ImageSource! source) -> CarKit.Maui.CarImage!
+static CarKit.Maui.CarKitAppBuilderExtensions.UseCarKit(this Microsoft.Maui.Hosting.MauiAppBuilder! builder, System.Action<CarKit.Maui.CarKitBuilder!>! configure) -> Microsoft.Maui.Hosting.MauiAppBuilder!

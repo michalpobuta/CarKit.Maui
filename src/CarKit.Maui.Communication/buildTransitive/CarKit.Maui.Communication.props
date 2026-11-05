@@ -1,0 +1,10 @@
+<Project>
+  <!--
+    CarKit.Maui.Communication: module marker for the CarKit.Maui targets (buildTransitive/CarKit.Maui.targets). With the
+    Communication category the targets generate the Android notification action receiver and the iOS Siri/App Group
+    entitlements; Communication without this marker → warning CARKIT007.
+  -->
+  <PropertyGroup>
+    <CarKitCommunicationModule>true</CarKitCommunicationModule>
+  </PropertyGroup>
+</Project>

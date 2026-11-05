@@ -1,0 +1,15 @@
+<Project>
+  <!-- Stage 9: smoke test of the NuGet packages from artifacts/packages (smoke.sh), cut off from the repo's
+       Directory.Build.props/Packages.props (CPM, analyzers); isolated package cache with a fallback to the global one
+       (CarKit 0.1.0-dev does not reach the global cache) -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>false</ManagePackageVersionsCentrally>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RestorePackagesPath>$(MSBuildThisFileDirectory)packages</RestorePackagesPath>
+    <RestoreAdditionalProjectFallbackFolders>$(NuGetPackageRoot)</RestoreAdditionalProjectFallbackFolders>
+    <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
+    <!-- Stage 10: the version of the CarKit packages from artifacts/packages is supplied by smoke.sh
+         (-p:CarKitPackageVersion=…) -->
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,11 @@
+<Project>
+  <!--
+    CarKit.Maui.Navigation: module marker for the CarKit.Maui targets (buildTransitive/CarKit.Maui.targets). With the
+    Navigation category the targets allow the CarPlay Dashboard and cluster scenes (CarKitIosDashboard,
+    CarKitIosInstrumentCluster) and the Android Auto cluster (CarKitAndroidCluster), and POI and weather get the app's
+    map surface; Navigation without the marker → CARKIT008.
+  -->
+  <PropertyGroup>
+    <CarKitNavigationModule>true</CarKitNavigationModule>
+  </PropertyGroup>
+</Project>

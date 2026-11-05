@@ -1,0 +1,32 @@
+<Solution>
+  <Folder Name="/eng/">
+    <Project Path="eng/ReleaseGate/ReleaseGate.csproj" />
+  </Folder>
+  <Folder Name="/samples/">
+    <Project Path="samples/CarKit.Sample/CarKit.Sample.csproj" />
+    <!-- Stage 7: the extension is built by the IsAppExtension reference of the Communication sample; a separate build from the
+         solution ran in parallel with the same obj/bin (different global properties) and randomly broke the AOT step
+         (BadImageFormatException, code 134) -->
+    <Project Path="samples/CarKit.Sample.Communication.Intents/CarKit.Sample.Communication.Intents.csproj">
+      <Build Project="false" />
+    </Project>
+    <Project Path="samples/CarKit.Sample.Communication/CarKit.Sample.Communication.csproj" />
+    <Project Path="samples/CarKit.Sample.Media/CarKit.Sample.Media.csproj" />
+    <Project Path="samples/CarKit.Sample.Navigation/CarKit.Sample.Navigation.csproj" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/CarKit.Maui.Communication/CarKit.Maui.Communication.csproj" />
+    <Project Path="src/CarKit.Maui.Core/CarKit.Maui.Core.csproj" />
+    <Project Path="src/CarKit.Maui.Media/CarKit.Maui.Media.csproj" />
+    <Project Path="src/CarKit.Maui.Navigation/CarKit.Maui.Navigation.csproj" />
+    <Project Path="src/CarKit.Maui.SourceGenerators/CarKit.Maui.SourceGenerators.csproj" />
+    <Project Path="src/CarKit.Maui.Testing/CarKit.Maui.Testing.csproj" />
+    <Project Path="src/CarKit.Maui/CarKit.Maui.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/CarKit.Maui.Build.Tests/CarKit.Maui.Build.Tests.csproj" />
+    <Project Path="tests/CarKit.Maui.Core.Tests/CarKit.Maui.Core.Tests.csproj" />
+    <Project Path="tests/CarKit.Maui.DeviceTests/CarKit.Maui.DeviceTests.csproj" />
+    <Project Path="tests/CarKit.Maui.Tests/CarKit.Maui.Tests.csproj" />
+  </Folder>
+</Solution>

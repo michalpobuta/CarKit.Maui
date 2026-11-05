@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>$(CarKitIosTargetFrameworks);net10.0-android</TargetFrameworks>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <Description>Media apps for CarPlay and Android Auto with CarKit.Maui: media library, Now Playing, MPNowPlayingInfoCenter and MPRemoteCommandCenter bridge, Media3 MediaLibraryService, audio focus and interruptions.</Description>
+    <PackageTags>$(PackageTags);media;audio;now-playing;media3</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" />
+  </ItemGroup>
+
+  <!-- Media3: MediaLibraryService, MediaLibrarySession and SimpleBasePlayer (spec: "Media module decisions (Stage 5)") -->
+  <ItemGroup Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">
+    <PackageReference Include="Xamarin.AndroidX.Media3.Session" />
+  </ItemGroup>
+
+  <!-- Platform-neutral logic (Media/) is tested by tests/CarKit.Maui.Tests (linked sources); renderers and bridges
+       by DeviceTests -->
+  <ItemGroup>
+    <InternalsVisibleTo Include="CarKit.Maui.DeviceTests" />
+  </ItemGroup>
+
+  <!-- The package tells the CarKit.Maui targets that the module is in the app (media service, Now Playing bridge) -->
+  <ItemGroup>
+    <None Include="buildTransitive\**" Pack="true" PackagePath="buildTransitive" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- PrivateAssets=none: the buildTransitive targets and the CarKit.Maui generator reach an app that references
+         only the module -->
+    <ProjectReference Include="..\CarKit.Maui\CarKit.Maui.csproj" PrivateAssets="none" />
+  </ItemGroup>
+</Project>

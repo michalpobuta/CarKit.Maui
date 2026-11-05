@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CarKit.Sample.MainPage">
+    <VerticalStackLayout Padding="30,0" Spacing="12" VerticalOptions="Center">
+        <Label Text="CarKit.Sample"
+               AutomationId="SampleTitle"
+               Style="{StaticResource Headline}"
+               SemanticProperties.HeadingLevel="Level1" />
+        <Label Text="Stage 7: category flows"
+               Style="{StaticResource SubHeadline}" />
+        <Label x:Name="CategoriesLabel" AutomationId="CategoriesLabel" />
+        <Label x:Name="ValidationLabel" AutomationId="ValidationLabel" />
+        <Label x:Name="CarLabel" AutomationId="CarLabel" />
+        <Label x:Name="LifecycleLabel" AutomationId="LifecycleLabel" />
+        <Label x:Name="AppLinkLabel" AutomationId="AppLinkLabel" />
+        <Label x:Name="CarEventLabel" AutomationId="CarEventLabel" />
+    </VerticalStackLayout>
+</ContentPage>

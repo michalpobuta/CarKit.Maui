@@ -1,0 +1,100 @@
+#nullable enable
+CarKit.Maui.Communication.CarCall
+CarKit.Maui.Communication.CarCall.<Clone>$() -> CarKit.Maui.Communication.CarCall!
+CarKit.Maui.Communication.CarCall.CarCall(System.Guid Id, CarKit.Maui.Communication.CarCallHandle! Handle, CarKit.Maui.Communication.CarCallDirection Direction) -> void
+CarKit.Maui.Communication.CarCall.Deconstruct(out System.Guid Id, out CarKit.Maui.Communication.CarCallHandle! Handle, out CarKit.Maui.Communication.CarCallDirection Direction) -> void
+CarKit.Maui.Communication.CarCall.Direction.get -> CarKit.Maui.Communication.CarCallDirection
+CarKit.Maui.Communication.CarCall.Direction.init -> void
+CarKit.Maui.Communication.CarCall.DisplayName.get -> string?
+CarKit.Maui.Communication.CarCall.DisplayName.init -> void
+CarKit.Maui.Communication.CarCall.EndReason.get -> CarKit.Maui.Communication.CarCallEndReason?
+CarKit.Maui.Communication.CarCall.EndReason.init -> void
+CarKit.Maui.Communication.CarCall.Equals(CarKit.Maui.Communication.CarCall? other) -> bool
+CarKit.Maui.Communication.CarCall.Handle.get -> CarKit.Maui.Communication.CarCallHandle!
+CarKit.Maui.Communication.CarCall.Handle.init -> void
+CarKit.Maui.Communication.CarCall.Id.get -> System.Guid
+CarKit.Maui.Communication.CarCall.Id.init -> void
+CarKit.Maui.Communication.CarCall.IsMuted.get -> bool
+CarKit.Maui.Communication.CarCall.IsMuted.init -> void
+CarKit.Maui.Communication.CarCall.State.get -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCall.State.init -> void
+CarKit.Maui.Communication.CarCallDirection
+CarKit.Maui.Communication.CarCallDirection.Incoming = 0 -> CarKit.Maui.Communication.CarCallDirection
+CarKit.Maui.Communication.CarCallDirection.Outgoing = 1 -> CarKit.Maui.Communication.CarCallDirection
+CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallEndReason.AnsweredElsewhere = 4 -> CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallEndReason.DeclinedElsewhere = 5 -> CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallEndReason.Failed = 2 -> CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallEndReason.Local = 0 -> CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallEndReason.RemoteEnded = 1 -> CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallEndReason.Unanswered = 3 -> CarKit.Maui.Communication.CarCallEndReason
+CarKit.Maui.Communication.CarCallHandle
+CarKit.Maui.Communication.CarCallHandle.<Clone>$() -> CarKit.Maui.Communication.CarCallHandle!
+CarKit.Maui.Communication.CarCallHandle.CarCallHandle(CarKit.Maui.Communication.CarCallHandleType type, string! value) -> void
+CarKit.Maui.Communication.CarCallHandle.Equals(CarKit.Maui.Communication.CarCallHandle? other) -> bool
+CarKit.Maui.Communication.CarCallHandle.Type.get -> CarKit.Maui.Communication.CarCallHandleType
+CarKit.Maui.Communication.CarCallHandle.Value.get -> string!
+CarKit.Maui.Communication.CarCallHandleType
+CarKit.Maui.Communication.CarCallHandleType.EmailAddress = 2 -> CarKit.Maui.Communication.CarCallHandleType
+CarKit.Maui.Communication.CarCallHandleType.Generic = 0 -> CarKit.Maui.Communication.CarCallHandleType
+CarKit.Maui.Communication.CarCallHandleType.PhoneNumber = 1 -> CarKit.Maui.Communication.CarCallHandleType
+CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCallState.Active = 3 -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCallState.Connecting = 2 -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCallState.Dialing = 1 -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCallState.Ended = 5 -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCallState.Held = 4 -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCallState.Ringing = 0 -> CarKit.Maui.Communication.CarCallState
+CarKit.Maui.Communication.CarCommunicationBuilder
+CarKit.Maui.Communication.CarCommunicationBuilder.AndroidSmallIcon.get -> string?
+CarKit.Maui.Communication.CarCommunicationBuilder.AndroidSmallIcon.set -> void
+CarKit.Maui.Communication.CarCommunicationBuilder.IncludeCallsInRecents.get -> bool
+CarKit.Maui.Communication.CarCommunicationBuilder.IncludeCallsInRecents.set -> void
+CarKit.Maui.Communication.CarCommunicationBuilder.MarkAsReadActionTitle.get -> string!
+CarKit.Maui.Communication.CarCommunicationBuilder.MarkAsReadActionTitle.set -> void
+CarKit.Maui.Communication.CarCommunicationBuilder.NotificationChannelName.get -> string!
+CarKit.Maui.Communication.CarCommunicationBuilder.NotificationChannelName.set -> void
+CarKit.Maui.Communication.CarCommunicationBuilder.ReplyActionTitle.get -> string!
+CarKit.Maui.Communication.CarCommunicationBuilder.ReplyActionTitle.set -> void
+CarKit.Maui.Communication.CarCommunicationBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+CarKit.Maui.Communication.CarCommunicationBuilder.UseCallHandler<THandler>() -> CarKit.Maui.Communication.CarCommunicationBuilder!
+CarKit.Maui.Communication.CarCommunicationBuilder.UseMessageHandler<THandler>() -> CarKit.Maui.Communication.CarCommunicationBuilder!
+CarKit.Maui.Communication.CarKitCommunicationBuilderExtensions
+CarKit.Maui.Communication.ICarCallHandler
+CarKit.Maui.Communication.ICarCallHandler.OnAnswerAsync(CarKit.Maui.Communication.CarCall! call) -> System.Threading.Tasks.Task<bool>!
+CarKit.Maui.Communication.ICarCallHandler.OnAudioSessionActivated() -> void
+CarKit.Maui.Communication.ICarCallHandler.OnAudioSessionDeactivated() -> void
+CarKit.Maui.Communication.ICarCallHandler.OnEndAsync(CarKit.Maui.Communication.CarCall! call) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarCallHandler.OnSetHeldAsync(CarKit.Maui.Communication.CarCall! call, bool onHold) -> System.Threading.Tasks.Task<bool>!
+CarKit.Maui.Communication.ICarCallHandler.OnSetMutedAsync(CarKit.Maui.Communication.CarCall! call, bool muted) -> System.Threading.Tasks.Task<bool>!
+CarKit.Maui.Communication.ICarCallHandler.OnStartAsync(CarKit.Maui.Communication.CarCall! call) -> System.Threading.Tasks.Task<bool>!
+CarKit.Maui.Communication.ICarCallManager
+CarKit.Maui.Communication.ICarCallManager.CallChanged -> System.EventHandler<CarKit.Maui.Communication.CarCall!>?
+CarKit.Maui.Communication.ICarCallManager.Calls.get -> System.Collections.Generic.IReadOnlyList<CarKit.Maui.Communication.CarCall!>!
+CarKit.Maui.Communication.ICarCallManager.EndCallAsync(System.Guid callId) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarCallManager.IsSupported.get -> bool
+CarKit.Maui.Communication.ICarCallManager.ReportCallEnded(System.Guid callId, CarKit.Maui.Communication.CarCallEndReason reason) -> void
+CarKit.Maui.Communication.ICarCallManager.ReportIncomingCallAsync(CarKit.Maui.Communication.CarCallHandle! caller, string? displayName = null) -> System.Threading.Tasks.Task<CarKit.Maui.Communication.CarCall!>!
+CarKit.Maui.Communication.ICarCallManager.ReportOutgoingCallConnected(System.Guid callId) -> void
+CarKit.Maui.Communication.ICarCallManager.SetHeldAsync(System.Guid callId, bool onHold) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarCallManager.SetMutedAsync(System.Guid callId, bool muted) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarCallManager.StartOutgoingCallAsync(CarKit.Maui.Communication.CarCallHandle! callee, string? displayName = null) -> System.Threading.Tasks.Task<CarKit.Maui.Communication.CarCall!>!
+CarKit.Maui.Communication.ICarMessageHandler
+CarKit.Maui.Communication.ICarMessageHandler.OnMarkAsReadAsync(string! conversationId, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarMessageHandler.OnReplyAsync(string! conversationId, string! text, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarMessageNotifier
+CarKit.Maui.Communication.ICarMessageNotifier.CancelAsync(string! conversationId) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarMessageNotifier.NotifyAsync(CarKit.Maui.CarConversationItem! conversation, CarKit.Maui.CarConversationMessage! message) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarMessageNotifier.PublishConversationsAsync(System.Collections.Generic.IEnumerable<CarKit.Maui.CarConversationItem!>! conversations) -> System.Threading.Tasks.Task!
+CarKit.Maui.Communication.ICarMessageNotifier.RequestPermissionAsync() -> System.Threading.Tasks.Task<bool>!
+override CarKit.Maui.Communication.CarCall.Equals(object? obj) -> bool
+override CarKit.Maui.Communication.CarCall.GetHashCode() -> int
+override CarKit.Maui.Communication.CarCall.ToString() -> string!
+override CarKit.Maui.Communication.CarCallHandle.Equals(object? obj) -> bool
+override CarKit.Maui.Communication.CarCallHandle.GetHashCode() -> int
+override CarKit.Maui.Communication.CarCallHandle.ToString() -> string!
+static CarKit.Maui.Communication.CarCall.operator !=(CarKit.Maui.Communication.CarCall? left, CarKit.Maui.Communication.CarCall? right) -> bool
+static CarKit.Maui.Communication.CarCall.operator ==(CarKit.Maui.Communication.CarCall? left, CarKit.Maui.Communication.CarCall? right) -> bool
+static CarKit.Maui.Communication.CarCallHandle.operator !=(CarKit.Maui.Communication.CarCallHandle? left, CarKit.Maui.Communication.CarCallHandle? right) -> bool
+static CarKit.Maui.Communication.CarCallHandle.operator ==(CarKit.Maui.Communication.CarCallHandle? left, CarKit.Maui.Communication.CarCallHandle? right) -> bool
+static CarKit.Maui.Communication.CarKitCommunicationBuilderExtensions.UseCommunication(this CarKit.Maui.CarKitBuilder! car, System.Action<CarKit.Maui.Communication.CarCommunicationBuilder!>! configure) -> CarKit.Maui.CarKitBuilder!

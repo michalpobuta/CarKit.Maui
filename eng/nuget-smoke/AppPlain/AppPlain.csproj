@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <UseMaui>true</UseMaui>
+    <SingleProject>true</SingleProject>
+    <ApplicationId>com.carkit.smoke.appplain</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <CarKitCategories>Navigation;Parking</CarKitCategories>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Maui.Controls" Version="10.0.120" />
+    <PackageReference Include="CarKit.Maui.Navigation" Version="$(CarKitPackageVersion)" />
+    <Compile Include="../shared/*.cs" />
+  </ItemGroup>
+  <PropertyGroup>
+    <!-- Info.plist shared by both apps -->
+    <AppBundleManifest>../shared/Info.plist</AppBundleManifest>
+  </PropertyGroup>
+</Project>

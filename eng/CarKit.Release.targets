@@ -1,0 +1,32 @@
+<Project>
+  <!--
+    Stage 10: pack rules (spec: "Documentation and release decisions (Stage 10)"; imported by src/Directory.Build.targets).
+    After Source Link determines RepositoryUrl/RepositoryCommit (git remote and the clone's commit):
+    - PackageProjectUrl = RepositoryUrl (without .git) when not set; the repo address is not hard-coded in the repo;
+    - without an address or commit: outside release mode an explicit message instead of a silent <repository type="git" />,
+      in release mode CARKITREL002;
+    - release mode: license required (CARKITREL001, the owner's decision), version = tag (CARKITREL003).
+    All errors at once (ErrorAndContinue), so that one run shows the full list of gaps, and at the end an error without
+    ContinueOnError that stops the pack (ErrorAndContinue alone does not halt GenerateNuspec; the package was produced
+    despite errors).
+  -->
+  <Target Name="_CarKitPackRepositoryAndRelease" AfterTargets="_InitializeNuspecRepositoryInformationProperties" Condition="'$(IsPackable)' == 'true'">
+    <PropertyGroup>
+      <PackageProjectUrl Condition="'$(PackageProjectUrl)' == '' and '$(RepositoryUrl)' != ''">$([System.Text.RegularExpressions.Regex]::Replace('$(RepositoryUrl)', '\.git$', ''))</PackageProjectUrl>
+      <_CarKitMissingRepository Condition="'$(RepositoryUrl)' == '' or '$(RepositoryCommit)' == ''">true</_CarKitMissingRepository>
+      <_CarKitReleaseBlocked Condition="'$(CarKitRelease)' == 'true' and '$(_CarKitMissingRepository)' == 'true'">true</_CarKitReleaseBlocked>
+      <_CarKitReleaseBlocked Condition="'$(CarKitRelease)' == 'true' and '$(PackageLicenseExpression)' == '' and '$(PackageLicenseFile)' == ''">true</_CarKitReleaseBlocked>
+      <_CarKitReleaseBlocked Condition="'$(_CarKitTagVersion)' != '' and '$(_CarKitTagVersion)' != '$(PackageVersion)'">true</_CarKitReleaseBlocked>
+    </PropertyGroup>
+
+    <Message Condition="'$(_CarKitMissingRepository)' == 'true' and '$(CarKitRelease)' != 'true'" Importance="high"
+             Text="CarKit: the package $(PackageId) has no repository URL or commit (git repository without a commit or a remote): the nuspec has no repository url/commit and the PDB has no Source Link. Release packs fail with CARKITREL002; builds without git metadata set CarKitSourceRevisionId and CarKitRepositoryUrl." />
+    <Error Condition="'$(_CarKitMissingRepository)' == 'true' and '$(CarKitRelease)' == 'true'" Code="CARKITREL002" ContinueOnError="ErrorAndContinue"
+           Text="CarKit: release package $(PackageId) needs a repository URL and a commit (RepositoryUrl='$(RepositoryUrl)', RepositoryCommit='$(RepositoryCommit)'): pack from a git clone with an origin remote and a commit, or set CarKitSourceRevisionId and CarKitRepositoryUrl." />
+    <Error Condition="'$(CarKitRelease)' == 'true' and '$(PackageLicenseExpression)' == '' and '$(PackageLicenseFile)' == ''" Code="CARKITREL001" ContinueOnError="ErrorAndContinue"
+           Text="CarKit: release package $(PackageId) has no license: the owner chooses the license and sets PackageLicenseExpression or PackageLicenseFile (Directory.Build.props) before tagging (docs/release-checklist.md)." />
+    <Error Condition="'$(_CarKitTagVersion)' != '' and '$(_CarKitTagVersion)' != '$(PackageVersion)'" Code="CARKITREL003" ContinueOnError="ErrorAndContinue"
+           Text="CarKit: tag $(CarKitReleaseTag) does not match package version $(PackageVersion) of $(PackageId): change VersionPrefix (Directory.Build.props) or the tag." />
+    <Error Condition="'$(_CarKitReleaseBlocked)' == 'true'" Text="CarKit: the release pack of $(PackageId) stopped; fix the CARKITREL errors above." />
+  </Target>
+</Project>

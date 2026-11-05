@@ -1,0 +1,85 @@
+#nullable enable
+[CARKIT0002]CarKit.Maui.Navigation.ICarMapSurface.UseMauiView(System.Func<Microsoft.Maui.Controls.View!>! factory) -> void
+CarKit.Maui.Navigation.CarKitNavigationBuilderExtensions
+CarKit.Maui.Navigation.CarMapFrameStatistics
+CarKit.Maui.Navigation.CarMapFrameStatistics.<Clone>$() -> CarKit.Maui.Navigation.CarMapFrameStatistics!
+CarKit.Maui.Navigation.CarMapFrameStatistics.Average.get -> System.TimeSpan
+CarKit.Maui.Navigation.CarMapFrameStatistics.Average.init -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.CarMapFrameStatistics(int FrameCount, System.TimeSpan Average, System.TimeSpan Median, System.TimeSpan Percentile95, System.TimeSpan Maximum, int SlowFrames, int VerySlowFrames) -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.Deconstruct(out int FrameCount, out System.TimeSpan Average, out System.TimeSpan Median, out System.TimeSpan Percentile95, out System.TimeSpan Maximum, out int SlowFrames, out int VerySlowFrames) -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.Equals(CarKit.Maui.Navigation.CarMapFrameStatistics? other) -> bool
+CarKit.Maui.Navigation.CarMapFrameStatistics.FrameCount.get -> int
+CarKit.Maui.Navigation.CarMapFrameStatistics.FrameCount.init -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.Maximum.get -> System.TimeSpan
+CarKit.Maui.Navigation.CarMapFrameStatistics.Maximum.init -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.Median.get -> System.TimeSpan
+CarKit.Maui.Navigation.CarMapFrameStatistics.Median.init -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.Percentile95.get -> System.TimeSpan
+CarKit.Maui.Navigation.CarMapFrameStatistics.Percentile95.init -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.SlowFrames.get -> int
+CarKit.Maui.Navigation.CarMapFrameStatistics.SlowFrames.init -> void
+CarKit.Maui.Navigation.CarMapFrameStatistics.VerySlowFrames.get -> int
+CarKit.Maui.Navigation.CarMapFrameStatistics.VerySlowFrames.init -> void
+CarKit.Maui.Navigation.CarMapGestureEventArgs
+CarKit.Maui.Navigation.CarMapGestureEventArgs.CarMapGestureEventArgs(CarKit.Maui.Navigation.CarMapGestureKind kind, Microsoft.Maui.Graphics.PointF position, Microsoft.Maui.Graphics.PointF delta, Microsoft.Maui.Graphics.PointF velocity, float scaleFactor) -> void
+CarKit.Maui.Navigation.CarMapGestureEventArgs.Delta.get -> Microsoft.Maui.Graphics.PointF
+CarKit.Maui.Navigation.CarMapGestureEventArgs.Kind.get -> CarKit.Maui.Navigation.CarMapGestureKind
+CarKit.Maui.Navigation.CarMapGestureEventArgs.Position.get -> Microsoft.Maui.Graphics.PointF
+CarKit.Maui.Navigation.CarMapGestureEventArgs.ScaleFactor.get -> float
+CarKit.Maui.Navigation.CarMapGestureEventArgs.Velocity.get -> Microsoft.Maui.Graphics.PointF
+CarKit.Maui.Navigation.CarMapGestureKind
+CarKit.Maui.Navigation.CarMapGestureKind.Click = 3 -> CarKit.Maui.Navigation.CarMapGestureKind
+CarKit.Maui.Navigation.CarMapGestureKind.Fling = 2 -> CarKit.Maui.Navigation.CarMapGestureKind
+CarKit.Maui.Navigation.CarMapGestureKind.Scale = 1 -> CarKit.Maui.Navigation.CarMapGestureKind
+CarKit.Maui.Navigation.CarMapGestureKind.Scroll = 0 -> CarKit.Maui.Navigation.CarMapGestureKind
+CarKit.Maui.Navigation.CarMapSurfaceKind
+CarKit.Maui.Navigation.CarMapSurfaceKind.CarScreen = 0 -> CarKit.Maui.Navigation.CarMapSurfaceKind
+CarKit.Maui.Navigation.CarMapSurfaceKind.Dashboard = 1 -> CarKit.Maui.Navigation.CarMapSurfaceKind
+CarKit.Maui.Navigation.CarMapSurfaceKind.InstrumentCluster = 2 -> CarKit.Maui.Navigation.CarMapSurfaceKind
+CarKit.Maui.Navigation.CarNavigationBuilder
+CarKit.Maui.Navigation.CarNavigationBuilder.LogFrameTimes.get -> bool
+CarKit.Maui.Navigation.CarNavigationBuilder.LogFrameTimes.set -> void
+CarKit.Maui.Navigation.CarNavigationBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+CarKit.Maui.Navigation.CarNavigationBuilder.ShareRoutesWithCar.get -> bool
+CarKit.Maui.Navigation.CarNavigationBuilder.ShareRoutesWithCar.set -> void
+CarKit.Maui.Navigation.CarNavigationBuilder.UseHandler<THandler>() -> CarKit.Maui.Navigation.CarNavigationBuilder!
+CarKit.Maui.Navigation.CarNavigationBuilder.VoicePromptLanguage.get -> string?
+CarKit.Maui.Navigation.CarNavigationBuilder.VoicePromptLanguage.set -> void
+CarKit.Maui.Navigation.CarPlayNavigationTemplateExtensions
+CarKit.Maui.Navigation.ICarMapSurface
+CarKit.Maui.Navigation.ICarMapSurface.AreasChanged -> System.EventHandler!
+CarKit.Maui.Navigation.ICarMapSurface.AvailabilityChanged -> System.EventHandler!
+CarKit.Maui.Navigation.ICarMapSurface.ClearContent() -> void
+CarKit.Maui.Navigation.ICarMapSurface.ContentStyle.get -> CarKit.Maui.CarContentStyle
+CarKit.Maui.Navigation.ICarMapSurface.Density.get -> float
+CarKit.Maui.Navigation.ICarMapSurface.FrameStatistics.get -> CarKit.Maui.Navigation.CarMapFrameStatistics!
+CarKit.Maui.Navigation.ICarMapSurface.Gesture -> System.EventHandler<CarKit.Maui.Navigation.CarMapGestureEventArgs!>!
+CarKit.Maui.Navigation.ICarMapSurface.Invalidate() -> void
+CarKit.Maui.Navigation.ICarMapSurface.IsAvailable.get -> bool
+CarKit.Maui.Navigation.ICarMapSurface.IsPanning.get -> bool
+CarKit.Maui.Navigation.ICarMapSurface.Kind.get -> CarKit.Maui.Navigation.CarMapSurfaceKind
+CarKit.Maui.Navigation.ICarMapSurface.PanModeChanged -> System.EventHandler!
+CarKit.Maui.Navigation.ICarMapSurface.ResetFrameStatistics() -> void
+CarKit.Maui.Navigation.ICarMapSurface.Size.get -> Microsoft.Maui.Graphics.SizeF
+CarKit.Maui.Navigation.ICarMapSurface.StableArea.get -> Microsoft.Maui.Graphics.RectF
+CarKit.Maui.Navigation.ICarMapSurface.UseRenderer(CarKit.Maui.Navigation.ICarSurfaceRenderer! renderer) -> void
+CarKit.Maui.Navigation.ICarMapSurface.UseViewController(System.Func<UIKit.UIViewController!>! factory) -> void
+CarKit.Maui.Navigation.ICarMapSurface.VisibleArea.get -> Microsoft.Maui.Graphics.RectF
+CarKit.Maui.Navigation.ICarMapSurfaces
+CarKit.Maui.Navigation.ICarMapSurfaces.CarScreen.get -> CarKit.Maui.Navigation.ICarMapSurface!
+CarKit.Maui.Navigation.ICarMapSurfaces.Dashboard.get -> CarKit.Maui.Navigation.ICarMapSurface!
+CarKit.Maui.Navigation.ICarMapSurfaces.InstrumentCluster.get -> CarKit.Maui.Navigation.ICarMapSurface!
+CarKit.Maui.Navigation.ICarSurfaceRenderer
+CarKit.Maui.Navigation.ICarSurfaceRenderer.Draw(Microsoft.Maui.Graphics.ICanvas! canvas, Microsoft.Maui.Graphics.RectF visibleArea, Microsoft.Maui.Graphics.RectF stableArea) -> void
+CarKit.Maui.Navigation.ICarVoicePrompts
+CarKit.Maui.Navigation.ICarVoicePrompts.CancelAll() -> void
+CarKit.Maui.Navigation.ICarVoicePrompts.IsSpeaking.get -> bool
+CarKit.Maui.Navigation.ICarVoicePrompts.SpeakAsync(string! text, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task!
+override CarKit.Maui.Navigation.CarMapFrameStatistics.Equals(object? obj) -> bool
+override CarKit.Maui.Navigation.CarMapFrameStatistics.GetHashCode() -> int
+override CarKit.Maui.Navigation.CarMapFrameStatistics.ToString() -> string!
+static CarKit.Maui.Navigation.CarKitNavigationBuilderExtensions.UseNavigation(this CarKit.Maui.CarKitBuilder! car, System.Action<CarKit.Maui.Navigation.CarNavigationBuilder!>! configure) -> CarKit.Maui.CarKitBuilder!
+static CarKit.Maui.Navigation.CarMapFrameStatistics.Empty.get -> CarKit.Maui.Navigation.CarMapFrameStatistics!
+static CarKit.Maui.Navigation.CarMapFrameStatistics.operator !=(CarKit.Maui.Navigation.CarMapFrameStatistics? left, CarKit.Maui.Navigation.CarMapFrameStatistics? right) -> bool
+static CarKit.Maui.Navigation.CarMapFrameStatistics.operator ==(CarKit.Maui.Navigation.CarMapFrameStatistics? left, CarKit.Maui.Navigation.CarMapFrameStatistics? right) -> bool
+static CarKit.Maui.Navigation.CarPlayNavigationTemplateExtensions.ConfigureCarPlay(this CarKit.Maui.CarMapTemplate! template, System.Action<CarPlay.CPMapTemplate!>! configure) -> CarKit.Maui.CarMapTemplate!

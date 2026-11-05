@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!--
+    Stage 6: Intents Extension for the Communication sample (spec: "Communication module decisions (Stage 6)", SiriKit).
+    Siri in CarPlay reads messages (INSearchForMessagesIntent), replies (INSendMessageIntent) and marks them as read
+    (INSetMessageAttributeIntent). The extension does not load MAUI: it references only CarKit.Maui.Core
+    (CarConversationStore in the App Group container shared with the app). Embedded in the app through a
+    ProjectReference with IsAppExtension.
+  -->
+  <PropertyGroup>
+    <TargetFramework>net10.0-ios</TargetFramework>
+    <IsAppExtension>true</IsAppExtension>
+    <!-- Single TargetFramework: Directory.Build.props does not see it yet at import time, so the iOS minimum is explicit -->
+    <SupportedOSPlatformVersion>15.0</SupportedOSPlatformVersion>
+    <RootNamespace>CarKit.Sample.Communication.Intents</RootNamespace>
+    <ApplicationId>com.carkit.sample.communication.intents</ApplicationId>
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+  </PropertyGroup>
+
+  <!-- App Group shared with the app; entitlement only in the device build (like the CarKit targets for the app) -->
+  <PropertyGroup>
+    <SampleAppGroup>group.com.carkit.sample.communication</SampleAppGroup>
+  </PropertyGroup>
+  <ItemGroup Condition="$(RuntimeIdentifier.StartsWith('ios-'))">
+    <CustomEntitlements Include="com.apple.security.application-groups" Type="StringArray" Value="$(SampleAppGroup)" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\CarKit.Maui.Core\CarKit.Maui.Core.csproj" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,14 @@
+<Project>
+  <!--
+    The sample references CarKit.Maui through a ProjectReference, and NuGet imports buildTransitive/ and analyzers/ only
+    from packages.
+    Package emulation: the same MSBuild targets and generator as in CarKit.Maui.nupkg.
+  -->
+  <Import Project="$(MSBuildThisFileDirectory)../src/CarKit.Maui/buildTransitive/CarKit.Maui.targets" />
+
+  <ItemGroup>
+    <ProjectReference Include="$(MSBuildThisFileDirectory)../src/CarKit.Maui.SourceGenerators/CarKit.Maui.SourceGenerators.csproj"
+                      OutputItemType="Analyzer"
+                      ReferenceOutputAssembly="false" />
+  </ItemGroup>
+</Project>

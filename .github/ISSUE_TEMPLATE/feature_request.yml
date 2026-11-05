@@ -1,0 +1,25 @@
+name: Feature request
+description: Suggest a template, module or platform feature
+labels: [enhancement]
+body:
+  - type: dropdown
+    id: platform
+    attributes:
+      label: Platform
+      options:
+        - CarPlay
+        - Android Auto
+        - Both
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What do you want to build?
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed API or behavior
+      description: Link the Apple or Google documentation if the feature depends on a platform API.
