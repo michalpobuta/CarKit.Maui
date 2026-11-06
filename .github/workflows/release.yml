@@ -15,7 +15,8 @@ permissions:
 jobs:
   release:
     runs-on: macos-26
-    timeout-minutes: 120
+    # The runner is about 5 times slower than a local build, the solution build alone takes about 50 min
+    timeout-minutes: 300
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true

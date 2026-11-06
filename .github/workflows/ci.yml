@@ -16,8 +16,9 @@ jobs:
   build:
     runs-on: macos-26
     # Stage 9: two iOS assets (a second iOS build of each library), a second device test run and the NuGet smoke test;
-    # Stage 10: Release device tests, the quickstart guide, documentation and the release gate (about 35 min in total locally)
-    timeout-minutes: 110
+    # Stage 10: Release device tests, the quickstart guide, documentation and the release gate (about 35 min in total
+    # locally; the runner is about 5 times slower, over 100 min before the first device test)
+    timeout-minutes: 300
     env:
       DOTNET_NOLOGO: true
       DOTNET_CLI_TELEMETRY_OPTOUT: true
@@ -111,27 +112,6 @@ jobs:
           dotnet test tests/CarKit.Maui.Tests -c Release --no-build
           dotnet test tests/CarKit.Maui.Build.Tests -c Release --no-build
 
-      # CarPlay renderers (including CPPointOfInterestTemplate and CPMapTemplate with a navigation session, Stage 9: iOS 26.4
-      # features and gate), the Now Playing/AVAudioSession bridge, CPMessageListItem, the notification category, the Intents
-      # Extension, CallKit, map surfaces in a placeholder window and AVSpeechSynthesizer on the iOS simulator
-      # (tests/CarKit.Maui.DeviceTests, own runner).
-      # The Android variant (eng/run-device-tests.sh android) is local only: the macOS runner has no emulator acceleration.
-      - name: Device tests (iOS simulator)
-        run: eng/run-device-tests.sh ios
-
-      # Stage 10: the same suite in Release (AOT on the simulator, recorder and trimming as in Release apps)
-      - name: Device tests (iOS simulator, Release)
-        run: CONFIGURATION=Release DEVICE_TESTS_LOG=artifacts/device-tests-ios-release.log eng/run-device-tests.sh ios
-
-      # Stage 9: the net10.0-ios asset (ref pack 26.0) — the test app targets net10.0-ios26.0 (the iOS 26.0 SDK requires
-      # Xcode 26.0, only for the build through DEVELOPER_DIR). On an image without Xcode 26.0 the step warns instead of
-      # passing silently.
-      - name: Device tests (iOS simulator, net10.0-ios asset)
-        run: |
-          xcode26=$(ls -d /Applications/Xcode_26.0*.app 2>/dev/null | head -1 || true)
-          if [ -z "$xcode26" ]; then echo "::warning::Xcode 26.0 not found on the runner; the net10.0-ios (26.0) asset was not device-tested"; exit 0; fi
-          IOS_ASSET=26.0 XCODE_26_0=$xcode26 DEVICE_TESTS_LOG=artifacts/device-tests-ios-asset-26.0.log eng/run-device-tests.sh ios
-
       # Stage 10: 0.1.0-dev with symbols (.snupkg), README and Source Link (repo address and commit from the clone)
       - name: Pack
         run: dotnet pack CarKit.Maui.slnx -c Release --no-build -o artifacts/packages
@@ -208,3 +188,25 @@ jobs:
         with:
           name: docs
           path: artifacts/docs/_site
+
+      # Last: the slowest steps, and a failure here must not hide the package, guide and documentation results
+      # CarPlay renderers (including CPPointOfInterestTemplate and CPMapTemplate with a navigation session, Stage 9: iOS 26.4
+      # features and gate), the Now Playing/AVAudioSession bridge, CPMessageListItem, the notification category, the Intents
+      # Extension, CallKit, map surfaces in a placeholder window and AVSpeechSynthesizer on the iOS simulator
+      # (tests/CarKit.Maui.DeviceTests, own runner).
+      # The Android variant (eng/run-device-tests.sh android) is local only: the macOS runner has no emulator acceleration.
+      - name: Device tests (iOS simulator)
+        run: eng/run-device-tests.sh ios
+
+      # Stage 10: the same suite in Release (AOT on the simulator, recorder and trimming as in Release apps)
+      - name: Device tests (iOS simulator, Release)
+        run: CONFIGURATION=Release DEVICE_TESTS_LOG=artifacts/device-tests-ios-release.log eng/run-device-tests.sh ios
+
+      # Stage 9: the net10.0-ios asset (ref pack 26.0) — the test app targets net10.0-ios26.0 (the iOS 26.0 SDK requires
+      # Xcode 26.0, only for the build through DEVELOPER_DIR). On an image without Xcode 26.0 the step warns instead of
+      # passing silently.
+      - name: Device tests (iOS simulator, net10.0-ios asset)
+        run: |
+          xcode26=$(ls -d /Applications/Xcode_26.0*.app 2>/dev/null | head -1 || true)
+          if [ -z "$xcode26" ]; then echo "::warning::Xcode 26.0 not found on the runner; the net10.0-ios (26.0) asset was not device-tested"; exit 0; fi
+          IOS_ASSET=26.0 XCODE_26_0=$xcode26 DEVICE_TESTS_LOG=artifacts/device-tests-ios-asset-26.0.log eng/run-device-tests.sh ios
