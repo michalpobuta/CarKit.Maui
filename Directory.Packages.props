@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup Label="Sample">
-    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="10.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Debug" Version="10.0.14" />
   </ItemGroup>
 
   <ItemGroup Label="Analyzers and generator">
