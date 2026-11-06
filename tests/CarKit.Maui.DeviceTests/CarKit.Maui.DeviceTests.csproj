@@ -16,7 +16,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" />
+    <!-- No icon in the asset build: actool from Xcode 26.0 stops without an iOS 26.0 simulator runtime, and the runner
+         image has only newer ones; nothing else in this build needs that runtime -->
+    <MauiIcon Include="Resources\AppIcon\appicon.svg" Color="#512BD4" Condition="'$(CarKitDeviceTestsIosVersion)' == ''" />
     <MauiImage Include="Resources\Images\*" />
     <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
   </ItemGroup>
